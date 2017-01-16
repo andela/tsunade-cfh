@@ -1,3 +1,4 @@
 language: node_js
 node_js:
  - 6
+name = COVERALLS_REPO_TOKEN value = e6sqpSjc09z41YBg6YJcM8nb5HGJdah5y
