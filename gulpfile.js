@@ -5,6 +5,7 @@ const nodemon = require('gulp-nodemon');
 const bower = require('gulp-bower');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
+const exit = require('gulp-exit');
 
 
 gulp.task('watch', () => { // Watch tasks
@@ -53,7 +54,8 @@ gulp.task('server', ['nodemon'], () => {
 
 gulp.task('mochaTest', () => {
   gulp.src('test/**/*.js', { read: false })
-  .pipe(mocha({ reporter: 'spec' }));
+  .pipe(mocha({ reporter: 'spec' }))
+  .pipe(exit());
 });
 
 gulp.task('sass', () => gulp.src('public/css/common.scss')

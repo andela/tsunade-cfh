@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "node node_modules/gulp/bin/gulp test"
+    "test": "gulp test"
   },
   "dependencies": {
     "async": "~0.2.9",
@@ -81,6 +81,7 @@
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",
     "gulp-eslint": "^3.0.1",
+    "gulp-exit": "0.0.2",
     "gulp-mocha": "^3.0.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^3.1.0",
