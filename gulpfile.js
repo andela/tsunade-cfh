@@ -6,21 +6,9 @@ const bower = require('gulp-bower');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const exit = require('gulp-exit');
-const Server = require('karma').Server;
-const browserify = require('gulp-browserify');
-const rename = require('gulp-rename');
 const istanbul = require('gulp-istanbul');
 
-// gulp.task('browserify', () => {
-//     gulp.src('test/**/*.js')
-//         .pipe(browserify())
-//         .pipe(rename('bundle.js'))
-//         .pipe(gulp.dest('test/TestSpec'));
-// });
-// gulp.task('browserify', () => browserify('./test/**/*.js')
-//     .bundle()
-//     .pipe(source('bundle.js'))
-//     .pipe(gulp.dest('./test/TestSpec')));
+
 
 gulp.task('watch', () => { // Watch tasks
     gulp.watch(['public/css/common.scss',
@@ -68,12 +56,6 @@ gulp.task('server', ['nodemon'], () => {
         reloadOnRestart: true
     });
 });
-
-// gulp.task('mochaTest', () => {
-//     gulp.src('test/**/*.js', { read: false })
-//         .pipe(mocha({ reporter: 'spec' }))
-//         .pipe(exit());
-// });
 
 gulp.task('pre-test', () => gulp.src(['test/**/*.js'])
     .pipe(istanbul({ includeUntested: true }))
