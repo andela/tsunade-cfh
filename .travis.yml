@@ -8,4 +8,6 @@ before_install:
 
 script: npm test
 after_script:
-  - cat ./coverage/**/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls.js
+
+after_success: 'npm run coveralls'
