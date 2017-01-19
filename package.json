@@ -15,7 +15,7 @@
     "scripts": {
         "start": "gulp",
         "test": "gulp test",
-        "cover": "istanbul cover _mocha",
+        "cover": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha ./test/**/*.js",
         "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
     },
     "dependencies": {
