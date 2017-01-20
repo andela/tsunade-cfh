@@ -93,5 +93,8 @@ module.exports = function(app, passport, auth) {
     //SignupAuth Routes
     var authSignup = require('../app/controllers/signup');
     app.post('/api/auth/signup', authSignup.signup);
+     //loginAuth Routes
+    var authLogin = require('../app/controllers/loginAuth');
+    app.post('/api/auth/login', auth.login);
 };
 
