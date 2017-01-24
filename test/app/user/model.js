@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 const should = require('should'),
-  app = require('../../server'),
+  // app = require(__dirname + 'server.js'),
   mongoose = require('mongoose'),
   User = mongoose.model('User');
 

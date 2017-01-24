@@ -14,23 +14,53 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '"test/**/*.js"',
+      'test/src/**/*.js',
       'test/unit/TestSpec.js'
     ],
 
     // list of files to exclude
     exclude: [],
 
-    /* preprocess matching files before serving them to the browser
-     * available preprocessors:
-     * https://npmjs.org/browse/keyword/karma-preprocessor
-     */
-    preprocessors: {},
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-coverage',
+      'karma-coveralls',
+      'karma-jasmine-html-reporter',
+      'karma-browserify',
+      'karma-ng-html2js-preprocessor'
+    ],
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+      './app/**/*.js': ['coverage'],
+      './tests/src/**/*.js': ['browserify'],
+      'public/views/*.tpl.html': 'ng-html2js'
+    },
+
+    browserify: {
+      debug: true
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'public'
+    },
+
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    reporters: ['progress', 'coverage', 'coveralls', 'kjhtml'],
+
+
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage/'
+    },
 
     // web server port
     port: 9876,
@@ -53,7 +83,7 @@ module.exports = function(config) {
      ** available browser launchers: https://npmjs.org/
      ** browse/keyword/karma-launcher
      */
-    browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

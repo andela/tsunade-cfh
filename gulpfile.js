@@ -6,6 +6,9 @@ const bower = require('gulp-bower');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const exit = require('gulp-exit');
+const karma = require('karma').Server;
+const browserify = require('gulp-browserify');
+const rename = require('gulp-rename');
 
 gulp.task('watch', () => { // Watch tasks
   gulp.watch(['public/css/common.scss',
@@ -54,10 +57,20 @@ gulp.task('server', ['nodemon'], () => {
   });
 });
 
-gulp.task('mochaTest', () => {
-  gulp.src('test/**/*.js', { read: false })
-    .pipe(mocha({ reporter: 'spec' }))
-    .pipe(exit());
+gulp.task('karma', function(done) {
+  karma.start({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, function() {
+    done();
+  });
+});
+
+gulp.task('scripts', () => {
+  gulp.src('test/**/*.js')
+    .pipe(browserify())
+    .pipe(rename('bundle.js'))
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('sass', () => gulp.src('public/css/common.scss')
@@ -70,10 +83,10 @@ gulp.task('bower', () => {
 });
 
 // Default task(s).
-gulp.task('default', ['lint', 'server', 'watch', 'sass']);
+gulp.task('default', ['scripts', 'lint', 'server', 'watch', 'sass']);
 
 // Test task.
-gulp.task('test', ['mochaTest']);
+gulp.task('test', ['scripts', 'karma']);
 
 // Bower task.
 gulp.task('install', ['bower']);
