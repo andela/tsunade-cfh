@@ -5,17 +5,10 @@ const nodemon = require('gulp-nodemon');
 const bower = require('gulp-bower');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
-const exit = require('gulp-exit'); <<
-<< << < HEAD
+const exit = require('gulp-exit');
 const karma = require('karma').Server;
 const browserify = require('gulp-browserify');
-const rename = require('gulp-rename'); ===
-=== =
-const istanbul = require('gulp-istanbul');
-
-
->>>
->>> > fcfcbd9a50b3da7d31cde0220e9f8c237d7e11f3
+const rename = require('gulp-rename');
 
 gulp.task('watch', () => { // Watch tasks
   gulp.watch(['public/css/common.scss',
@@ -64,8 +57,6 @@ gulp.task('server', ['nodemon'], () => {
   });
 });
 
-<<
-<< << < HEAD
 gulp.task('karma', function(done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
@@ -90,8 +81,6 @@ gulp.task('bower', () => {
   bower()
     .pipe(gulp.dest('./public/lib'));
 });
-
-
 
 // Default task(s).
 gulp.task('default', ['scripts', 'lint', 'server', 'watch', 'sass']);
