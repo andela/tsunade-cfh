@@ -38,8 +38,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      './app/**/*.js': ['coverage'],
-      './tests/src/**/*.js': ['browserify'],
+      'app/**/*.js': ['coverage'],
+      'test/src/**/*.js': ['browserify'],
       'public/views/*.tpl.html': 'ng-html2js'
     },
 
