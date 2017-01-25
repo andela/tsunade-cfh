@@ -64,10 +64,11 @@
 }
 
 .some-text {
-   text-align: center;
+   text-align: justify;
    color: white;
-   max-width: 800px;
+   max-width: 1000px;
    margin: 0 30px;
+   vertical-align: top;
 }
 
 #give {
@@ -173,7 +174,7 @@
 }
 
 #first-word {
-   color: #7CE4E8;
+   color: #0d3370;
 }
 
 #second-word {
@@ -1255,3 +1256,182 @@
       margin: 0 0 0 4px;
    }
  }
+
+/* From here */
+	li{
+			list-style: none;
+		}
+
+		.frame{
+			background:white;
+			height:auto;
+			overflow-y: hidden;
+			background:#072f70;
+			position: relative;
+			border-top: 10px solid #FF9999;
+			border-bottom: 10px solid #FF9999;
+      margin-bottom: 30px;
+		}
+
+		.czar div{
+			transform:rotate(-5deg);
+			background: black;
+			background: linear-gradient(black, #1e1f21);
+			border:1px groove black;
+		}
+		.deal{
+
+
+			animation: marquee 5s linear infinite;
+			-webkit-marquee: up medium infinite scroll normal;
+		}
+
+		.nav li{
+			display: inline-block;
+			text-decoration: none;
+			margin-left:20px;
+			margin-right:30px;
+			font-weight:bold;
+			color:#072f70;
+
+		}
+
+		.nav li a{
+			color:#072f70;
+
+		}
+		.nav li:hover a{
+			text-decoration: none;
+			color:#FF9999;
+		}
+
+		.nav ul{
+			float: right;
+margin-top: 20px;
+		}
+
+		.howto {
+			color: white;
+			position: absolute;
+			right:0px;
+			padding-right:35px;
+			text-align: justify;
+		}
+
+		.motto{
+			text-align: left;
+		}
+
+		.framepanel{
+			width:100%;
+			background: #FF9999;
+			position: relative;
+			padding:10px;
+			min-height:25px;
+		}
+
+		.signup{
+			background:white;
+			color: #072f70;
+			font-weight: bolder;
+			width:150px;
+			margin-right:30px;
+			float:right;
+			height:50px;
+		}
+
+.signup:hover{
+	background: #072f70;
+	color: white;
+}
+
+.item img {
+	width:100%;
+}
+
+#team p {
+	font-size: 18px;
+	background-color:rgba(0, 0, 0, 0.5);
+	padding:10px;
+}
+
+.footer {
+	padding:5px 18px 5px 18px;
+background: white;
+color: white;
+}
+
+.privacyPolicy {
+	text-align: right;
+
+}
+
+.github img{
+	width:40px;
+	height:40px;
+}
+
+.github{
+	font-size: 16px;
+}
+
+html{
+  background: white;
+  width: 100%;
+}
+
+.circleDiv {
+  width:100px;
+  height:100px;
+  border-radius: 100px;
+  background: #002266;
+  margin: 0 auto;
+  margin-bottom:20px;
+  margin-top: 20px;
+}
+
+#charity{
+  background: #002266;
+  width: 100%;
+}
+
+
+.give {
+  text-align:center;
+  font-size:1.2em;
+  font-weight: bold;
+  color: white;
+}
+
+body{
+  background: #002266;
+}
+
+.navigationDiv{
+  background: white;
+  min-height:30px;
+  width: 100%;
+}
+
+.navmenu {
+  background: white;
+}
+
+.myfooter{
+ background-color: #002266 ;
+ color: white;
+ border-top:3px solid #FF9999;
+}
+
+a{
+  color:#409FD5 !important;
+}
+
+#sign-up-btn-landing {
+  background: #409FD5;
+  font-size: 15px;
+}
+
+#sign-up {
+  margin-bottom: 20px;
+}
