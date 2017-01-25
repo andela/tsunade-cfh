@@ -1,0 +1,97 @@
+li{
+			list-style: none;
+		}
+		.card div{
+			width:240px;
+			height:320px;
+			box-shadow: 3px 3px 5px #888888;
+			border-radius: 10px;
+			padding:5px;
+			border:1px groove white;
+			background: white;
+			background: linear-gradient(white, whitesmoke);
+			transform:rotate(10deg);
+			display: inline-block;
+			vertical-align: top;
+		}
+		.card{
+			display: inline-block;
+			position: absolute;
+		}
+		.frame{
+			padding:90px 40px 40px 30px;
+			background:white;
+			height:500px;
+			overflow-y: hidden;
+			background-image:url(beach.png);
+		}
+
+		.czar div{
+			transform:rotate(-5deg);
+			background: black;
+			background: linear-gradient(black, #1e1f21);
+			border:1px groove black;
+		}
+		.deal{
+
+
+			animation: marquee 5s linear infinite;
+			-webkit-marquee: up medium infinite scroll normal;
+		}
+
+		.nav li{
+			display: inline-block;
+			text-decoration: none;
+			margin-left:20px;
+			margin-right:30px;
+			font-weight:bold;
+			color:navy;
+
+		}
+
+		.nav li a{
+			color: navy;
+		}
+		.nav li:hover a{
+			text-decoration: none;
+			color:firebrick;
+		}
+
+		.nav ul{
+			float: right;
+			margin-top:20px;
+		}
+
+		.howto {
+			color: white;
+			position: absolute;
+			right:0px;
+			padding-right:35px;
+			text-align: justify;
+		}
+
+		.motto{
+			text-align: left;
+		}
+
+		.framepanel{
+			height:auto;
+			width:100%;
+			background: firebrick;
+			margin-top:-60px;
+			padding:10px 30px 10px 30px;
+		}
+
+		.signup{
+			background:white;
+			color: navy;
+			font-weight: bolder;
+			width:150px;
+			margin-right:30px;
+			float:right;
+		}
+
+.signup:hover{
+	background: navy;
+	color: white;
+}

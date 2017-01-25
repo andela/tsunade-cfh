@@ -1,0 +1,76 @@
+body {
+  background-color: #e1f5fe !important;
+}
+
+.leftsidebar {
+  margin-top: -20px !important;
+  margin-left: -200px !important;
+  width: 220px;
+  /* margin-left: auto;*/
+}
+
+#myCarousel {
+  height: 390px !important;
+  width: 115%;
+  margin-top: -59px;
+  margin-left: -100px;
+}
+
+.myDividers {
+  background-color: #1a237e !important;
+  width: auto !important;
+}
+
+.myFooter{
+    margin-left: -210px !important;
+    margin-right: -210px !important;
+     background-color: #1a237e !important;
+}
+.circlelink{
+    border-radius: 50%;
+    width: 120px !important;
+    height: 120px !important;
+    text-align: center;
+    background-color: #303f9f;
+    margin-left: 190px;
+    color: white;
+}
+.circletext{
+  margin-top:50px;
+}
+.topfooter{
+  margin-top:50px;
+}
+.framemargin{
+  	margin-bottom: 50px;
+}
+.whitelinks{
+  color:white !important;
+   font-size: 20px;
+}
+a:hover{
+	background: navy;
+	color: white;
+}
+
+#theBox_3, #theBox_2{
+    display: none;
+    border: 1px solid #000;
+    width: 200px;
+    height: 100px;
+    background-color: #ddf;
+}
+#toggleSwitch_j, #StayOpen {
+ background-color: #cacaca;
+}
+
+.parentDiv{
+  position: relative;
+}
+.childDiv{
+  position: absolute;
+}
+.myfooter{
+  background-color: #303f9f;
+  color: white;
+}
