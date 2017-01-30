@@ -57,7 +57,7 @@ gulp.task('server', ['nodemon'], () => {
   });
 });
 
-gulp.task('karma', function(done) {
+gulp.task('karma', (done) => {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
@@ -66,12 +66,18 @@ gulp.task('karma', function(done) {
   });
 });
 
-gulp.task('scripts', () => {
-  gulp.src('test/**/*.js')
-    .pipe(browserify())
-    .pipe(rename('bundle.js'))
-    .pipe(gulp.dest('build'));
+gulp.task('mochaTest', () => {
+ gulp.src('test/**/*.js', { read: false })
+ .pipe(mocha({ reporter: 'spec' }))
+ .pipe(exit());
 });
+
+// gulp.task('scripts', () => {
+//   gulp.src('test/**/*.js')
+//     .pipe(browserify())
+//     .pipe(rename('bundle.js'))
+//     .pipe(gulp.dest('build'));
+// });
 
 gulp.task('sass', () => gulp.src('public/css/common.scss')
   .pipe(sass())
@@ -83,11 +89,11 @@ gulp.task('bower', () => {
 });
 
 // Default task(s).
-gulp.task('default', ['scripts', 'lint', 'server', 'watch', 'sass']);
+gulp.task('default', ['lint', 'server', 'watch', 'sass']);
 
 
 // Test task.
-gulp.task('test', ['scripts', 'karma']);
+gulp.task('test', ['mochaTest']);
 
 // Bower task.
 gulp.task('install', ['bower']);
