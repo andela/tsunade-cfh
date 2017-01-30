@@ -15,6 +15,7 @@ if (window.location.hash == "#_=_") window.location.hash = "#!";
 // });
 
 $(document).ready(function () {
+      var myApp = angular.module('myApp');
       $('[data-toggle="tooltip"]').tooltip();
       $('.carousel').carousel();
       // Next slide
