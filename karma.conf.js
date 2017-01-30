@@ -10,29 +10,57 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'browserify'],
 
     // list of files / patterns to load in the browser
     files: [
-      '"test/**/*Spec.js"',
+      'test/src/**/*.js',
       'test/unit/TestSpec.js'
     ],
 
     // list of files to exclude
-    exclude: [
+    exclude: [],
+
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-coverage',
+      'karma-coveralls',
+      'karma-jasmine-html-reporter',
+      'karma-browserify',
+      'karma-ng-html2js-preprocessor'
     ],
 
-    /* preprocess matching files before serving them to the browser
-     * available preprocessors:
-     * https://npmjs.org/browse/keyword/karma-preprocessor
-     */
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'app/**/*.js': ['coverage'],
+      'test/src/**/*.js': ['browserify'],
+      'public/views/*.tpl.html': 'ng-html2js'
+    },
+
+    browserify: {
+      debug: true
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'public'
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage', 'coveralls', 'kjhtml'],
+
+
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage/'
+    },
 
     // web server port
     port: 9876,
@@ -47,15 +75,15 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     /* enable / disable watching file and executing tests
-    ** whenever any file changes
-    */
+     ** whenever any file changes
+     */
     autoWatch: true,
 
     /* start these browsers
-    ** available browser launchers: https://npmjs.org/
-    ** browse/keyword/karma-launcher
-    */
-    browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+     ** available browser launchers: https://npmjs.org/
+     ** browse/keyword/karma-launcher
+     */
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
