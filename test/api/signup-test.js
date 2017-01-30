@@ -54,14 +54,6 @@ describe('Signup authentication', () => {
 
 
   it('should return error when a username or email already exists', (done) => {
-    // const user = new User();
-    // user.name = 'uloaku';
-    // user.username = 'ulo';
-    // user.password = 'password';
-    // user.email = 'ulo@gmail.com';
-    // user.save(() => {
-    //   done();
-    // });
     const user = {
       name: 'chioma',
       username: 'uloooo',
