@@ -61,7 +61,7 @@ describe('Authentication', () => {
     .end((err, res) => {
       res.body.should.have.property('message');
       res.body.should.have.property('success');
-      res.body.should.have.property('message').eql('Authentication successful. User logged in');
+      res.body.should.have.property('message').eql('Authentication successful');
       res.body.should.have.property('token');
     });
   });
