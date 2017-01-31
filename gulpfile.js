@@ -1,83 +1,93 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
-const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
+const eslint = require('gulp-eslint');
 const nodemon = require('gulp-nodemon');
-const sass = require('gulp-sass');
 const bower = require('gulp-bower');
-const jade = require('gulp-jade');
+const sass = require('gulp-sass');
 const exit = require('gulp-exit');
 
-// Default task(s).
-gulp.task('default', ['jshint', 'server', 'watch', 'sass']);
 
-// jshint task
+require('dotenv').config();
+   // Configuration
+
+gulp.task('watch', () => {
+  gulp.watch(['public/css/common.scss',
+    'public/css/views/articles.scss'], ['sass']);
+
+  gulp.watch(['public/js/**', 'app/**/*.js'], ['jshint'])
+    .on('change', browserSync.reload);
+
+  gulp.watch('public/views/**').on('change', browserSync.reload);
+
+  gulp.watch('public/css/**', ['sass'])
+    .on('change', browserSync.reload);
+
+  gulp.watch('app/views/**', ['jade'])
+    .on('change', browserSync.reload);
+});
+
+ // setup jshint
 gulp.task('lint', () => gulp.src([
   'gulpfile.js',
   'app/**/*.js',
   'test/**/*.js',
-  'public/js/**/*.js'
-]).pipe(eslint()));
+  'public/js/**/*.js'])
+        .pipe(eslint()));
 
-gulp.task('mochaTest', () => {
-  gulp.src('test/**/*.js', { read: false })
-        .pipe(mocha({ reporter: 'spec' }))
-        .pipe(exit());
-});
-
-// Nodemon task
+// setup nodemon
 gulp.task('nodemon', () => {
   nodemon({
     script: 'server.js',
-    ext: 'js'
+    ext: 'js',
+    env: { NODE_ENV: 'development' }
   });
 });
 
-// Sass Task
-gulp.task('sass', () => {
-    return gulp.src('public/css/common.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('public/css/'));
-});
-
-gulp.task('install', function () {
-    return bower('./bower_components')
-    .pipe(gulp.dest('./public/lib'));
-});
-
-// Jade Task
-gulp.task('jade', () => gulp.src('app/views/**/*.jade')
-        .pipe(jade())
-        .pipe(gulp.dest('public/views/')));
-
-// Bower Task
-gulp.task('bower', () => {
-  bower()
-        .pipe(gulp.dest('./public/lib/'));
-});
-
-// Watch Task
-gulp.task('watch', () => {
-  gulp.watch('public/css/*.scss', ['sass']);
-  gulp.watch('app/**/*.js', ['jshint']);
-  gulp.watch(['public/**/**', 'app/views/**/*.jade'])
-        .on('change', browserSync.reload);
-});
-
-// Server Task
+// setup server
 gulp.task('server', ['nodemon'], () => {
   browserSync.create({
+    proxy: 'localhost:3001',
     server: 'server.js',
     port: 3000,
     reloadOnRestart: true
   });
 });
 
-gulp.task('default', ['install','lint', 'server', 'watch', 'sass'], (done) => {
-    done();
+// setup mocha
+gulp.task('mochaTest', () => {
+  gulp.src('test/**/*.js', { read: false })
+    // gulp-mocha needs filepaths so you can't have any plugins before it
+    .pipe(mocha({ reporter: 'spec' }))
+    .pipe(exit());
 });
 
-//Test task.
+// setup sass
+gulp.task('sass', () => gulp.src('public/css/common.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('public/css/')));
+
+// setup bower
+gulp.task('bower', () => {
+  bower()
+    .pipe(gulp.dest('./public/lib/'));
+});
+
+// install bower
+gulp.task('install', () => bower('./bower_components')
+    .pipe(gulp.dest('./public/lib')));
+
+// Default task(s).
+gulp.task('default', ['lint', 'server', 'watch', 'sass'], (done) => {
+  done();
+});
+
+// Test task.
 gulp.task('test', ['mochaTest'], (done) => {
-    done();
+  done();
+});
+
+// Bower task.
+gulp.task('install', ['bower'], (done) => {
+  done();
 });
