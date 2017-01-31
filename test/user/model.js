@@ -24,18 +24,18 @@ describe('<Unit Test>', function() {
         });
 
         describe('Method Save', function() {
-            it('should be able to save whithout problems', function(done) {
+            it('should be able to save whithout problems', function() {
                 return user.save(function(err) {
                     should.not.exist(err);
-                    done();
+
                 });
             });
 
-            it('should be able to show an error when try to save witout name', function(done) {
+            it('should be able to show an error when try to save witout name', function() {
                 user.name = '';
                 return user.save(function(err) {
                     should.exist(err);
-                    done();
+
                 });
             });
         });
