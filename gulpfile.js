@@ -12,7 +12,7 @@ const exit = require('gulp-exit');
 gulp.task('default', ['jshint', 'server', 'watch', 'sass']);
 
 // jshint task
-gulp.task('eslint', () => gulp.src([
+gulp.task('lint', () => gulp.src([
   'gulpfile.js',
   'app/**/*.js',
   'test/**/*.js',
@@ -34,9 +34,16 @@ gulp.task('nodemon', () => {
 });
 
 // Sass Task
-gulp.task('sass', () => gulp.src('public/css/common.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('public/css/')));
+gulp.task('sass', () => {
+    return gulp.src('public/css/common.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('public/css/'));
+});
+
+gulp.task('install', function () {
+    return bower('./bower_components')
+    .pipe(gulp.dest('./public/lib'));
+});
 
 // Jade Task
 gulp.task('jade', () => gulp.src('app/views/**/*.jade')
@@ -66,8 +73,11 @@ gulp.task('server', ['nodemon'], () => {
   });
 });
 
-// Test task.
-gulp.task('test', ['mochaTest']);
+gulp.task('default', ['install','lint', 'server', 'watch', 'sass'], (done) => {
+    done();
+});
 
-// Default task(s).
-gulp.task('default', ['eslint', 'server', 'watch']);
+//Test task.
+gulp.task('test', ['mochaTest'], (done) => {
+    done();
+});
