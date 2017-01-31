@@ -27,7 +27,7 @@ exports.login = (request, response) => {
         });
         response.status(200).json({
           success: true,
-          message: 'Authentication successful. User logged in',
+          message: 'Authentication successful',
           token
         });
       }
