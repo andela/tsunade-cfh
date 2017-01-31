@@ -15,7 +15,7 @@ gulp.task('watch', () => {
   gulp.watch(['public/css/common.scss',
     'public/css/views/articles.scss'], ['sass']);
 
-  gulp.watch(['public/js/**', 'app/**/*.js'], ['jshint'])
+  gulp.watch(['public/js/**', 'app/**/*.js'], ['lint'])
     .on('change', browserSync.reload);
 
   gulp.watch('public/views/**').on('change', browserSync.reload);
@@ -27,7 +27,7 @@ gulp.task('watch', () => {
     .on('change', browserSync.reload);
 });
 
- // setup jshint
+ // setup eslint
 gulp.task('lint', () => gulp.src([
   'gulpfile.js',
   'app/**/*.js',
