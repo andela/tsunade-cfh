@@ -6,8 +6,7 @@ const gulp = require('gulp'),
   bower = require('gulp-bower'),
   eslint = require('gulp-eslint'),
   browserSync = require('browser-sync'),
-  exit = require('gulp-exit'),
-  mainBowerFiles = require('main-bower-files');
+  exit = require('gulp-exit');
 
 gulp.task('watch', () => {
   gulp.watch('public/css/common.scss', ['sass']);
