@@ -42,10 +42,8 @@ describe('Authentication', () => {
     .post('/api/auth/login')
     .send(user)
     .end((err, res) => {
-      res.body.should.have.property('message');
-      res.body.should.have.property('success');
+      res.body.should.have.property('success').eql('false');
       res.body.should.have.property('message').eql('Authentication failed');
-      res.body.should.have.property('token');
     });
   });
 
@@ -59,8 +57,7 @@ describe('Authentication', () => {
     .post('/api/auth/login')
     .send(user)
     .end((err, res) => {
-      res.body.should.have.property('message');
-      res.body.should.have.property('success');
+      res.body.should.have.property('success').eql('true');
       res.body.should.have.property('message').eql('Authentication successful');
       res.body.should.have.property('token');
     });
