@@ -65,10 +65,11 @@
 
 .some-text {
    text-align: justify;
-   color: white;
+   color: #002266;
    max-width: 1000px;
    margin: 0 30px;
    vertical-align: top;
+   padding-top:25px;
 }
 
 #give {
@@ -940,6 +941,7 @@
 
  .legal {
    color: white;
+   font-size:1em;
  }
 
  /**** Margins ****/
@@ -1391,8 +1393,10 @@ html{
 }
 
 #charity{
-  background: #002266;
+  background: white;
   width: 100%;
+  color: #002266 !important;
+
 }
 
 
@@ -1400,7 +1404,7 @@ html{
   text-align:center;
   font-size:1.2em;
   font-weight: bold;
-  color: white;
+  color: #002266;
 }
 
 body{
@@ -1418,20 +1422,68 @@ body{
 }
 
 .myfooter{
- background-color: #002266 ;
- color: white;
+ background-color: #409FD5;
  border-top:3px solid #FF9999;
+ text-align: center;
+ padding: 10px 40px 10px 40px;
 }
+
+
 
 a{
   color:#409FD5 !important;
 }
 
+.myfooter a{
+ color: #002266 !important;
+}
+.myfooter a{
+ color: #002266;
+}
+
 #sign-up-btn-landing {
-  background: #409FD5;
+  background: rgba(241,111,92,1);
+background: -moz-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(241,111,92,1)), color-stop(1%, rgba(168,39,16,1)), color-stop(58%, rgba(245,12,51,1)), color-stop(78%, rgba(240,47,23,1)), color-stop(100%, rgba(153,30,19,1)));
+background: -webkit-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
   font-size: 15px;
+  font-weight: bold;
 }
 
 #sign-up {
   margin-bottom: 20px;
 }
+
+.share-button img{
+  width:40px !important;
+  height:40px !important;
+  vertical-align: bottom;
+  margin:10px;
+}
+
+#crDonateWidget_cfhio_cards4humanity {
+  box-shadow: 2px 2px 5px black;
+}
+
+.footer_privacy{
+background-color: #002266;
+padding:10px 0px 15px 0px;
+}
+
+.logo_head a{
+  color:#002266 !important;
+}
+
+.text-attract{
+  color:rgba(168,39,16,1);
+}
+
+.play_button{
+  background:#002266;
+  padding:10px 20px 10px 20px;
+  color:white !important;
+font-weight: bold;
+}
+
