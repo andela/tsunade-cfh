@@ -64,6 +64,7 @@ gulp.task('server', ['nodemon'], () => {
 // Default task(s).
 gulp.task('default', ['lint', 'server', 'watch', 'sass', 'install']);
 
+
 // Test task.
 gulp.task('test', ['mochaTest']);
 
