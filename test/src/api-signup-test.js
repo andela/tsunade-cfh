@@ -53,7 +53,7 @@ describe('Signup authentication', () => {
   });
 
 
-  it('should return error when a username or email already exists', (done) => {
+  it('should return error when an email already exists', (done) => {
     const user = {
       name: 'chioma',
       username: 'uloooo',
@@ -67,7 +67,26 @@ describe('Signup authentication', () => {
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body).to.have.property('msg');
-        expect(res.body.msg).to.equal('email already exist');
+        expect(res.body.msg).to.equal('email already exist, please use another email');
+        done();
+      });
+  });
+
+  it('should return error when a username already exists', (done) => {
+    const user = {
+      name: 'uloaku',
+      username: 'ulo',
+      email: 'chioma@gmail.com',
+      password: 'chioma001'
+    };
+
+    chai.request(server)
+      .post('/api/auth/signup')
+      .send(user)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.have.property('msg');
+        expect(res.body.msg).to.equal('user already exist, please use another username');
         done();
       });
   });
