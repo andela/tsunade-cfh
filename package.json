@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "gulp test",
+    "test": "node_modules/.bin/mocha test/**/**",
     "test:coverage": "rm -rf coverage/ && karma start --single-run",
     "coveralls": "cat ./coverage/**/lcov.info | coveralls"
   },
