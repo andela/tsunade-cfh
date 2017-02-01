@@ -13,8 +13,15 @@ var mongoose = require('mongoose'),
  */
 var UserSchema = new Schema({
     name: String,
-    email: String,
-    username: String,
+    email: {
+      type:  String,
+      unique: [true, "user already exist"],
+      required: true
+    },
+    username: {
+      type:  String,
+      unique: [true, "user already exist"]
+    },
     provider: String,
     avatar: String,
     premium: Number, // null or 0 for non-donors, 1 for everyone else (for now)
@@ -96,7 +103,7 @@ UserSchema.methods = {
         if (!plainText || !this.hashed_password) {
             return false;
         }
-        return bcrypt.compareSync(plainText, this.hashed_password);
+        return bcrypt.compareSync(plainText,this.hashed_password);
     },
 
     /**
@@ -112,4 +119,4 @@ UserSchema.methods = {
     }
 };
 
-module.exports = mongoose.model('User', UserSchema);
+mongoose.model('User', UserSchema);
