@@ -9,11 +9,9 @@
     "underscore": "~1.5.2"
   },
   "exportsOverride": {
-    "bootstrap": {
-      "css": "dist/css/*",
-      "js": "dist/js/*",
-      "fonts": "dist/fonts/*"
-    },
+    "bootstrap": "bootstrap": {
+    "/": "dist"
+  },
     "angular-ui-utils": {
       "modules": "modules/route/route.js"
     }
