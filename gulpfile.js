@@ -72,13 +72,6 @@ gulp.task('mochaTest', () => {
  .pipe(exit());
 });
 
-// gulp.task('scripts', () => {
-//   gulp.src('test/**/*.js')
-//     .pipe(browserify())
-//     .pipe(rename('bundle.js'))
-//     .pipe(gulp.dest('build'));
-// });
-
 gulp.task('sass', () => gulp.src('public/css/common.scss')
   .pipe(sass())
   .pipe(gulp.dest('public/css/')));
