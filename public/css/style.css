@@ -6,6 +6,14 @@
      font-family: 'entypo', sans-serif;
  }
 
+ .modal-header {
+   text-align: center;
+ }
+
+ .playerLimitAlert {
+   margin-top: 20%;
+ }
+
  .clear {
    clear: both;
  }

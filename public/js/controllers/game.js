@@ -8,6 +8,7 @@ angular.module('mean.system')
     $scope.pickedCards = [];
     var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
+    $scope.invitedPlayers = [];
 
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
@@ -121,7 +122,11 @@ angular.module('mean.system')
     };
 
     $scope.startGame = function() {
-      game.startGame();
+      if (game.players.length >= game.playerMinLimit) {
+        game.startGame();
+      } else {
+        $('#playerMinimumAlert').modal('show');
+      }
     };
 
     $scope.abandonGame = function() {
@@ -162,9 +167,8 @@ angular.module('mean.system')
           if(!$scope.modalShown){
             setTimeout(function(){
               var link = document.URL;
-              var txt = 'Give the following link to your friends so they can join your game: ';
-              $('#lobby-how-to-play').text(txt);
-              $('#oh-el').css({'text-align': 'center', 'font-size':'22px', 'background': 'white', 'color': 'black'}).text(link);
+              $('#lobby-how-to-play').text(link);
+              $('#oh-el').hide();
             }, 200);
             $scope.modalShown = true;
           }
@@ -180,5 +184,22 @@ angular.module('mean.system')
     } else {
       game.joinGame();
     }
+    
+    $scope.sendInvite = () => {
+      if (game.players.length >= game.playerMaxLimit) {
+        $('#playerMaximumAlert').modal('show');
+      }
+
+      // if ($scope.invitedPlayers.includes($scope.email)) {
+      //   $('#modalView1').modal('show');
+      // }
+
+        // sendMail.postMail($scope.email, document.URL).then(() => {
+        //   $scope.isMailSent = true;
+        //   $scope.model = '';
+        //   $scope.invitedPlayers.push($scope.email);
+        //   $scope.email = '';
+        // });
+    };
 
 }]);
