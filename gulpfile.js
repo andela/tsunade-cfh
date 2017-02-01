@@ -33,7 +33,7 @@ gulp.task('lint', () =>
 );
 
 gulp.task('bower', () => {
-  return bower()
+  return bower('./bower_components')
     .pipe(gulp.dest('./public/lib'));
 });
 
