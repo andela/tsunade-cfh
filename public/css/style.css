@@ -1442,12 +1442,7 @@ a{
 }
 
 #sign-up-btn-landing {
-  background: rgba(241,111,92,1);
-background: -moz-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(241,111,92,1)), color-stop(1%, rgba(168,39,16,1)), color-stop(58%, rgba(245,12,51,1)), color-stop(78%, rgba(240,47,23,1)), color-stop(100%, rgba(153,30,19,1)));
-background: -webkit-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(241,111,92,1) 0%, rgba(168,39,16,1) 1%, rgba(245,12,51,1) 58%, rgba(240,47,23,1) 78%, rgba(153,30,19,1) 100%);
+background: #FF9999;
   font-size: 15px;
   font-weight: bold;
 }
@@ -1487,3 +1482,8 @@ padding:10px 0px 15px 0px;
 font-weight: bold;
 }
 
+html, body{
+  width: 100%;
+    margin:0;
+    padding:0;
+}
