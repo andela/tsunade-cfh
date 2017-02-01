@@ -9,7 +9,7 @@
     "underscore": "~1.5.2"
   },
   "exportsOverride": {
-    "bootstrap": "bootstrap": {
+    "bootstrap": {
     "/": "dist"
   },
     "angular-ui-utils": {
