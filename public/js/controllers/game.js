@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'playerSearch', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, playerSearch) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -8,7 +8,8 @@ angular.module('mean.system')
     $scope.pickedCards = [];
     var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
-    $scope.invitedPlayers = [];
+    $scope.searchResults = [];
+    $scope.inviteeEmail = '';
 
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
@@ -184,22 +185,27 @@ angular.module('mean.system')
     } else {
       game.joinGame();
     }
-    
-    $scope.sendInvite = () => {
-      if (game.players.length >= game.playerMaxLimit) {
-        $('#playerMaximumAlert').modal('show');
-      }
 
-      // if ($scope.invitedPlayers.includes($scope.email)) {
-      //   $('#modalView1').modal('show');
-      // }
+  $scope.sendInvite = () => {
+    $scope.searchResults = [];
+    $scope.inviteeEmail = '';
+    if (game.players.length >= game.playerMaxLimit) {
+      $('#playerMaximumAlert').modal('show');
+    }
+  };
 
-        // sendMail.postMail($scope.email, document.URL).then(() => {
-        //   $scope.isMailSent = true;
-        //   $scope.model = '';
-        //   $scope.invitedPlayers.push($scope.email);
-        //   $scope.email = '';
-        // });
-    };
+  $scope.playerSearch = () => {
+    if ($scope.inviteeEmail !== '') {
+      playerSearch.getPlayers($scope.inviteeEmail).then((data) => {
+        $scope.searchResults = data;
+      });
+    } else {
+      $scope.searchResults = [];
+    }
+  };
 
+  $scope.selectEmail = (selectedEmail) => {
+    $scope.inviteeEmail = selectedEmail;
+    $scope.searchResults = [];
+  };
 }]);

@@ -73,4 +73,18 @@ angular.module('mean.system')
         return facts;
       }
     };
+  }])
+  .factory('playerSearch', ['$http', '$q', ($http, $q) => {
+    return {
+      getPlayers: (inviteeEmail) => {
+        const deferred = $q.defer();
+        $http.get(`/api/search/users/${inviteeEmail}`)
+          .success((data, status, headers, config) => {
+            deferred.resolve(data, status, headers, config);
+          }).error((err) => {
+            deferred.reject(err);
+          });
+        return deferred.promise;
+      }
+    };
   }]);
