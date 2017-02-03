@@ -31,16 +31,6 @@ exports.login = (request, response) => {
           token
         });
       }
-      else {
-        const token = jwt.sign(user, 'kjzdfhkjhfghzkjvhkashd,hdjgvmbxmvzbvbc', {
-             expiresIn: moment().add(1,'week'),
-           });
-           response.status(200).json({
-             success: true,
-             message: 'Authentication successful. User logged in',
-             token: token
-           });
-       }
-     }
-   });
+    }
+  });
 };
