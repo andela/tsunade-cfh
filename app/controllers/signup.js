@@ -5,27 +5,42 @@ const moment = require('moment');
 const User = mongoose.model('User');
 
 exports.signup = (req, res) => {
-  if (!req.body.name || !req.body.email || !req.body.password) {
-    res.json({ success: false, msg: 'Please enter name, email and password.' });
-  } else {
-    const newUser = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
+  const newUser = User({
+    name: req.body.name,
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  });
+  if (!req.body.name || !req.body.username || !req.body.email ||
+    !req.body.password) {
+    res.status(400).json({
+      msg: 'Please no input field can be empty!'
     });
-    // save the user
+  } else {
     newUser.save((err, user) => {
       if (err) {
-        res.send(err);
+        if (err.errmsg.includes('email')) {
+          res.status(400).json({
+            msg: 'email already exist, please use another email'
+          });
+        } else if (err.errmsg.includes('username')) {
+          res.status(400).json({
+            msg: 'user already exist, please use another username'
+          });
+        } else {
+          res.status(400).json(err);
+        }
       } else {
         const token = jwt.sign({
           id: user.id,
           exp: moment().add(7, 'd').valueOf()
         }, 'secret');
-        res.json({
-          success: true, msg: 'Created new user successfully.', token
+        res.status(201).json({
+          msg: 'You have successfully signed up!',
+          token
         });
       }
     });
   }
 };
+

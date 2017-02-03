@@ -2,13 +2,14 @@
  * Module dependencies.
  */
 const should = require('should'),
-  app = require(__dirname + 'server.js'),
+  // app = require(__dirname + 'server.js'),
   mongoose = require('mongoose'),
   User = mongoose.model('User');
 
 
 // Globals
 let user;
+let success_deletedb = false;
 
 // The tests
 describe('<Unit Test>', () => {
@@ -20,6 +21,7 @@ describe('<Unit Test>', () => {
         username: 'user',
         password: 'password'
       });
+    success_deletedb = true;
       done();
     });
 
@@ -39,7 +41,11 @@ describe('<Unit Test>', () => {
     });
 
     after((done) => {
-      done();
+      if (success_deletedb) {
+        mongoose.connection.db.dropDatabase(done);
+    } else {
+        done();
+    }
     });
   });
 });
