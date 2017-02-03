@@ -94,9 +94,13 @@ module.exports = function(app, passport, auth) {
     var authSignup = require('../app/controllers/signup');
     app.post('/api/auth/signup', authSignup.signup);
 
-  // search route
-  const search = require('../app/controllers/api/search');
+  // Search Route
+  const search = require('../app/controllers/search');
   app.get('/api/search/users/:inviteeEmail', search.users);
+
+  // Mail Invite Route
+  const mailer = require('../app/controllers/mailer');
+  app.post('/api/invite/user', mailer.invite);
 };
 
      //loginAuth Routes

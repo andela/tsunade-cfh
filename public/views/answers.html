@@ -41,15 +41,18 @@
 </div>
 <div id="info-container" ng-show="game.state === 'awaiting players'">
   <div id="inner-info">
-    <div class="col-lg-6" style="margin: 5% 25%">
-      <div class="input-group">
-        <input type="text" class="form-control" ng-keyup="playerSearch()" ng-model="inviteeEmail" placeholder="Search for friends to invite"> 
-        <span class="input-group-btn">
-          <button class="btn btn-default"  type="button" ng-click="sendInvite()">Invite</button>
-        </span>
-      </div>
-      <div ng-if="searchResults.length !== 0" style="height: 135px; background-color: lightgray; text-align: left; overflow: scroll; border-radius: 2px 2px 4px 4px">
-        <div class="search-result" ng-repeat="result in searchResults" ng-click="selectEmail(result.email)">{{result.email}}</div>
+    <div id="searchContainer" style="display: none">
+      <div class="col-lg-6" style="margin: 0 25%">
+        <div ng-repeat="players in invitedPlayers" style="margin-top: 2px;">{{players}} has been sent an invite.</div>
+        <div class="input-group">
+          <input type="text" class="form-control" ng-keyup="playerSearch()" ng-model="inviteeEmail" placeholder="Search for friends to invite"> 
+          <span class="input-group-btn">
+            <button class="btn btn-default"  type="button" ng-click="sendInvite()">Invite</button>
+          </span>
+        </div>
+        <div ng-if="searchResults.length !== 0" style="height: 135px; background-color: lightgray; text-align: left; overflow: scroll; border-radius: 2px 2px 4px 4px">
+          <div class="search-result" ng-repeat="result in searchResults" ng-click="selectEmail(result.email)">{{result.email}}</div>
+        </div>
       </div>
     </div>
     <div id="lobby-how-to-play">How To Play</div>

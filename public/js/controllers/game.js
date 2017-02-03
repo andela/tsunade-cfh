@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'playerSearch', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, playerSearch) {
+.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'playerSearch', 'invitePlayer', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, playerSearch, invitePlayer) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -10,6 +10,8 @@ angular.module('mean.system')
     $scope.makeAWishFact = makeAWishFacts.pop();
     $scope.searchResults = [];
     $scope.inviteeEmail = '';
+    $scope.invitedPlayers = [];
+    $scope.firstPlayer = false;
 
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
@@ -167,10 +169,10 @@ angular.module('mean.system')
           $location.search({game: game.gameID});
           if(!$scope.modalShown){
             setTimeout(function(){
-              var link = document.URL;
-              $('#lobby-how-to-play').text(link);
+              $('#lobby-how-to-play').hide();
               $('#oh-el').hide();
-            }, 200);
+              $('#searchContainer').show();
+            }, 50);
             $scope.modalShown = true;
           }
         }
@@ -187,10 +189,20 @@ angular.module('mean.system')
     }
 
   $scope.sendInvite = () => {
-    $scope.searchResults = [];
-    $scope.inviteeEmail = '';
-    if (game.players.length >= game.playerMaxLimit) {
+    if ($scope.invitedPlayers.length === game.playerMaxLimit - 1) {
       $('#playerMaximumAlert').modal('show');
+    } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
+      invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
+        if (data === 'Accepted') {
+          $scope.invitedPlayers.push($scope.inviteeEmail);
+        }
+        $scope.searchResults = [];
+        $scope.inviteeEmail = '';
+      });
+    } else {
+      $scope.searchResults = [];
+      $scope.inviteeEmail = '';
+      $('#playerAlreadyInvited').modal('show');
     }
   };
 

@@ -87,4 +87,19 @@ angular.module('mean.system')
         return deferred.promise;
       }
     };
+  }])
+  .factory('invitePlayer', ['$http', '$q', ($http, $q) => {
+    return {
+      sendMail: (inviteeEmail, gameUrl) => {
+        const deferred = $q.defer();
+        $http.post('/api/invite/user', { email: inviteeEmail, link: gameUrl },
+          { headers: { 'Content-Type': 'application/json' } })
+          .success((res) => {
+            deferred.resolve(res);
+          }).error((err) => {
+            deferred.reject(err);
+          });
+        return deferred.promise;
+      }
+    };
   }]);
