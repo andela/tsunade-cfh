@@ -74,3 +74,12 @@ a:hover{
   background-color: #303f9f;
   color: white;
 }
+.thick-red-border {
+    border-color:crimson !important;
+    border-width: 6px !important;
+    border-style: solid !important;
+  }
+  #czar-blank-inner{
+    margin-top: -3% !important;
+    padding-bottom:12px !important;
+  }

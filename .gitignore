@@ -8,3 +8,4 @@ c4h_keys.txt
 coverage
 build/
 .coveralls.yml
+bower_components/
