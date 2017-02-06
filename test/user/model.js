@@ -9,7 +9,7 @@ const should = require('should'),
 
 // Globals
 let user;
-let success_deletedb = false;
+let successDeletedb = false;
 
 // The tests
 describe('<Unit Test>', () => {
@@ -21,7 +21,7 @@ describe('<Unit Test>', () => {
         username: 'user',
         password: 'password'
       });
-    success_deletedb = true;
+      successDeletedb = true;
       done();
     });
 
@@ -41,11 +41,11 @@ describe('<Unit Test>', () => {
     });
 
     after((done) => {
-      if (success_deletedb) {
+      if (successDeletedb) {
         mongoose.connection.db.dropDatabase(done);
-    } else {
+      } else {
         done();
-    }
+      }
     });
   });
 });
