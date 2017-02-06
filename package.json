@@ -125,10 +125,6 @@
     "watchify": "^3.8.0",
     "underscore": "^1.5.2",
     "view-helpers": "^0.1.5"
-<<<<<<< bdadfe7129ac390c6713328c81277073ce436ab8
   },
   "license": "ISC"
-=======
-  }
->>>>>>> feature(player-invitaion): add invitation functionality
 }

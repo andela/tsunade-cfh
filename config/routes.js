@@ -101,7 +101,6 @@ module.exports = function(app, passport, auth) {
   // Mail Invite Route
   const mailer = require('../app/controllers/mailer');
   app.post('/api/invite/user', mailer.invite);
-};
 
      //loginAuth Routes
     var auth = require('../app/controllers/loginAuth');
