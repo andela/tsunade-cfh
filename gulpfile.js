@@ -22,7 +22,11 @@ gulp.task('lint', () =>
     'test/**/*.js',
     'app/**/*.js'
   ])
-  .pipe(eslint())
+  .pipe(eslint({
+    rules: {
+      quotes: [2, 'single']
+    }
+  }))
 );
 
 gulp.task('bower', () => {
