@@ -8,9 +8,9 @@ var options ={
   'force new connection': true
 };
 
-var cfhPlayer1 = {'name':'Tom'};
-var cfhPlayer2 = {'name':'Sally'};
-var cfhPlayer3 = {'name':'Dana'};
+var cfhPlayer1 = { 'name':'Tom' };
+var cfhPlayer2 = { 'name':'Sally' };
+var cfhPlayer3 = { 'name':'Dana' };
 
 describe("Game Server",function(){
 
@@ -21,7 +21,7 @@ describe("Game Server",function(){
       done();
     };
     client1.on('connect', function(data){
-      client1.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false});
+      client1.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
       setTimeout(disconnect,200);
     });
   });
@@ -33,7 +33,7 @@ describe("Game Server",function(){
       done();
     };
     client1.on('connect', function(data){
-      client1.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false});
+      client1.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
       client1.on('gameUpdate', function(data) {
         data.gameID.should.match(/\d+/);
       });
@@ -50,10 +50,10 @@ describe("Game Server",function(){
       done();
     };
     client1.on('connect', function(data){
-      client1.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false});
+      client1.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
       client2 = io.connect(socketURL, options);
       client2.on('connect', function(data) {
-        client2.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false});
+        client2.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
         client1.on('notification', function(data) {
           data.notification.should.match(/ has joined the game\!/);
         });
@@ -85,76 +85,180 @@ describe("Game Server",function(){
       setTimeout(disconnect,200);
     };
     client1.on('connect', function(data){
-      client1.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false});
+      client1.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
       client2 = io.connect(socketURL, options);
       client2.on('connect', function(data) {
-        client2.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false});
+        client2.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
         client3 = io.connect(socketURL, options);
         client3.on('connect', function(data) {
-          client3.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: false});
+          client3.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
           setTimeout(expectStartGame,100);
         });
       });
     });
   });
 
-  it('Should automatically start game when 6 players are in a game', function(done){
-    var client1, client2, client3, client4, client5, client6;
-    client1 = io.connect(socketURL, options);
-    var disconnect = function() {
+  it(`Should automatically start game
+   when 12 players are in a game`, (done) => {
+    let client2, client3, client4, client5, client6, client7,
+      client8, client9, client10, client11, client12;
+    const client1 = io.connect(socketURL, options);
+    const disconnect = function () {
       client1.disconnect();
       client2.disconnect();
       client3.disconnect();
       client4.disconnect();
       client5.disconnect();
       client6.disconnect();
+      client7.disconnect();
+      client8.disconnect();
+      client9.disconnect();
+      client10.disconnect();
+      client11.disconnect();
+      client12.disconnect();
       done();
     };
-    var expectStartGame = function() {
+    const expectStartGame = function () {
       client1.emit('startGame');
-      client1.on('gameUpdate', function(data) {
-        data.state.should.equal("waiting for players to pick");
+      client1.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
       });
-      client2.on('gameUpdate', function(data) {
-        data.state.should.equal("waiting for players to pick");
+      client2.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
       });
-      client3.on('gameUpdate', function(data) {
-        data.state.should.equal("waiting for players to pick");
+      client3.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
       });
-      client4.on('gameUpdate', function(data) {
-        data.state.should.equal("waiting for players to pick");
+      client4.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
       });
-      client5.on('gameUpdate', function(data) {
-        data.state.should.equal("waiting for players to pick");
+      client5.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
       });
-      client6.on('gameUpdate', function(data) {
-        data.state.should.equal("waiting for players to pick");
+      client6.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
       });
-      setTimeout(disconnect,200);
+      client7.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
+      });
+      client8.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
+      });
+      client9.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
+      });
+      client10.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
+      });
+      client11.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
+      });
+      client12.on('gameUpdate', (data) => {
+        data.state.should.equal('waiting for players to pick');
+      });
+      setTimeout(disconnect, 200);
     };
-    client1.on('connect', function(data){
-      client1.emit('joinGame',{userID:'unauthenticated',room: '', createPrivate: true});
-      var connectOthers = true;
-      client1.on('gameUpdate', function(data) {
-        var gameID = data.gameID;
+    client1.on('connect', (data) => {
+      client1.emit('joinGame',
+        { userID: 'unauthenticated', room: '', createPrivate: true });
+      let connectOthers = true;
+      client1.on('gameUpdate', (data) => {
+        const gameID = data.gameID;
         if (connectOthers) {
           client2 = io.connect(socketURL, options);
           connectOthers = false;
-          client2.on('connect', function(data) {
-            client2.emit('joinGame',{userID:'unauthenticated',room: gameID, createPrivate: false});
+          client2.on('connect', (data) => {
+            client2.emit('joinGame',
+              {
+                userID: 'unauthenticated',
+                room: gameID,
+                createPrivate: false
+              });
             client3 = io.connect(socketURL, options);
-            client3.on('connect', function(data) {
-              client3.emit('joinGame',{userID:'unauthenticated',room: gameID, createPrivate: false});
+            client3.on('connect', (data) => {
+              client3.emit('joinGame',
+                { userID: 'unauthenticated',
+                  room: gameID,
+                  createPrivate: false });
               client4 = io.connect(socketURL, options);
-              client4.on('connect', function(data) {
-                client4.emit('joinGame',{userID:'unauthenticated',room: gameID, createPrivate: false});
+              client4.on('connect', (data) => {
+                client4.emit('joinGame',
+                  {
+                    userID: 'unauthenticated',
+                    room: gameID,
+                    createPrivate: false
+                  });
                 client5 = io.connect(socketURL, options);
-                client5.on('connect', function(data) {
-                  client5.emit('joinGame',{userID:'unauthenticated',room: gameID, createPrivate: false});
+                client5.on('connect', (data) => {
+                  client5.emit('joinGame',
+                    {
+                      userID: 'unauthenticated',
+                      room: gameID,
+                      createPrivate: false
+                    });
                   client6 = io.connect(socketURL, options);
-                  client6.on('connect', function(data) {
-                    client6.emit('joinGame',{userID:'unauthenticated',room: gameID, createPrivate: false});
-                    setTimeout(expectStartGame,100);
+                  client6.on('connect', (data) => {
+                    client6.emit('joinGame',
+                      {
+                        userID: 'unauthenticated',
+                        room: gameID,
+                        createPrivate: false
+                      });
+                    client7 = io.connect(socketURL, options);
+                    client7.on('connect', (data) => {
+                      client7.emit('joinGame',
+                        {
+                          userID: 'unauthenticated',
+                          room: gameID,
+                          createPrivate: false
+                        });
+                      client8 = io.connect(socketURL, options);
+                      client8.on('connect', (data) => {
+                        client8.emit('joinGame',
+                          {
+                            userID: 'unauthenticated',
+                            room: gameID,
+                            createPrivate: false
+                          });
+                        client9 = io.connect(socketURL, options);
+                        client9.on('connect', (data) => {
+                          client9.emit('joinGame',
+                            {
+                              userID: 'unauthenticated',
+                              room: gameID,
+                              createPrivate: false
+                            });
+                          client10 = io.connect(socketURL, options);
+                          client10.on('connect', (data) => {
+                            client10.emit('joinGame',
+                              {
+                                userID: 'unauthenticated',
+                                room: gameID,
+                                createPrivate: false
+                              });
+                            client11 = io.connect(socketURL, options);
+                            client11.on('connect', (data) => {
+                              client11.emit('joinGame',
+                                {
+                                  userID: 'unauthenticated',
+                                  room: gameID,
+                                  createPrivate: false
+                                });
+                              client12 = io.connect(socketURL, options);
+                              client12.on('connect', (data) => {
+                                client12.emit('joinGame',
+                                  {
+                                    userID: 'unauthenticated',
+                                    room: gameID,
+                                    createPrivate: false
+                                  });
+                                setTimeout(expectStartGame, 100);
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
                   });
                 });
               });
