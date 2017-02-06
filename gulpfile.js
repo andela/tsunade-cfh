@@ -1,58 +1,61 @@
-const gulp = require('gulp');
-const browserSync = require('browser-sync');
-const mocha = require('gulp-mocha');
-const nodemon = require('gulp-nodemon');
-const bower = require('gulp-bower');
-const sass = require('gulp-sass');
-const eslint = require('gulp-eslint');
-const exit = require('gulp-exit');
-const karma = require('karma').Server;
-const browserify = require('gulp-browserify');
-const rename = require('gulp-rename');
+require('dotenv').config();
+const gulp = require('gulp'),
+  mocha = require('gulp-mocha'),
+  nodemon = require('gulp-nodemon'),
+  sass = require('gulp-sass'),
+  bower = require('gulp-bower'),
+  eslint = require('gulp-eslint'),
+  browserSync = require('browser-sync'),
+  exit = require('gulp-exit');
 
-gulp.task('watch', () => { // Watch tasks
-  gulp.watch(['public/css/common.scss',
-    'public/css/views/articles.scss'
-  ], ['sass']);
-  gulp.watch('app/views/**').on('change', browserSync.reload);
-  gulp.watch(['public/js/**', 'app/**/*.js'], ['jshint'])
-    .on('change', browserSync.reload);
-  gulp.watch('public/views/**').on('change', browserSync.reload);
-  gulp.watch('public/css/**', ['sass'])
-    .on('change', browserSync.reload);
-  gulp.watch('app/views/**', ['jade'])
-    .on('change', browserSync.reload);
+gulp.task('watch', () => {
+  gulp.watch('public/css/common.scss', ['sass']);
+  gulp.watch('public/css/**', browserSync.reload);
+  gulp.watch('public/views/**', browserSync.reload);
+  gulp.watch(['public/js/**', 'app/**/*.js'], browserSync.reload);
+  gulp.watch('app/views/**', browserSync.reload);
+});
+gulp.task('lint', () =>
+  gulp.src([
+    'gulpfile.js',
+    'public/js/**/*.js',
+    'test/**/*.js',
+    'app/**/*.js'
+  ])
+  .pipe(eslint())
+);
+
+gulp.task('bower', () => {
+  return bower('./bower_components')
+    .pipe(gulp.dest('./public/lib'));
 });
 
-gulp.task('jshint', () => gulp.src([
-    'gulpfile.js',
-    'app/**/*.js',
-    'test/**/*.js',
-    'public/js/**/*.js'
-  ])
-  .pipe(jshint()).pipe(jshint.reporter('jshint-stylish')));
+gulp.task('mochaTest', () =>
+  gulp.src('test/**/*.js', {
+    read: false
+  })
+  .pipe(mocha({
+    reporter: 'spec'
+  }))
+  .pipe(exit())
+);
 
-gulp.task('lint', () => gulp.src([
-    'gulpfile.js',
-    'app/**/*.js',
-    'test/**/*.js',
-    'public/js/**/*.js'
-  ])
-  .pipe(eslint()));
-
-gulp.task('nodemon', () => {
+gulp.task('nodemon', () =>
   nodemon({
     script: 'server.js',
     ext: 'js',
-    env: { NODE_ENV: 'development' }
-  });
-});
+    env: {
+      NODE_ENV: 'development'
+    }
+  })
+);
 
 gulp.task('server', ['nodemon'], () => {
   browserSync.create({
-    proxy: 'localhost:3001',
-    server: 'server.js',
-    port: 3000,
+    proxy: 'localhost:3000',
+    ui: {
+      port: 3001
+    },
     reloadOnRestart: true
   });
 });
@@ -61,29 +64,19 @@ gulp.task('karma', (done) => {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, function() {
+  }, function () {
     done();
   });
 });
 
-gulp.task('mochaTest', () => {
- gulp.src('test/**/*.js', { read: false })
- .pipe(mocha({ reporter: 'spec' }))
- .pipe(exit());
-});
-
-gulp.task('sass', () => gulp.src('public/css/common.scss')
-  .pipe(sass())
-  .pipe(gulp.dest('public/css/')));
-
-gulp.task('bower', () => {
-  bower()
-    .pipe(gulp.dest('./public/lib'));
+gulp.task('sass', () => {
+  gulp.src('public/css/common.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('public/css/'));
 });
 
 // Default task(s).
-gulp.task('default', ['lint', 'server', 'watch', 'sass']);
-
+gulp.task('default', ['lint', 'server', 'watch', 'sass', 'install']);
 
 // Test task.
 gulp.task('test', ['mochaTest']);
