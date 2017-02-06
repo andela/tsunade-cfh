@@ -16,7 +16,8 @@
     "start": "gulp",
     "test": "gulp test",
     "test:coverage": "rm -rf coverage/ && karma start --single-run",
-    "coveralls": "cat ./coverage/**/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/**/lcov.info | coveralls",
+    "postinstall": "gulp bower"
   },
   "dependencies": {
     "async": "~0.2.9",
