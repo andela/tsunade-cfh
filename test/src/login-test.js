@@ -5,7 +5,7 @@ const moment = require('moment');
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const should = chai.should();
+const expect = chai.expect;
 const User = mongoose.model('User');
 
 const server = require('../../server');
@@ -46,8 +46,8 @@ describe('Authentication', () => {
       .post('/api/auth/login')
       .send(user)
       .end((err, res) => {
-        res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('Authentication failed');
+        expect(res.body).to.have.property('success').eql(false);
+        expect(res.body).to.have.property('message').eql('Authentication failed');
       });
       done();
     });
@@ -62,9 +62,9 @@ describe('Authentication', () => {
       .post('/api/auth/login')
       .send(user)
       .end((err, res) => {
-        res.body.should.have.property('success').eql(true);
-        res.body.should.have.property('message').eql('Authentication successful');
-        res.body.should.have.property('token');
+        expect(res.body).to.have.property('success').eql(true);
+        expect(res.body).to.have.property('message').eql('Authentication successful');
+        expect(res.body).to.have.property('token');
         done();
       });
     });
