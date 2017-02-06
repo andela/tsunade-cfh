@@ -15,7 +15,6 @@ gulp.task('watch', () => {
   gulp.watch(['public/js/**', 'app/**/*.js'], browserSync.reload);
   gulp.watch('app/views/**', browserSync.reload);
 });
-
 gulp.task('lint', () =>
   gulp.src([
     'gulpfile.js',
@@ -32,8 +31,12 @@ gulp.task('bower', () => {
 });
 
 gulp.task('mochaTest', () =>
-  gulp.src('test/**/*.js', { read: false })
-  .pipe(mocha({ reporter: 'spec' }))
+  gulp.src('test/**/*.js', {
+    read: false
+  })
+  .pipe(mocha({
+    reporter: 'spec'
+  }))
   .pipe(exit())
 );
 
@@ -41,7 +44,9 @@ gulp.task('nodemon', () =>
   nodemon({
     script: 'server.js',
     ext: 'js',
-    env: { NODE_ENV: 'development' }
+    env: {
+      NODE_ENV: 'development'
+    }
   })
 );
 
@@ -59,17 +64,16 @@ gulp.task('karma', (done) => {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, function() {
+  }, function () {
     done();
   });
 });
 
-
-gulp.task('sass', () => gulp.src('public/css/common.scss')
-  .pipe(sass())
-  .pipe(gulp.dest('public/css/')));
-
-
+gulp.task('sass', () => {
+  gulp.src('public/css/common.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('public/css/'));
+});
 
 // Default task(s).
 gulp.task('default', ['lint', 'server', 'watch', 'sass', 'install']);

@@ -1,5 +1,5 @@
  .clear {
-   clear:both;
+   clear: both;
  }
 
  .uppercase {
@@ -13,134 +13,130 @@
    position: relative !important;
    float: left !important;
    top: -65px;
-}
+ }
 
-#tweet-container-index{
+ #tweet-container-index {
    margin-top: 10px;
    display: inline-block;
    position: relative;
    top: 5px;
-}
+ }
 
-#twitter-facebook{
+ #twitter-facebook {
    display: block;
-}
+ }
 
-#send-link{
+ #send-link {
    color: white;
    text-align: center;
    display: block;
    margin-bottom: 10px;
-}
+ }
 
-#facebook-share{
+ #facebook-share {
    font-size: 12px;
    padding: 3px;
    background: white;
    border-radius: 3px;
    margin-left: 10px;
    background-color: #f8f8f8;
-   background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#dedede));
-   background-image: -moz-linear-gradient(top,#fff,#dedede);
-   background-image: -o-linear-gradient(top,#fff,#dedede);
-   background-image: -ms-linear-gradient(top,#fff,#dedede);
-   background-image: linear-gradient(top,#fff,#dedede);
+   background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dedede));
+   background-image: -moz-linear-gradient(top, #fff, #dedede);
+   background-image: -o-linear-gradient(top, #fff, #dedede);
+   background-image: -ms-linear-gradient(top, #fff, #dedede);
+   background-image: linear-gradient(top, #fff, #dedede);
    border: #ccc solid 1px;
    -moz-border-radius: 3px;
    -webkit-border-radius: 3px;
    border-radius: 3px;
    color: #333;
    font-weight: bold;
-   text-shadow: 0 1px 0 rgba(255,255,255,.5);
+   text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
    -webkit-user-select: none;
    -moz-user-select: none;
    -o-user-select: none;
    user-select: none;
    cursor: pointer;
-}
+ }
 
-#facebook-share a{
+ #facebook-share a {
    color: #333;
-}
+ }
 
-.some-text {
-   text-align: center;
-   color: white;
-   max-width: 800px;
+ .some-text {
+   text-align: justify;
+   color: #002266;
+   max-width: 1000px;
    margin: 0 30px;
-}
+   vertical-align: top;
+   padding-top: 25px;
+ }
 
-#give {
+ #give {
    color: white;
    text-align: center;
-}
+ }
 
-#info-box {
+ #info-box {
    margin-top: 25px;
    margin-left: 10%;
-}
+ }
 
-#wish {
+ #wish {
    max-width: 25%;
-}
+ }
 
-
-@media(min-width: 400px) and (max-width: 950px) {
+ @media(min-width: 400px) and (max-width: 950px) {
    .some-text {
-      text-align: center;
-      float: left;
-      margin-top: -50px;
+     text-align: center;
+     float: left;
+     margin-top: -50px;
    }
-
    #info-box {
-      margin-left: 0%;
+     margin-left: 0%;
    }
-
    #landing-charity {
-      width: 67%!important;
-      margin-left: 21% !important;
-      max-width: 100% !important;
-      float: left !important;
-      top: -65px;
+     width: 67%!important;
+     margin-left: 21% !important;
+     max-width: 100% !important;
+     float: left !important;
+     top: -65px;
    }
-}
+ }
 
-@media (max-width: 400px) {
+ @media (max-width: 400px) {
    #landing-charity {
-      margin-bottom: -60px;
+     margin-bottom: -60px;
    }
-
    #info-box {
-      margin-left: 0%;
+     margin-left: 0%;
    }
-
    .some-text {
-      margin: 0;
+     margin: 0;
    }
-}
+ }
 
-.sign-error {
+ .sign-error {
    text-align: center;
    color: white;
    font-family: arial;
    margin-bottom: -13px;
-}
-
-
+ }
  /**** Links ****/
+
  a {
    color: #60B197;
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
-   -o-transition:  color 0.5s ease;
-   transition:  color 0.5s ease;
+   -o-transition: color 0.5s ease;
+   transition: color 0.5s ease;
  }
 
  a:hover {
    text-decoration: none;
    color: #2ecc71;
-   border-radius:0px !important;
+   border-radius: 0px !important;
  }
 
  p a {
@@ -150,10 +146,9 @@
  p a:hover {
    color: #2ecc71;
  }
-
-
  /**** Top Bar ****/
-#menu-container {
+
+ #menu-container {
    width: 100%;
    -webkit-border-radius: 8px;
    -moz-border-radius: 8px;
@@ -161,40 +156,39 @@
    background: #252525;
    margin: 10px 0;
    padding: 5px;
-}
+ }
 
-#landing-logo {
+ #landing-logo {
    margin: 5px 0 5px 0px;
    font-size: 28px;
    font-family: 'Lobster', cursive;
-   border-radius: 8px;
    background: #252525;
    padding: 5px 5px 5px 13px;
-}
+ }
 
-#first-word {
-   color: #7CE4E8;
-}
+ #first-word {
+   color: #0d3370;
+ }
 
-#second-word {
+ #second-word {
    color: #FFFFA5;
-}
+ }
 
-#third-word {
+ #third-word {
    color: #FC575E;
-}
+ }
 
-#warning-word {
+ #warning-word {
    color: #FC575E;
-}
+ }
 
  .wpb-top-bar {
    height: 60px;
    background: transparent;
    position: fixed;
-   top:0;
+   top: 0;
    width: 100%;
-   z-index:10000;
+   z-index: 10000;
    max-width: 1400px;
  }
 
@@ -210,10 +204,8 @@
    color: #ffffff !important;
  }
 
-
  .wpb-menu-container {
    float: right;
-
  }
 
  .wpb-menu-container .wpb-dropdown-menu {
@@ -239,13 +231,13 @@
    cursor: pointer;
  }
 
-  .wpb-menu-container .wpb-main-menu li a:hover {
+ .wpb-menu-container .wpb-main-menu li a:hover {
    color: #2ECC71 !important;
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
-   -o-transition:  color 0.5s ease;
-   transition:  color 0.5s ease;
+   -o-transition: color 0.5s ease;
+   transition: color 0.5s ease;
  }
 
  .wpb-menu-container .wpb-main-menu li a {
@@ -258,16 +250,12 @@
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
-   -o-transition:  color 0.5s ease;
-   transition:  color 0.5s ease;
+   -o-transition: color 0.5s ease;
+   transition: color 0.5s ease;
    text-transform: uppercase;
    position: relative;
-   z-index:1000;
+   z-index: 1000;
  }
-
-
-
-
  /**** LANDING ****/
 
  #main-text {
@@ -287,7 +275,7 @@
  .wpb-teaser {
    min-height: 450px;
    position: relative;
-   z-index:990;
+   z-index: 990;
    width: 90%;
    margin: 0px auto;
    border-radius: 8px;
@@ -302,7 +290,7 @@
    width: 100%;
    height: 100%;
    min-height: 100%;
-   z-index:999;
+   z-index: 999;
    background: #252525;
    border-radius: 8px;
    padding: 20px;
@@ -310,7 +298,7 @@
 
  .wpb-teaser .container {
    position: relative;
-   z-index:1000;
+   z-index: 1000;
    padding-top: 120px;
  }
 
@@ -344,12 +332,11 @@
    padding-bottom: 20px;
  }
 
-#navver {
+ #navver {
    height: 60px;
-}
-
-
+ }
  /**** Section Title ****/
+
  .wpb-section-title {
    background-color: #24272a;
    height: 100px;
@@ -374,10 +361,10 @@
  }
 
  #create {
-    text-align: center;
-    color: white;
-    font-family: arial;
-    margin-bottom: -13px;
+   text-align: center;
+   color: white;
+   font-family: arial;
+   margin-bottom: -13px;
  }
 
  #sign-up-btn-landing {
@@ -398,7 +385,7 @@
    cursor: pointer;
  }
 
-  #sign-up-btn-other {
+ #sign-up-btn-other {
    display: inline-block;
    border-radius: 8px;
    -moz-border-radius: 5px;
@@ -415,12 +402,12 @@
    padding: 0.1em 35px;
    cursor: pointer;
  }
-
  /**** About Us ****/
-#main-bod {
+
+ #main-bod {
    max-width: 1400px;
    margin: 0px auto;
-}
+ }
 
  .wpb-about-us {
    background-color: #fff;
@@ -484,7 +471,7 @@
    text-align: center;
  }
 
-#sign-up-text {
+ #sign-up-text {
    margin: 0px auto;
    font-size: 18px;
    font-family: 'Lobster', cursive;
@@ -492,9 +479,9 @@
    background: #252525;
    margin-left: 40px;
    overflow: hidden;
-}
+ }
 
-.sign-in-header {
+ .sign-in-header {
    color: #fff;
    font-weight: bold;
    font-size: 52px;
@@ -502,11 +489,11 @@
    line-height: 60px;
    text-align: center;
    margin-bottom: -15px;
-}
+ }
 
-.top-margin {
+ .top-margin {
    margin-top: 15px;
-}
+ }
 
  #team {
    max-width: 1400px;
@@ -515,7 +502,7 @@
  .floater {
    margin-top: 0px !important;
    float: right;
-}
+ }
 
  li {
    list-style-type: none;
@@ -541,8 +528,8 @@
    margin: 2px 5px;
    border-radius: 8px;
  }
-
  /**** Portfolio ****/
+
  .wpb-portfolio-list .wpb-portfolio-item {
    margin-left: 10px;
    list-style-type: none;
@@ -564,9 +551,8 @@
  .wpb-portfolio-item .wpb-portfolio-thumbnail {
    height: 170px;
    overflow: hidden;
-   position:relative;
+   position: relative;
  }
-
 
  .wpb-portfolio-item .wpb-portfolio-thumbnail>img {
    position: absolute;
@@ -575,11 +561,11 @@
 
  .wpb-portfolio-item .wpb-portfolio-thumbnail .wpb-portfolio-overlay {
    position: absolute;
-   top:0;
-   left:0;
+   top: 0;
+   left: 0;
    width: 100%;
    height: 100%;
-   z-index:1001;
+   z-index: 1001;
    background: url('img/mongo-logo.png');
  }
 
@@ -604,13 +590,11 @@
  }
 
  .wpb-portfolio-details p {
-   color:#515e65 !important;
+   color: #515e65 !important;
  }
-
  /**** Portfolio ****/
- .wpb-portfolio-body {
 
- }
+ .wpb-portfolio-body {}
 
  .wpb-portfolio-body .wpb-teaser {
    min-height: 350px;
@@ -621,7 +605,7 @@
  }
 
  .wpb-portfolio-page .container {
-   top:0px;
+   top: 0px;
  }
 
  .wpb-portfolio-body .wpb-portfolio-filter-container {
@@ -650,19 +634,17 @@
  .wpb-portfolio-body .wpb-portfolio-filter li a {
    color: #ffffff;
    padding: 5px 14px;
-   border-radius:5px;
-   border:1px solid transparent;
+   border-radius: 5px;
+   border: 1px solid transparent;
    overflow: hidden;
    -webkit-transition: background-color 0.5s ease;
    -moz-transition: background-color 0.5s ease;
    -ms-transition: background-color 0.5s ease;
-   -o-transition:  background-color 0.5s ease;
-   transition:  background-color 0.5s ease;
+   -o-transition: background-color 0.5s ease;
+   transition: background-color 0.5s ease;
  }
-
-
-
  /**** Team List ****/
+
  .wpb-team-list .wpb-team-item {
    margin-left: 0px;
    margin-right: 10px;
@@ -680,11 +662,11 @@
  .wpb-team-item .wpb-team-thumbnail {
    height: 300px;
    overflow: hidden;
-   position:relative;
+   position: relative;
  }
 
  .wpb-team-item .wpb-team-thumbnail:hover .wpb-team-overlay {
-   opacity:1;
+   opacity: 1;
  }
 
  .wpb-team-item .wpb-team-thumbnail>img {
@@ -696,16 +678,16 @@
    -webkit-transition: opacity 0.5s ease;
    -moz-transition: opacity 0.5s ease;
    -ms-transition: opacity 0.5s ease;
-   -o-transition:  opacity 0.5s ease;
-   transition:  opacity 0.5s ease;
+   -o-transition: opacity 0.5s ease;
+   transition: opacity 0.5s ease;
    position: absolute;
-   top:0;
-   left:0;
+   top: 0;
+   left: 0;
    width: 100%;
    height: 100%;
-   z-index:1001;
+   z-index: 1001;
    background: rgba(55, 50, 53, 0.9);
-   opacity:0;
+   opacity: 0;
  }
 
  .wpb-team-item .wpb-team-thumbnail .wpb-team-overlay img {
@@ -720,15 +702,13 @@
  }
 
  .wpb-team-item .wpb-team-thumbnail .wpb-team-overlay>div div.content h3 {
-      color: #ffffff !important;
-      font-size: 18px;
+   color: #ffffff !important;
+   font-size: 18px;
  }
 
  .wpb-team-item .wpb-team-thumbnail .wpb-team-overlay>div div.content a {
    color: #ffffff !important;
-
  }
-
 
  .wpb-team-item .wpb-team-thumbnail .wpb-team-overlay>div div.content i {
    font-size: 1.5em;
@@ -760,13 +740,11 @@
  }
 
  .wpb-team-details p {
-   color:#515e65 !important;
+   color: #515e65 !important;
  }
-
-
  /**** Single Portfolio Item ****/
- .wpb-single-portfolio {
- }
+
+ .wpb-single-portfolio {}
 
  .wpb-single-portfolio .wpb-content-inner {
    padding: 0px;
@@ -781,9 +759,9 @@
  }
 
  .wpb-single-portfolio .container {
-   top:-100px;
+   top: -100px;
    position: relative;
-   z-index:1010;
+   z-index: 1010;
    background-color: #24272A;
  }
 
@@ -802,7 +780,7 @@
  }
 
  .wpb-single-portfolio .wpb-portfolio-thumbnail:hover .wpb-portfolio-overlay {
-   opacity:1;
+   opacity: 1;
  }
 
  .wpb-single-portfolio .wpb-portfolio-thumbnail>img {
@@ -817,16 +795,16 @@
    -webkit-transition: opacity 0.5s ease;
    -moz-transition: opacity 0.5s ease;
    -ms-transition: opacity 0.5s ease;
-   -o-transition:  opacity 0.5s ease;
-   transition:  opacity 0.5s ease;
+   -o-transition: opacity 0.5s ease;
+   transition: opacity 0.5s ease;
    position: absolute;
-   top:0;
-   left:0;
+   top: 0;
+   left: 0;
    width: 100%;
    height: 100%;
-   z-index:1001;
+   z-index: 1001;
    background: rgba(26, 204, 113, 0.6);
-   opacity:0;
+   opacity: 0;
  }
 
  .wpb-single-portfolio .wpb-portfolio-thumbnail .wpb-portfolio-overlay img {
@@ -845,7 +823,7 @@
  }
 
  .wpb-single-portfolio .wpb-portfolio-main-thumbnail img {
-   max-width:100% !important;
+   max-width: 100% !important;
  }
 
  .wpb-single-portfolio .wpb-portfolio-description {
@@ -865,8 +843,6 @@
    text-transform: uppercase;
  }
 
-
-
  .wpb-single-portfolio .wpb-portfolio-description ul li p {
    padding: 0;
    margin: 0;
@@ -875,24 +851,25 @@
  .wpb-single-portfolio .wpb-portfolio-description h3 {
    margin: 0;
  }
-
  /**** Contact Us ****/
+
  .wpb-contact-us {
    min-height: 540px;
    position: relative;
-   z-index:890;
+   z-index: 890;
  }
 
  .wpb-contact-us .google-map-container {
    width: 100%;
    height: 100%;
    position: absolute;
-   top:0;
+   top: 0;
    bottom: 0;
-   left:0;
+   left: 0;
  }
 
- .wpb-contact-us .wpb-section-title, .wpb-contact-us .container {
+ .wpb-contact-us .wpb-section-title,
+ .wpb-contact-us .container {
    position: relative;
    z-index: 1000;
  }
@@ -904,12 +881,11 @@
    width: 100%;
    height: 100%;
    min-height: 100%;
-   z-index:900;
+   z-index: 900;
    background: #252525;
  }
-
-
  /**** Contact Us Information ****/
+
  .wpb-contact-us-info {
    margin-top: 25px;
    color: #fff;
@@ -921,10 +897,8 @@
  }
 
  .wpb-contact-us-info ul li {
-   padding-bottom:10px;
+   padding-bottom: 10px;
  }
-
-
  /**** Footer ****/
 
  .foot {
@@ -939,319 +913,534 @@
 
  .legal {
    color: white;
+   font-size: 1em;
  }
-
  /**** Margins ****/
 
-.mod-contain {
+ .mod-contain {
    /*padding-right: 15px;
    padding-left: 15px;*/
    margin-right: auto;
    margin-left: auto;
-   width: 90%;
-}
+   width: 100%;
+ }
 
  .container-margin {
-   padding-top:60px;
+   padding-top: 60px;
    padding-bottom: 60px;
  }
 
-.arrow {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  margin-left:-20px;
-  width: 40px;
-  height: 40px;
-  background-size: contain;
-  animation-iteration-count: 3;
-  -webkit-animation-iteration-count: 3;
-  -moz-animation-iteration-count: 3;
-  -o-animation-iteration-count: 3;
-  animation-delay: 5s;
-  -webkit-animation-delay: 5s;
-  -moz-animation-delay: 5s;
-  -o-animation-delay: 5s;
-}
+ .arrow {
+   position: fixed;
+   bottom: 0;
+   left: 50%;
+   margin-left: -20px;
+   width: 40px;
+   height: 40px;
+   background-size: contain;
+   animation-iteration-count: 3;
+   -webkit-animation-iteration-count: 3;
+   -moz-animation-iteration-count: 3;
+   -o-animation-iteration-count: 3;
+   animation-delay: 5s;
+   -webkit-animation-delay: 5s;
+   -moz-animation-delay: 5s;
+   -o-animation-delay: 5s;
+ }
 
+ .landing-card {
+   position: relative;
+   display: inline-block;
+   box-sizing: border-box;
+   width: 17.5%;
+   height: 215px;
+   padding: 1%;
+   margin: 1%;
+   background-color: #fff;
+   border-radius: 8px;
+   color: #252525;
+   font-family: Arial;
+   font-size: 1.1em;
+   font-weight: bold;
+   vertical-align: top;
+ }
+ /*Override Bootstrap Row Class*/
 
-.landing-card {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  width: 17.5%;
-  height: 215px;
-  padding: 1%;
-  margin: 1%;
-  background-color: #fff;
-  border-radius: 8px;
-  color: #252525;
-  font-family: Arial;
-  font-size: 1.1em;
-  font-weight: bold;
-  vertical-align: top;
-}
-
-
-/*Override Bootstrap Row Class*/
-.row {
+ .row {
    margin-left: 0;
    margin-right: 9px;
-}
+ }
 
-#donations {
+ #donations {
    margin-top: 160px;
-}
+ }
+ /*MORE MEDIA QUERIESS WHOOOOOAAAA*/
 
-/*MORE MEDIA QUERIESS WHOOOOOAAAA*/
-
-@media (min-width: 1430px) {
+ @media (min-width: 1430px) {
    .row {
-      margin: 0 0 -9px 0;
+     margin: 0 0 -9px 0;
    }
-
    .wpb-logo-container {
-      margin-right: 0;
+     margin-right: 0;
    }
-}
+ }
 
-@media(max-width: 680px) {
+ @media(max-width: 680px) {
    .wpb-menu-container {
-      display: none;
+     display: none;
    }
-
    .mod-contain {
-      text-align: center;
+     text-align: center;
    }
-}
+ }
 
-@media (min-width : 480px) and (max-width : 865px)  {
+ @media (min-width: 480px) and (max-width: 865px) {
    .wpb-menu-container .wpb-main-menu {
-      text-align: right;
-      height: 100px;
-      margin-top: -77px;
-      font-size: .85em;
+     text-align: right;
+     height: 100px;
+     margin-top: -77px;
+     font-size: .85em;
    }
-
    .wpb-menu-container .wpb-main-menu li a {
-      display: block;
-      height: 100%;
-      line-height: 100px;
-      font-weight: bold;
-      color: white;
-      padding: 0px 3px;
-      -webkit-transition: color 0.5s ease;
-      -moz-transition: color 0.5s ease;
-      -ms-transition: color 0.5s ease;
-      -o-transition: color 0.5s ease;
-      transition: color 0.5s ease;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 1000;
+     display: block;
+     height: 100%;
+     line-height: 100px;
+     font-weight: bold;
+     color: white;
+     padding: 0px 3px;
+     -webkit-transition: color 0.5s ease;
+     -moz-transition: color 0.5s ease;
+     -ms-transition: color 0.5s ease;
+     -o-transition: color 0.5s ease;
+     transition: color 0.5s ease;
+     text-transform: uppercase;
+     position: relative;
+     z-index: 1000;
    }
    .wpb-logo-container {
-      color: #fff;
-      font-weight: bold;
-      margin-right: 0;
-      font-size: 11px;
-      max-width: 99%;
+     color: #fff;
+     font-weight: bold;
+     margin-right: 0;
+     font-size: 11px;
+     max-width: 99%;
    }
-
    .wpb-teaser .container {
-      position: relative;
-      z-index: 1000;
-      padding-top: 70px;
+     position: relative;
+     z-index: 1000;
+     padding-top: 70px;
    }
-
    .landing-card {
-      font-size: 0.8em;
+     font-size: 0.8em;
    }
-}
+ }
 
-@media (min-width : 865px) and (max-width : 1024px)  {
+ @media (min-width: 865px) and (max-width: 1024px) {
    .wpb-menu-container .wpb-main-menu {
-      text-align: right;
-      height: 100px;
-      margin-top: -77px;
-      font-size: .9em;
-      margin-right: 35px;
+     text-align: right;
+     height: 100px;
+     margin-top: -77px;
+     font-size: .9em;
+     margin-right: 35px;
    }
-
    .wpb-menu-container .wpb-main-menu li a {
-      display: block;
-      height: 100%;
-      line-height: 100px;
-      font-weight: bold;
-      color: white;
-      padding: 0px 6px;
-      -webkit-transition: color 0.5s ease;
-      -moz-transition: color 0.5s ease;
-      -ms-transition: color 0.5s ease;
-      -o-transition: color 0.5s ease;
-      transition: color 0.5s ease;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 1000;
+     display: block;
+     height: 100%;
+     line-height: 100px;
+     font-weight: bold;
+     color: white;
+     padding: 0px 6px;
+     -webkit-transition: color 0.5s ease;
+     -moz-transition: color 0.5s ease;
+     -ms-transition: color 0.5s ease;
+     -o-transition: color 0.5s ease;
+     transition: color 0.5s ease;
+     text-transform: uppercase;
+     position: relative;
+     z-index: 1000;
    }
    .wpb-logo-container {
-      color: #fff;
-      font-weight: bold;
-      margin-right: 10px;
-      font-size: 11px;
+     color: #fff;
+     font-weight: bold;
+     margin-right: 10px;
+     font-size: 11px;
    }
-
    .wpb-teaser .container {
-      position: relative;
-      z-index: 1000;
-      padding-top: 70px;
+     position: relative;
+     z-index: 1000;
+     padding-top: 70px;
    }
-
    #ang-logo {
-      width: 37% !important;
+     width: 37% !important;
    }
-}
- @media (max-width: 480px) {
+ }
 
-   #sign-up-btn{
-      font-size: 1.5rem;
+ @media (max-width: 480px) {
+   #sign-up-btn {
+     font-size: 1.5rem;
    }
    .wpb-teaser .container {
-      position: relative;
-      z-index: 1000;
-      padding: 0;
+     position: relative;
+     z-index: 1000;
+     padding: 0;
    }
-
-    .wpb-teaser {
-      min-height: 360px;
-      position: relative;
-      z-index: 990;
-      width: 98%;
-      margin: 0px auto;
-      border-radius: 8px;
-      padding: 30px;
+   .wpb-teaser {
+     min-height: 360px;
+     position: relative;
+     z-index: 990;
+     width: 98%;
+     margin: 0px auto;
+     border-radius: 8px;
+     padding: 30px;
    }
-
-    .wpb-teaser .wpb-slogan h2 {
-      color: #fff;
-      font-weight: bold;
-      font-size: 1.6em;
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 24px;
+   .wpb-teaser .wpb-slogan h2 {
+     color: #fff;
+     font-weight: bold;
+     font-size: 1.6em;
+     text-transform: uppercase;
+     text-align: center;
+     line-height: 24px;
    }
-
    .wpb-top-bar {
-      height: 60px;
-      background: transparent;
-      position: relative;
-      top: 0;
-      width: 100%;
-      z-index: 10000;
-      max-width: 1400px;
+     height: 60px;
+     background: transparent;
+     position: relative;
+     top: 0;
+     width: 100%;
+     z-index: 10000;
+     max-width: 1400px;
    }
-
    .mod-contain {
-      width: 100%;
-      text-align: center;
+     width: 100%;
+     text-align: center;
    }
-
    #homer {
-      padding-top: 0;
+     padding-top: 0;
    }
-
    #main-text {
-      margin: 0;
+     margin: 0;
    }
-
    .wpb-menu-container {
-      display: none;
+     display: none;
    }
-
    .wpb-teaser .parallax-background {
-      padding: 10% 0 0 0;
+     padding: 10% 0 0 0;
    }
-
    #avatars {
-      display: none;
+     display: none;
    }
-
    #slogan {
-      text-align: center;
-      color: white;
-      font-size: 1.3em;
+     text-align: center;
+     color: white;
+     font-size: 1.3em;
    }
-
    #how-to-play {
-      margin-top: 0;
+     margin-top: 0;
    }
-
    #how-to-play {
-      margin-top: 80px;
+     margin-top: 80px;
    }
-
    .landing-card {
-      position: relative;
-      display: block;
-      box-sizing: border-box;
-      padding: 4%;
-      margin: 5% 0;
-      background-color: #fff;
-      border-radius: 8px;
-      color: #252525;
-      font-family: Arial;
-      font-size: 20px;
-      font-weight: bold;
-      vertical-align: top;
-      width: 100%;
+     position: relative;
+     display: block;
+     box-sizing: border-box;
+     padding: 4%;
+     margin: 5% 0;
+     background-color: #fff;
+     border-radius: 8px;
+     color: #252525;
+     font-family: Arial;
+     font-size: 20px;
+     font-weight: bold;
+     vertical-align: top;
+     width: 100%;
    }
-
    .wpb-portfolio-list .wpb-portfolio-item {
-      margin-left: -20px;
-      border-radius: 8px;
-      list-style-type: none;
-      width: 100%;
+     margin-left: -20px;
+     border-radius: 8px;
+     list-style-type: none;
+     width: 100%;
    }
-
    .wpb-contact-us {
-      min-height: 0;
-      position: relative;
-      z-index: 890;
-      margin-top: 50px;
+     min-height: 0;
+     position: relative;
+     z-index: 890;
+     margin-top: 50px;
    }
-
    .wpb-team-details h3 {
-      font-size: 0.94em;
-      margin-top: -5px;
+     font-size: 0.94em;
+     margin-top: -5px;
    }
-
    #how-to-container {
-      padding-top: 0;
+     padding-top: 0;
    }
-
    .avatar-list {
-      overflow: hidden;
-      padding-left: 0px;
-      margin-left: 0;
+     overflow: hidden;
+     padding-left: 0px;
+     margin-left: 0;
    }
-
    .avatars {
-      position: relative;
-      float: left;
-      margin: 2px 17px;
+     position: relative;
+     float: left;
+     margin: 2px 17px;
    }
-
    .foot {
-      bottom: 0;
-      max-width: 1400px;
-      height: 60px;
-      border-radius: 8px;
-      background: #252525;
-      padding: 5px 5px 5px 13px;
-      width: 100%;
-      margin: 30px auto;
+     bottom: 0;
+     max-width: 1400px;
+     height: 60px;
+     border-radius: 8px;
+     background: #252525;
+     padding: 5px 5px 5px 13px;
+     width: 100%;
+     margin: 30px auto;
    }
-
    .row {
-      margin: 0 0 0 4px;
+     margin: 0 0 0 4px;
    }
+ }
+ /* From here */
+
+ li {
+   list-style: none;
+ }
+
+ .frame {
+   background: white;
+   height: auto;
+   overflow-y: hidden;
+   background: #072f70;
+   position: relative;
+   border-top: 10px solid #FF9999;
+   border-bottom: 10px solid #FF9999;
+   margin-bottom: 30px;
+ }
+
+ .czar div {
+   transform: rotate(-5deg);
+   background: black;
+   background: linear-gradient(black, #1e1f21);
+   border: 1px groove black;
+ }
+
+ .deal {
+   animation: marquee 5s linear infinite;
+   -webkit-marquee: up medium infinite scroll normal;
+ }
+
+ .nav li {
+   display: inline-block;
+   text-decoration: none;
+   margin-left: 20px;
+   margin-right: 30px;
+   font-weight: bold;
+   color: #072f70;
+ }
+
+ .nav li a {
+   color: #072f70;
+ }
+
+ .nav li:hover a {
+   text-decoration: none;
+   color: #FF9999;
+ }
+
+ .nav ul {
+   float: right;
+   margin-top: 20px;
+ }
+
+ .howto {
+   color: white;
+   position: absolute;
+   right: 0px;
+   padding-right: 35px;
+   text-align: justify;
+ }
+
+ .motto {
+   text-align: left;
+ }
+
+ .framepanel {
+   width: 100%;
+   background: #FF9999;
+   position: relative;
+   padding: 10px;
+   min-height: 25px;
+ }
+
+ .signup {
+   background: white;
+   color: #072f70;
+   font-weight: bolder;
+   width: 150px;
+   margin-right: 30px;
+   float: right;
+   height: 50px;
+ }
+
+ .signup:hover {
+   background: #072f70;
+   color: white;
+ }
+
+ .item img {
+   width: 100%;
+ }
+
+ #team p {
+   font-size: 18px;
+   background-color: rgba(0, 0, 0, 0.5);
+   padding: 10px;
+ }
+
+ .footer {
+   padding: 5px 18px 5px 18px;
+   background: white;
+   color: white;
+ }
+
+ .privacyPolicy {
+   text-align: right;
+ }
+
+ .github img {
+   width: 40px;
+   height: 40px;
+ }
+
+ .github {
+   font-size: 16px;
+ }
+
+ html {
+   background: white;
+   width: 100%;
+ }
+
+ .circleDiv {
+   width: 100px;
+   height: 100px;
+   border-radius: 100px;
+   background: #002266;
+   margin: 0 auto;
+   margin-bottom: 20px;
+   margin-top: 20px;
+ }
+
+ #charity {
+   background: white;
+   width: 100%;
+   color: #002266 !important;
+ }
+
+ .give {
+   text-align: center;
+   font-size: 1.2em;
+   font-weight: bold;
+   color: #002266;
+ }
+
+ body {
+   background: #002266;
+ }
+
+ .navigationDiv {
+   background: white;
+   min-height: 30px;
+   width: 100%;
+ }
+
+ .navmenu {
+   background: white;
+ }
+
+ .myfooter {
+   background-color: #409FD5;
+   border-top: 3px solid #FF9999;
+   text-align: center;
+   padding: 10px 40px 10px 40px;
+ }
+
+ a {
+   color: #409FD5 !important;
+ }
+
+ .myfooter a {
+   color: #002266 !important;
+ }
+
+ .myfooter a {
+   color: #002266;
+ }
+
+ #sign-up-btn-landing {
+   background: #FF9999;
+   font-size: 15px;
+   font-weight: bold;
+ }
+
+ #sign-up {
+   margin-bottom: 20px;
+ }
+
+ .share-button img {
+   width: 40px !important;
+   height: 40px !important;
+   vertical-align: bottom;
+   margin: 10px;
+ }
+
+ #crDonateWidget_cfhio_cards4humanity {
+   box-shadow: 2px 2px 5px black;
+ }
+
+ .footer_privacy {
+   background-color: #002266;
+   padding: 10px 0px 15px 0px;
+ }
+
+ .logo_head a {
+   color: #002266 !important;
+ }
+
+ .text-attract {
+   color: rgba(168, 39, 16, 1);
+ }
+
+ .play_button {
+   background: #002266;
+   padding: 10px 20px 10px 20px;
+   color: white !important;
+   font-weight: bold;
+ }
+
+ html,
+ body {
+   width: 100%;
+   margin: 0;
+   padding: 0;
+ }
+
+ .upper_game_top_margin {
+   margin-top: 15px !important;
+ }
+
+ .player_top_margin {
+   top: 125px !important;
+ }
+
+ .abandon_game_button {
+   background-color: rgba(168, 39, 16, 1);
+   color: white;
+   margin-left: 440px;
+   margin-top: -80px;
+ }
+
+ .header_text {
+   font-size: 28px !important;
+ }
+
+ .socials_block{
+   margin-left: 300px;
  }
