@@ -13,3 +13,5 @@ after_script:
 
 after_success:
 - npm run coveralls
+notifications:
+  slack: andela:8zAEM0vA23ix7j3gab10TJpD
