@@ -8,10 +8,10 @@ angular.module('mean.system')
     $scope.pickedCards = [];
     var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
-    $scope.searchResults = [];
-    $scope.inviteeEmail = '';
-    $scope.invitedPlayers = [];
-    $scope.firstPlayer = false;
+  $scope.searchResults = [];
+  $scope.inviteeEmail = '';
+  $scope.invitedPlayers = [];
+  $scope.firstPlayer = false;
 
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
@@ -125,11 +125,9 @@ angular.module('mean.system')
     };
 
     $scope.startGame = function() {
-      if (game.players.length >= game.playerMinLimit) {
-        game.startGame();
-      } else {
-        $('#playerMinimumAlert').modal('show');
-      }
+      let isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
+      isUptoRequiredNumber ? game.startGame(
+      ) : $('#playerMinimumAlert').modal('show');
     };
 
     $scope.abandonGame = function() {
