@@ -1,7 +1,7 @@
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 const helper = require('sendgrid').mail;
-const sg = require('sendgrid')('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');
+const sg = require('sendgrid')(process.env.SEND_GRID);
 
 exports.invite = (req, res) => {
   const gameUrl = req.body.link;
