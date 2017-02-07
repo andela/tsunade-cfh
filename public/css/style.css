@@ -279,8 +279,8 @@
    width: 90%;
    margin: 0px auto;
    border-radius: 8px;
-   margin-top: 70px;
-   padding: 30px;
+   margin-top: 15px;
+   padding: 10px;
  }
 
  .wpb-teaser .background-opacity {
@@ -1314,7 +1314,7 @@
  }
 
  html {
-   background: white;
+   background: #002266;
    width: 100%;
  }
 
@@ -1343,6 +1343,7 @@
 
  body {
    background: #002266;
+   height: 100% !important;
  }
 
  .navigationDiv {
@@ -1454,6 +1455,9 @@
    margin-left: 300px;
  }
 
+#charity-link{
+  cursor: pointer;
+}
  .player_top_margin {
     margin-top:0px;
  }
@@ -1475,3 +1479,4 @@
 text-align: center !important;
 margin:0 auto !important;
 }
+
