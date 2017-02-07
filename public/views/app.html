@@ -1,48 +1,56 @@
 </script>
-<div id="app-container" ng-controller="GameController">
-  <!-- Add home header here-->
+<!-- navbar starts here -->
+<div landing id="main-bod">
   <!-- Fixed Logo & Menu Bar Start -->
-  <div class="navigationDiv row  padNavBottom">
+  <div class="navigationDiv row ">
     <div class="col-md-3 col-xs-12">
-      <h2 class="text-center logo_head header_text"><a href='./'>Cards For Humanity</a></h2>
+      <h2 class="text-center logo_head"><a href='./'>Cards For Humanity</a></h2>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-6 col-xs-12 nav navmenu">
-      <ul class="wpb-main-menu">
-        <span class="socials_block">
-                  <a href="https://twitter.com/share" class="share-button" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" data-related="CFH_App"><img src="img/twitter.png"/></a>
-                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');</script>
+    <div class="col-md-4"></div>
+    <div class="col-md-5 col-xs-12 nav navmenu ">
+      <ul class="app-menu text-center">
+        <li>
+          <a href="https://twitter.com/share" class="share-button-app" data-url="http://cfh.io"
+            data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good"
+            data-related="CFH_App"><img src="img/twitter.png" /></a>
 
-                    <a href="#" class="share-button"
-                      onclick="
+          <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');</script>
+</li>
+<li>
+  <a href="#" class="share-button-app" onclick="
                         window.open(
                           'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
                           'facebook-share-dialog',
                           'width=626,height=436');
-                        return false;"> <img src="img/facebook.png"/>
+                        return false;"> <img src="img/facebook.png" />
 </a>
-<div id = 'abandon-game-button' class="btn abandon_game_button" ng-click="abandonGame()">
-        Abandon Gaming
-    </div>
-    </div>
-
+</li>
+<li>
+  <div id='abandon-game-button' class="btn abandon_game_button" ng-click="abandonGame()">
+    Abandon Gaming
   </div>
-<!-- Fixed Logo & Menu Bar End -->
- <!--- home header ends here -->
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- navbar ends here -->
+
+<div id="app-container" ng-controller="GameController">
   <div id="gameplay-container" class="upper_game_top_margin">
     <div id="upper-gameplay-container">
       <div id="menu-timeremaining-container">
         <div id="menu-container">
           <span id="menu-button">Menu</span>
+        </div>
+        <div id="timer-container">
+          <timer></timer>
+        </div>
+      </div>
+      <div id="question-container-outer">
+        <question></question>
+      </div>
     </div>
-    <div id="timer-container">
-      <timer></timer>
-    </div>
+    <answers></answers>
   </div>
-  <div id="question-container-outer">
-    <question></question>
-  </div>
-</div>
-<answers></answers>
-</div>
 </div>
