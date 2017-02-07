@@ -80,7 +80,7 @@ gulp.task('sass', () => {
 });
 
 // Default task(s).
-gulp.task('default', ['lint', 'server', 'watch', 'sass', 'install']);
+gulp.task('default', ['lint', 'server', 'watch', 'sass']);
 
 // Test task.
 gulp.task('test', ['mochaTest']);
