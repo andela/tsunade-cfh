@@ -158,7 +158,7 @@ describe("Game Server",function(){
       });
       setTimeout(disconnect, 200);
     };
-    client1.on('connect', (data) => {
+    client1.on('connect', () => {
       client1.emit('joinGame',
         { userID: 'unauthenticated', room: '', createPrivate: true });
       let connectOthers = true;
@@ -167,7 +167,7 @@ describe("Game Server",function(){
         if (connectOthers) {
           client2 = io.connect(socketURL, options);
           connectOthers = false;
-          client2.on('connect', (data) => {
+          client2.on('connect', () => {
             client2.emit('joinGame',
               {
                 userID: 'unauthenticated',
@@ -175,13 +175,13 @@ describe("Game Server",function(){
                 createPrivate: false
               });
             client3 = io.connect(socketURL, options);
-            client3.on('connect', (data) => {
+            client3.on('connect', () => {
               client3.emit('joinGame',
                 { userID: 'unauthenticated',
                   room: gameID,
                   createPrivate: false });
               client4 = io.connect(socketURL, options);
-              client4.on('connect', (data) => {
+              client4.on('connect', () => {
                 client4.emit('joinGame',
                   {
                     userID: 'unauthenticated',
@@ -189,7 +189,7 @@ describe("Game Server",function(){
                     createPrivate: false
                   });
                 client5 = io.connect(socketURL, options);
-                client5.on('connect', (data) => {
+                client5.on('connect', () => {
                   client5.emit('joinGame',
                     {
                       userID: 'unauthenticated',
@@ -197,7 +197,7 @@ describe("Game Server",function(){
                       createPrivate: false
                     });
                   client6 = io.connect(socketURL, options);
-                  client6.on('connect', (data) => {
+                  client6.on('connect', () => {
                     client6.emit('joinGame',
                       {
                         userID: 'unauthenticated',
@@ -205,7 +205,7 @@ describe("Game Server",function(){
                         createPrivate: false
                       });
                     client7 = io.connect(socketURL, options);
-                    client7.on('connect', (data) => {
+                    client7.on('connect', () => {
                       client7.emit('joinGame',
                         {
                           userID: 'unauthenticated',
@@ -213,7 +213,7 @@ describe("Game Server",function(){
                           createPrivate: false
                         });
                       client8 = io.connect(socketURL, options);
-                      client8.on('connect', (data) => {
+                      client8.on('connect', () => {
                         client8.emit('joinGame',
                           {
                             userID: 'unauthenticated',
@@ -221,7 +221,7 @@ describe("Game Server",function(){
                             createPrivate: false
                           });
                         client9 = io.connect(socketURL, options);
-                        client9.on('connect', (data) => {
+                        client9.on('connect', () => {
                           client9.emit('joinGame',
                             {
                               userID: 'unauthenticated',
@@ -229,7 +229,7 @@ describe("Game Server",function(){
                               createPrivate: false
                             });
                           client10 = io.connect(socketURL, options);
-                          client10.on('connect', (data) => {
+                          client10.on('connect', () => {
                             client10.emit('joinGame',
                               {
                                 userID: 'unauthenticated',
@@ -237,7 +237,7 @@ describe("Game Server",function(){
                                 createPrivate: false
                               });
                             client11 = io.connect(socketURL, options);
-                            client11.on('connect', (data) => {
+                            client11.on('connect', () => {
                               client11.emit('joinGame',
                                 {
                                   userID: 'unauthenticated',
@@ -245,7 +245,7 @@ describe("Game Server",function(){
                                   createPrivate: false
                                 });
                               client12 = io.connect(socketURL, options);
-                              client12.on('connect', (data) => {
+                              client12.on('connect', () => {
                                 client12.emit('joinGame',
                                   {
                                     userID: 'unauthenticated',
