@@ -12,6 +12,7 @@ angular.module('mean.system')
   $scope.inviteeEmail = '';
   $scope.invitedPlayers = [];
   $scope.firstPlayer = false;
+  $scope.playersCards = game.players[game.playerIndex].hand;
 
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
@@ -187,7 +188,9 @@ angular.module('mean.system')
     }
 
   $scope.sendInvite = () => {
-    if ($scope.invitedPlayers.length === game.playerMaxLimit - 1) {
+    const maxPlayersExceeded = $scope.invitedPlayers
+      .length === game.playerMaxLimit - 1;
+    if (maxPlayersExceeded) {
       $('#playerMaximumAlert').modal('show');
     } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
       invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
