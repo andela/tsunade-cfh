@@ -12,7 +12,6 @@ angular.module('mean.system')
   $scope.inviteeEmail = '';
   $scope.invitedPlayers = [];
   $scope.firstPlayer = false;
-  $scope.playersCards = game.players[game.playerIndex].hand;
 
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
