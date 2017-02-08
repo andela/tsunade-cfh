@@ -279,8 +279,8 @@
    width: 90%;
    margin: 0px auto;
    border-radius: 8px;
-   margin-top: 70px;
-   padding: 30px;
+   margin-top: 15px;
+   padding: 10px;
  }
 
  .wpb-teaser .background-opacity {
@@ -1314,7 +1314,7 @@
  }
 
  html {
-   background: white;
+   background: #002266;
    width: 100%;
  }
 
@@ -1343,11 +1343,11 @@
 
  body {
    background: #002266;
+   height: 100% !important;
  }
 
  .navigationDiv {
    background: white;
-   min-height: 30px;
    width: 100%;
  }
 
@@ -1391,6 +1391,11 @@
    margin: 10px;
  }
 
+ .share-button-app img {
+   width: 35px !important;
+   height: 35px !important;
+ }
+
  #crDonateWidget_cfhio_cards4humanity {
    box-shadow: 2px 2px 5px black;
  }
@@ -1431,16 +1436,47 @@
  }
 
  .abandon_game_button {
-   background-color: rgba(168, 39, 16, 1);
+   background-color: #FF9999;
    color: white;
-   margin-left: 440px;
-   margin-top: -80px;
+   font-weight:bold;
+ }
+
+ .abandon_game_button:hover {
+   background-color: #002266 !important;
+   color: white;
+   font-weight:bold;
  }
 
  .header_text {
    font-size: 28px !important;
  }
 
- .socials_block{
+ .socials_block {
    margin-left: 300px;
  }
+
+#charity-link{
+  cursor: pointer;
+}
+ .player_top_margin {
+    margin-top:0px;
+ }
+
+ #social-bar-container {
+   top:0 !important;
+ }
+
+ .app-menu li{
+   vertical-align:bottom !important;
+   margin-right:10px !important;
+ }
+
+.app-menu {
+  text-align: center !important;
+}
+
+.app-menu ul{
+text-align: center !important;
+margin:0 auto !important;
+}
+
