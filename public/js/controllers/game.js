@@ -126,7 +126,7 @@ angular.module('mean.system')
     };
 
     $scope.startGame = function() {
-      let isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
+      const isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
       isUptoRequiredNumber ? game.startGame(
       ) : $('#playerMinimumAlert').modal('show');
     };
