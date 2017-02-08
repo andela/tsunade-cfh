@@ -97,4 +97,8 @@ module.exports = function(app, passport, auth) {
      //loginAuth Routes
     var authLogin = require('../app/controllers/loginAuth');
     app.post('/api/auth/login', authLogin.login);
+
+    // Start game Routes
+    const startGame = require('../app/controllers/start-game');
+    app.post('/api/games/:id/start', startGame.start-game);
 };
