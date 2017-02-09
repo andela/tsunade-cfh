@@ -99,6 +99,8 @@ module.exports = function(app, passport, auth) {
     app.post('/api/auth/login', authLogin.login);
 
     // Start game Routes
-    const startGame = require('../app/controllers/start-game');
-    app.post('/api/games/:id/start', startGame.start-game);
+  const startGame = require('../app/controllers/start-game');
+  app.get('/api/games/:id', startGame.getGameRecords);
+  app.post('/api/games/:id/start', startGame.saveRecords);
+  app.post('/api/games/:id/end', startGame.updateRecords);
 };
