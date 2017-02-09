@@ -168,6 +168,27 @@ angular.module('mean.system')
         game.joinOverride = true;
       }, 15000);
     } else if (data.state === 'game dissolved' || data.state === 'game ended') {
+      if (data.state === 'game ended') {
+            $http({
+              method: 'POST',
+              url: `/api/games/${game.gameID}/end`,
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: {
+                gameID: game.gameID,
+                completed: true,
+                rounds: game.round,
+                winner: game.players[game.gameWinner].username
+              }
+            })
+            .success(function (res) {
+              return res;
+            })
+            .error(function (err) {
+              return err;
+            });
+          }
       game.players[game.playerIndex].hand = [];
       game.time = 0;
     }
@@ -185,13 +206,39 @@ angular.module('mean.system')
     socket.emit(mode,{userID: userID, room: room, createPrivate: createPrivate});
   };
 
-game.startGameManually = function(){
-    socket.emit('startGameManually');
-}
+// game.startGameManually = function(){
+//     socket.emit('startGameManually');
+// }
 
-  game.startGame = function() {
+    game.startGame = function() {
     socket.emit('startGame');
   };
+
+    game.saveGame = () => {
+      socket.emit('startGame');
+      if (window.user) {
+        $http({
+          method: 'POST',
+          url: `/api/games/${game.gameID}/start`,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: {
+            gameID: game.gameID,
+            players: game.players,
+            completed: false,
+            rounds: 0,
+            winner: ''
+          }
+        })
+          .success((res) => {
+            return res;
+          })
+          .error((err) => {
+            return err;
+          });
+      }
+    };
 
   game.leaveGame = function() {
     game.players = [];

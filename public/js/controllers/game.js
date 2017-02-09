@@ -124,10 +124,6 @@ angular.module('mean.system')
       game.startGame();
     };
 
-       $scope.startGameManually = function() {
-      game.startGameManually();
-    };
-
     $scope.abandonGame = function() {
       game.leaveGame();
       $location.path('/');
