@@ -185,6 +185,10 @@ angular.module('mean.system')
     socket.emit(mode,{userID: userID, room: room, createPrivate: createPrivate});
   };
 
+game.startGameManually = function(){
+    socket.emit('startGameManually');
+}
+
   game.startGame = function() {
     socket.emit('startGame');
   };
