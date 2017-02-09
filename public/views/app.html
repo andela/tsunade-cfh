@@ -1,6 +1,10 @@
 </script>
 
-<!-- The Modal -->
+
+
+
+<div id="app-container" ng-controller="GameController">
+  <!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -11,14 +15,11 @@
     </div>
     <div class="modal-body">
       <h4><span class="text">You are about starting a new Game Session... Please click on the Start Game button below</span></h4>
-      <button id="start-game" type="button" class="btn start-btn">Start game</button>
+      <button ng-click="startGame()" id="start-game" type="button" class="btn start-btn">Start game</button>
     </div>
   </div>
 
 </div>
-
-
-<div id="app-container" ng-controller="GameController">
   <!-- Add home header here-->
   <!-- Fixed Logo & Menu Bar Start -->
   <div class="navigationDiv row  padNavBottom">

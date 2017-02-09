@@ -43,6 +43,11 @@ module.exports = function(io) {
       }
     });
 
+    socket.on('startGameManually', function(){
+        gamesNeedingPlayers.shift();
+          game.prepareGame();
+    })
+
     socket.on('joinNewGame', function(data) {
       exitGame(socket);
       joinGame(socket,data);
@@ -130,10 +135,10 @@ module.exports = function(io) {
         game.assignGuestNames();
         game.sendUpdate();
         game.sendNotification(player.username+' has joined the game!');
-        if (game.players.length >= game.playerMaxLimit) {
-          gamesNeedingPlayers.shift();
-          game.prepareGame();
-        }
+        // if (game.players.length >= game.playerMaxLimit) {
+        //   gamesNeedingPlayers.shift();
+        //   game.prepareGame();
+        // }
       } else {
         // TODO: Send an error message back to this user saying the game has already started
       }
@@ -176,10 +181,10 @@ module.exports = function(io) {
       game.assignGuestNames();
       game.sendUpdate();
       game.sendNotification(player.username+' has joined the game!');
-      if (game.players.length >= game.playerMaxLimit) {
-        gamesNeedingPlayers.shift();
-        game.prepareGame();
-      }
+      // if (game.players.length >= game.playerMaxLimit) {
+      //   gamesNeedingPlayers.shift();
+      //   game.prepareGame();
+      // }
     }
   };
 

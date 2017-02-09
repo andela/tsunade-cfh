@@ -14,6 +14,6 @@ span.onclick = () => {
 
 const start = document.getElementById('start-game');
 
-start.onclick = () => {
-  $scope.startGame = game.startGame();
-};
+// start.onclick = () => {
+// game.startGame();
+// };
