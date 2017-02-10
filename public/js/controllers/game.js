@@ -171,6 +171,9 @@ angular.module('mean.system')
         }
       }
     });
+  $scope.drawCard = () => {
+    game.drawCard();
+  };
 
     if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
       console.log('joining custom game');
