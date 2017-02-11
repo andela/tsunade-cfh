@@ -2,12 +2,12 @@ angular.module('mean.system')
 .controller('IndexController', ['$scope', 'Global', '$location', 'socket', 'game', 'AvatarService', '$http', function ($scope, Global, $location, socket, game, AvatarService, $http) {
     $scope.global = Global;
 
-    $scope.playAsGuest = function() {
+    $scope.playAsGuest = () => {
       game.joinGame();
       $location.path('/app');
     };
 
-    $scope.showError = function() {
+    $scope.showError = () => {
       if ($location.search().error) {
         return $location.search().error;
       } else {
@@ -21,22 +21,22 @@ angular.module('mean.system')
         $scope.avatars = data;
       });
 
-    $scope.login = function() {
+    $scope.login = () => {
        var user = {
          email: $scope.login_email,
          password: $scope.login_password
        };
 
-       $http.post('/api/auth/login', user).then(function(data) {
+       $http.post('/api/auth/login', user).then(function() {
          $location.path('/app');
        }, function(err) {
          $scope.showError();
          $scope.error = err;
        });
-     };
+    };
 
-     $scope.signup = function() {
-       if(!$scope.name || !$scope.email || !$scope.password) {
+    $scope.signup = () => {
+      if(!$scope.name || !$scope.email || !$scope.password) {
          const error = {
            data: { message: 'Data incomplete.' }
          };
@@ -49,16 +49,16 @@ angular.module('mean.system')
            name: $scope.name
          };
 
-         $http.post('/api/auth/signup', newuser).then(function(data) {
+         $http.post('/api/auth/signup', newuser).then(function() {
            $location.path('/app');
          }, function(err) {
            $scope.showError();
            $scope.error = err;
          });
        }
-     };
+   };
 
-     $scope.facebookLogin = function() {
+    $scope.facebookLogin = () => {
        const facebook = hello('facebook');
        facebook.login({ scope: 'email' }).then(
          function() {
@@ -68,7 +68,7 @@ angular.module('mean.system')
                email: user.email,
                provider: 'facebook'
              };
-             $http.post('/api/auth/social', userDetails).then(function(data) {
+             $http.post('/api/auth/social', userDetails).then(function() {
                $location.path('/app');
              });
            });
@@ -78,9 +78,9 @@ angular.module('mean.system')
            $scope.error = err;
          }
        );
-     };
+   };
 
-     $scope.twitterLogin = () => {
+   $scope.twitterLogin = () => {
        const twitter = hello('twitter');
        twitter.login({ scope: 'email' }).then(
        function() {
@@ -90,7 +90,7 @@ angular.module('mean.system')
              email: user.id,
              provider: 'twitter'
            };
-           $http.post('/api/auth/social', userDetails).then(function(data) {
+           $http.post('/api/auth/social', userDetails).then(function() {
              $location.path('/app');
            });
          });
@@ -98,9 +98,9 @@ angular.module('mean.system')
          $scope.showError();
          $scope.error = err;
       });
-     }
+    };
 
-   $scope.googleLogin = function() {
+   $scope.googleLogin = () => {
      const google = hello('google');
      google.login({ redirect_uri: 'http://localhost:3000/', scope: 'email'}).then(
        function() {
@@ -110,7 +110,7 @@ angular.module('mean.system')
              email: user.email,
              provider: 'google'
            };
-           $http.post('/api/auth/social', userDetails).then(function(data) {
+           $http.post('/api/auth/social', userDetails).then(function() {
              $location.path('/app');
            });
          });
@@ -121,7 +121,7 @@ angular.module('mean.system')
    };
 
 
-   $scope.start = function () {
+   $scope.start = () => {
      hello.init({
        facebook: "1867221413501027",
        google: "825562793958-hsbrf2tri06upbvs40tbhept97a5t5qs.apps.googleusercontent.com",
