@@ -29,7 +29,7 @@ angular.module('mean.system')
 
        $http.post('/api/auth/login', user).then(function() {
          $location.path('/app');
-       }, function(err) {
+       }, (err) => {
          $scope.showError();
          $scope.error = err;
        });
@@ -51,7 +51,7 @@ angular.module('mean.system')
 
          $http.post('/api/auth/signup', newuser).then(function() {
            $location.path('/app');
-         }, function(err) {
+         }, (err) => {
            $scope.showError();
            $scope.error = err;
          });
@@ -61,7 +61,7 @@ angular.module('mean.system')
     $scope.facebookLogin = () => {
        const facebook = hello('facebook');
        facebook.login({ scope: 'email' }).then(
-         function() {
+         () => {
            hello('facebook').api('me').then(function(user) {
              const userDetails = {
                name: user.name,
@@ -73,7 +73,7 @@ angular.module('mean.system')
              });
            });
          },
-         function(err) {
+         (err) => {
            $scope.showError();
            $scope.error = err;
          }
@@ -83,7 +83,7 @@ angular.module('mean.system')
    $scope.twitterLogin = () => {
        const twitter = hello('twitter');
        twitter.login({ scope: 'email' }).then(
-       function() {
+       () => {
          hello('twitter').api('me').then(function(user) {
            const userDetails = {
              name: user.name,
@@ -94,7 +94,7 @@ angular.module('mean.system')
              $location.path('/app');
            });
          });
-       }, function(err) {
+       }, (err) => {
          $scope.showError();
          $scope.error = err;
       });
@@ -103,7 +103,7 @@ angular.module('mean.system')
    $scope.googleLogin = () => {
      const google = hello('google');
      google.login({ redirect_uri: 'http://localhost:3000/', scope: 'email'}).then(
-       function() {
+       () => {
          hello('google').api('me').then(function(user) {
            const userDetails = {
              name: user.name,
@@ -114,12 +114,11 @@ angular.module('mean.system')
              $location.path('/app');
            });
          });
-       }, function(err) {
+       }, (err) => {
          $scope.showError();
          $scope.error = err;
      });
    };
-
 
    $scope.start = () => {
      hello.init({
