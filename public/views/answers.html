@@ -24,22 +24,22 @@
   </div>
   <div id="cards" class='hand' ng-hide="game.state === 'waiting for czar to draw cards'">
     <span ng-show="winnerPicked()"></span>
-    <div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)"
-      ng-hide="showTable || isCzar()" ng-repeat="card in game.players[game.playerIndex].hand"
-      ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
-      <span ng-bind-html-unsafe="card.text"></span>
-      <span id='selection-number' ng-show="showFirst(card)"> 1 </span>
-      <span id='selection-number' ng-show="showSecond(card)"> 2 </span>
-  </div>
-  <span ng-repeat="answer in game.table">
+
+    <div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()"
+    ng-repeat="card in game.players[game.playerIndex].hand" ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
+        <span ng-bind-html-unsafe="card.text" style="position: absolute; z-index: 100; display: inline-block; background-color: white"></span>
+        <span id='selection-number' ng-show="showFirst(card)"> 1 </span>
+        <span id='selection-number' ng-show="showSecond(card)"> 2 </span>
+    </div>
+
+    <span ng-repeat="answer in game.table">
         <div class="card smallest" ng-style="pointerCursorStyle()" id='table' ng-click="pickWinning(answer)" ng-show="showTable || isCzar()"
         ng-repeat="card in answer.card" ng-animate="{enter:'animated bounceInLeft'}" style="background-color:{{winningColor($parent.$index)}}">
-  <span ng-bind-html-unsafe="card.text"></span>
-  <span id='selection-number' ng-show="firstAnswer($index)"> 1 </span>
-  <span id='selection-number' ng-show="secondAnswer($index)"> 2 </span>
-</div>
-</span>
-</div>
+            <span ng-bind-html-unsafe="card.text" ></span>
+            <span id='selection-number' ng-show="firstAnswer($index)"> 1 </span>
+            <span id='selection-number' ng-show="secondAnswer($index)"> 2 </span>
+        </div>
+    </span>
 
 <div ng-show="game.state === 'waiting for czar to draw cards'">
   <div ng-show="!isCzar()">
@@ -57,7 +57,7 @@
       <div class="col-lg-6" style="margin: 0 25%">
         <div ng-repeat="players in invitedPlayers" style="margin-top: 2px;">{{players}} has been sent an invite.</div>
         <div class="input-group">
-          <input type="text" class="form-control" ng-keyup="playerSearch()" ng-model="inviteeEmail" placeholder="Search for friends to invite"> 
+          <input type="text" class="form-control" ng-keyup="playerSearch()" ng-model="inviteeEmail" placeholder="Search for friends to invite">
           <span class="input-group-btn">
             <button class="btn btn-default"  type="button" ng-click="sendInvite()">Invite</button>
           </span>
