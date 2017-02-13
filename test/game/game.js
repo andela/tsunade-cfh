@@ -91,7 +91,9 @@ describe("Game Server",function(){
         client2.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
         client3 = io.connect(socketURL, options);
         client3.on('connect', function(data) {
-          client3.emit('joinGame',{ userID:'unauthenticated',room: '', createPrivate: false });
+          client3.emit('joinGame', {
+            userID: 'unauthenticated', room: '', createPrivate: false
+          });
           setTimeout(expectStartGame,100);
         });
       });
@@ -103,7 +105,7 @@ describe("Game Server",function(){
     let client2, client3, client4, client5, client6, client7,
       client8, client9, client10, client11, client12;
     const client1 = io.connect(socketURL, options);
-    const disconnect = function () {
+    const disconnect = function disconnect() {
       client1.disconnect();
       client2.disconnect();
       client3.disconnect();
@@ -118,7 +120,7 @@ describe("Game Server",function(){
       client12.disconnect();
       done();
     };
-    const expectStartGame = function () {
+    const expectStartGame = () => {
       client1.emit('startGame');
       client1.on('gameUpdate', (data) => {
         data.state.should.equal('waiting for players to pick');
