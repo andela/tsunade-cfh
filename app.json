@@ -1,0 +1,24 @@
+{
+  "name": "tsunade-cfh",
+  "scripts": {},
+  "env": {
+    "MONGODB_URI": {
+      "required": true
+    },
+    "MONGOHQ_URL": {
+      "required": true
+    },
+    "SEND_GRID": {
+      "required": true
+    }
+  },
+  "formation": {},
+  "addons": [
+    "mongolab"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
