@@ -22,22 +22,34 @@
   <div id="social-bar-container" class="player_top_margin">
     <player></player>
   </div>
-  <div id="cards" class='hand'>
+  <div id="cards" class='hand' ng-hide="game.state === 'waiting for czar to draw cards'">
     <span ng-show="winnerPicked()"></span>
-    <div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()" ng-repeat="card in game.players[game.playerIndex].hand" ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
+    <div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)"
+      ng-hide="showTable || isCzar()" ng-repeat="card in game.players[game.playerIndex].hand"
+      ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
       <span ng-bind-html-unsafe="card.text"></span>
       <span id='selection-number' ng-show="showFirst(card)"> 1 </span>
       <span id='selection-number' ng-show="showSecond(card)"> 2 </span>
-    </div>
-    <span ng-repeat="answer in game.table">
-        <div class="card smallest" ng-style="pointerCursorStyle()" id='table' ng-click="pickWinning(answer)" ng-show="showTable || isCzar()"
-          ng-repeat="card in answer.card" ng-animate="{enter:'animated bounceInLeft'}" style="background-color:{{winningColor($parent.$index)}}">
-          <span ng-bind-html-unsafe="card.text"></span>
-          <span id='selection-number' ng-show="firstAnswer($index)"> 1 </span>
-          <span id='selection-number' ng-show="secondAnswer($index)"> 2 </span>
-        </div>
-    </span>
   </div>
+  <span ng-repeat="answer in game.table">
+        <div class="card smallest" ng-style="pointerCursorStyle()" id='table' ng-click="pickWinning(answer)" ng-show="showTable || isCzar()"
+        ng-repeat="card in answer.card" ng-animate="{enter:'animated bounceInLeft'}" style="background-color:{{winningColor($parent.$index)}}">
+  <span ng-bind-html-unsafe="card.text"></span>
+  <span id='selection-number' ng-show="firstAnswer($index)"> 1 </span>
+  <span id='selection-number' ng-show="secondAnswer($index)"> 2 </span>
+</div>
+</span>
+</div>
+
+<div ng-show="game.state === 'waiting for czar to draw cards'">
+  <div ng-show="!isCzar()">
+    <h4 class='text-center'>Wait for czar to draw next set of cards</h4>
+  </div>
+  <div ng-show="isCzar()">
+    <h4 class='text-center'> Click to draw next set of cards </h4>
+    <div class="draw-card-icon" ng-click="drawCard()"></div>
+  </div>
+</div>
 </div>
 <div id="info-container" ng-show="game.state === 'awaiting players'">
   <div id="inner-info">
@@ -59,19 +71,27 @@
     <ol id="oh-el">
       <li>Each player begins with, and will always have, 10 white answer cards.</li>
       <li>For each round, one player is randomly chosen as the Card Czar.</li>
-      <li>Everyone else answers the black question card by clicking on the answer card they want to use.</li>
-      <li>The Card Czar then picks a favorite answer, and whoever played that answer wins the round.</li>
-      <li>*Want to adorn your avatar with a glorious crown? Donate to charity after the game!</li>
+      <li>Everyone else answers the black question card by clicking on the answer card
+        they want to use.</li>
+      <li>The Card Czar then picks a favorite answer, and whoever played that answer
+        wins the round.</li>
+      <li>*Want to adorn your avatar with a glorious crown? Donate to charity after the
+        game!
+      </li>
     </ol>
   </div>
 </div>
 <div id="game-end-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">
   <div id="inner-info-exit">
     <div class="game-end-answer-text" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
-      <h2>What would you like to do now?</h2> You might consider donating to charity to atone for the horrifying answers you've submitted. Donating will also place a lovely crown on your avatar's head.
+      <h2>What would you like to do now?</h2>
+      You might consider donating to charity to atone for the horrifying answers you've
+      submitted. Donating will also place a lovely crown on your avatar's head.
     </div>
     <div class="game-end-answer-text" ng-show="game.state === 'game ended' || game.gameWinner !== -1">
-      <h2>What would you like to do now?</h2> Help yourself to another game or help a child in need? Donating will also place a lovely crown on your avatar's head.
+      <h2>What would you like to do now?</h2>
+      Help yourself to another game or help a child in need? Donating will also place a
+      lovely crown on your avatar's head.
     </div>
     <div id='inner-text-container'>
       <a href='/#!/app'>
