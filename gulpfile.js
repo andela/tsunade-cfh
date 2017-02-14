@@ -22,7 +22,11 @@ gulp.task('lint', () =>
     'test/**/*.js',
     'app/**/*.js'
   ])
-  .pipe(eslint())
+  .pipe(eslint({
+    rules: {
+      quotes: [2, 'single']
+    }
+  }))
 );
 
 gulp.task('bower', () => {
@@ -76,7 +80,7 @@ gulp.task('sass', () => {
 });
 
 // Default task(s).
-gulp.task('default', ['lint', 'server', 'watch', 'sass', 'install']);
+gulp.task('default', ['lint', 'server', 'watch', 'sass']);
 
 // Test task.
 gulp.task('test', ['mochaTest']);

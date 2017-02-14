@@ -39,7 +39,7 @@ angular.module('mean.system')
         timeout = $timeout(setNotification, 1300);
       }
     };
-
+    
     let addToNotificationQueue = function (msg) {
       notificationQueue.push(msg);
       if (!timeout) { // Start a cycle if there isn't one
