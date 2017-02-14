@@ -2018,3 +2018,152 @@ iframe{
   height:auto;
   overflow:hidden;
 }
+
+#app-container{
+   width:79% !important;
+   margin-left:45px !important;
+}
+
+#chat-container {
+  background: white;
+  border-top:5px solid #072f70;
+  border-left:5px solid #072f70;
+  border-right:5px solid #072f70;
+  border-bottom:5px solid #072f70;
+  width:17%;
+  padding:0px !important;
+  float: right;
+  position: fixed;
+  right: 0;
+  bottom:0;
+  transition: all .5s;
+  height:91.2%;
+}
+
+#chat-title {
+  width:100%;
+  background: #072f70;
+  height:5%;
+  color:white;
+  padding:10px;
+  text-align: center;
+}
+
+#chat-body {
+  height:530px !important;
+  width:100%;
+  overflow-y: scroll;
+  box-shadow: 0px 0px 0px 5px #072f70;
+}
+
+
+ #chat-footer{
+   height:auto;
+  width:100%;
+  margin-bottom: 0px !important;
+ }
+
+#new-message{
+  width:100% !important;
+  margin: 0px !important;
+  padding-left:10px;
+  padding-right:10px;
+border-bottom: 1px solid transparent;
+     box-shadow: 0 1px 0 0 transparent;
+     height:45px;
+     border:0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding:0px !important;
+}
+
+.chat-message{
+
+  border-bottom:2px solid #f99999;
+}
+   .chat-message img {
+     width:20%;
+     height: 40px;
+     margin-top:9.5px;
+     display: inline-block;
+     vertical-align: top;
+   }
+
+ .chat-message-info{
+  width:70%;
+  display: inline-block;
+  height:auto;
+  vertical-align: top;
+  padding:10px;
+}
+
+   .message-text {
+     max-width:100%;
+     word-break:break-all;
+    padding:0px 10px 0px 10px;
+   }
+
+
+   #chat-footer .btn {
+     margin:0px !important;
+     padding: 0px !important;
+   }
+
+   #submit-btn {
+     width: 100%;
+     margin: 0px !important;
+     background: #f99999;
+     height:45px;
+   }
+
+#chat-message-form {
+margin: 0px !important;
+
+}
+
+#collapse-chat-down {
+  float: left;
+  margin-left:5px;
+  color: #f99999;
+  background: transparent;
+  border:none;
+}
+
+#collapse-chat-down:focus, input:focus{
+    outline: none;
+}
+
+.slideDown {
+  transform: translateY(94.5%);
+}
+
+.turn-up {
+  transform: rotateY(0deg);
+  transition: all 1s;
+  display: inline-block;
+}
+
+.turn-up-active {
+  transform: rotateZ(180deg);
+}
+
+.chat-user {
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+
+@media (max-width: 40em) {
+
+#app-container {
+   width:100% !important;
+   margin-left:0px !important;
+}
+
+#chat-container {
+    display: none;
+  }
+
+}

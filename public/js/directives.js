@@ -62,7 +62,50 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/timer.html',
-      link: function (scope, elem, attr) {}
+      link: function (scope, elem, attr) { }
+    };
+  }).directive('chat', function () {
+    return {
+      restrict: 'EA',
+      templateUrl: '/views/chat.html',
+      link: function (scope, elem, attr) {
+        $('#submit-btn').on('click', () => {
+          const gameID = sessionStorage.getItem('gameID');
+          const database = firebase.database();
+          const chatPlayer = sessionStorage.getItem('chatUsername');
+          const chatAvatar = sessionStorage.getItem('avatar');
+          const time = new Date().toLocaleTimeString();
+          const chatMessage = $('#new-message');
+          database.ref(`chats/${gameID}`).push({
+            username: chatPlayer,
+            text: chatMessage.val(),
+            timestamp: time,
+            avatar: chatAvatar
+          });
+          chatMessage.val('');
+        });
+
+        $(document).ready(() => {
+          const gameID = sessionStorage.getItem('gameID');
+          const database = firebase.database();
+
+          database.ref(`chats/${gameID}`).on('child_added', (snapshot) => {
+            const msg = snapshot.val();
+            let messageAdd = `
+      ${`<div class='chat-message'><img src='${msg.avatar}'/><div class='chat-message-info'><div class='chat-user'>`}${msg.username}</div><div class='chat-time'>${msg.timestamp}</div></div>`;
+            messageAdd += `<p class='message-text'>
+      ${msg.text}</p><div class='clearFix'></div></div>`;
+            $('#chat-body').append(messageAdd);
+            $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
+
+            if (document.getElementsByClassName('slideDown').length) {
+              const notification = new Audio('../../audio/chimes.mp3');
+              notification.volume = 0.2;
+              notification.play();
+            }
+          });
+        });
+      }
     };
   })
   .directive('landing', function () {
