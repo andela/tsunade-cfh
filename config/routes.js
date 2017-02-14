@@ -106,4 +106,9 @@ module.exports = function(app, passport, auth) {
     var auth = require('../app/controllers/loginAuth');
     app.post('/api/auth/login', auth.login);
     app.post('/api/auth/social', auth.social);
+
+  const startGame = require('../app/controllers/start-game');
+  app.get('/api/games/:id', startGame.getGameRecords);
+  app.post('/api/games/:id/start', startGame.saveRecords);
+  app.post('/api/games/:id/end', startGame.updateRecords);
 };
