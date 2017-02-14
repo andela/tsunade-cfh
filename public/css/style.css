@@ -1,3 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu|Courgette);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+
+ [class*="entypo-"]:before {
+     font-family: 'entypo', sans-serif;
+ }
+
  .clear {
    clear: both;
  }
@@ -385,7 +393,7 @@
    cursor: pointer;
  }
 
- #sign-up-btn-other {
+ /*#sign-up-btn-other {
    display: inline-block;
    border-radius: 8px;
    -moz-border-radius: 5px;
@@ -401,7 +409,7 @@
    margin-right: 10px;
    padding: 0.1em 35px;
    cursor: pointer;
- }
+ }*/
  /**** About Us ****/
 
  #main-bod {
@@ -509,24 +517,26 @@
  }
 
  #contain-avatars {
-   margin-top: 25px;
+     padding-left: 30px;
+     padding-right: 20px;
  }
 
  .avatar-list {
-   overflow: hidden;
-   padding-left: 0px;
-   margin-left: 3%;
+     overflow: hidden;
+     padding-left: 0px;
+     margin-left: 3%;
  }
 
  .avatar-list img {
-   max-width: 60%;
+     max-width: 70%;
  }
 
  .avatars {
-   position: relative;
-   float: left;
-   margin: 2px 5px;
-   border-radius: 8px;
+     position: relative;
+     float: left;
+     margin: 2px 5px;
+     border-radius: 8px;
+     max-width: 45px;
  }
  /**** Portfolio ****/
 
@@ -1480,3 +1490,411 @@ text-align: center !important;
 margin:0 auto !important;
 }
 
+/* login & signup page */
+
+ div.loginpanel {
+     font-family: 'Ubuntu', sans-serif;
+     width: 100%;
+     max-width: 500px;
+     margin: 0 auto;
+     position: relative !important;
+     /*top: 35%;*/
+     min-height: 450px;
+     z-index: 990;
+     margin-top: 50px;
+     padding: 30px;
+     background-color: #fff;
+     -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+     border-radius: 8px;
+     -webkit-box-shadow: 0 0 5px 1px #333;
+     -moz-box-shadow: 0 0 5px 1px #333;
+     box-shadow: 0 0 5px 1px #333;
+ }
+
+ div.loginpanel .parallax-background {
+   padding: 10% 0 0 0;
+ }
+
+ div.loginpanel a.register {
+     color: #444;
+     text-decoration: none;
+     -webkit-transition: all 0s;
+     -moz-transition: all 0s;
+     -ms-transition: all 0s;
+     -o-transition: all 0s;
+     transition: all 0s;
+ }
+
+ div.loginpanel a.register:before {
+     padding-right: 6px;
+ }
+
+ div.loginpanel a.register:hover {
+     color: #072f70;
+     text-shadow: 0 1px #555;
+ }
+
+ div.loginpanel a.register:active {
+     text-shadow: 0 -1px #555;
+     -webkit-transform: translateY(2px);
+     -moz-transform: translateY(2px);
+     -ms-transform: translateY(2px);
+     -o-transform: translateY(2px);
+     transform: translateY(2px);
+ }
+
+ div.loginpanel input {
+     width: 100%;
+     margin: 8px 0px;
+     padding: 12px;
+ }
+
+ div.loginpanel div.txt {
+     position: relative;
+ }
+
+ div.loginpanel div.txt input[type="text"],
+ div.loginpanel div.txt input[type="password"] {
+     color: #555;
+     text-shadow: 0 1px #FFF;
+     padding: 12px 12px 12px 45px;
+     border: 1px solid #FF9999;
+     border: 2px solid #020e21;
+     -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+     border-radius: 4px;
+     outline: none;
+     background-color: rgba(255, 255, 255, 0.8);
+ }
+
+ div.loginpanel div.txt input[type="text"]:hover,
+ div.loginpanel div.txt input[type="password"]:hover,
+ div.loginpanel div.txt input[type="text"]:focus,
+ div.loginpanel div.txt input[type="password"]:focus {
+     background-color: #FFF;
+ }
+
+ div.loginpanel div.txt input[type="text"]:focus,
+ div.loginpanel div.txt input[type="password"]:focus {
+     border-color: #FF9999;
+ }
+
+ div.loginpanel div.txt label {
+     cursor: text;
+ }
+
+ div.loginpanel div.txt label:before {
+     display: inline-block;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     font-family: 'entypo', sans-serif;
+     font-size: 1.1em;
+     color: #072f70;
+     line-height: 58px;
+     text-align: center;
+     width: 50px;
+     height: 50px;
+ }
+
+ div.loginpanel div.buttons {
+     display: -webkit-box;
+     display: -moz-box;
+     display: -ms-flexbox;
+     display: -webkit-flex;
+     display: flex;
+ }
+
+ div.loginpanel div.buttons input {
+     -webkit-flex: 1;
+     -moz-flex: 1;
+     flex: 1;
+     width: 100%;
+ }
+
+ div.loginpanel div.buttons span a {
+     display: inline-block;
+     vertical-align: middle;
+     padding: 0 15px;
+     line-height: 70px;
+     text-align: center;
+ }
+
+ div.loginpanel input[type="submit"] {
+     cursor: pointer;
+     color: #FFF;
+     text-shadow: 0 1px #020e21;
+     font-size: 1.2em;
+     border: 0 none;
+     -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+     border-radius: 4px;
+     outline: none;
+     background-color: #072f70;
+     -webkit-box-shadow: 0 2px #020e21, inset 0 0 #020e21;
+     -moz-box-shadow: 0 2px #020e21, inset 0 0 #27ae60;
+     box-shadow: 0 2px #020e21, inset 0 0 #020e21;
+ }
+
+ div.loginpanel input[type="submit"]:hover,
+ div.loginpanel input[type="submit"]:focus {
+     background-color: #052558;
+     -webkit-box-shadow: 0 2px #010409, inset 0 0 #020e21;
+     -moz-box-shadow: 0 2px #010409, inset 0 0 #020e21;
+     box-shadow: 0 2px #010409, inset 0 0 #020e21;
+ }
+
+ div.loginpanel input[type="submit"]:active {
+     -webkit-box-shadow: 0 0 #010409, inset 0 1px #010409;
+     -moz-box-shadow: 0 0 #010409, inset 0 1px #010409;
+     box-shadow: 0 0 #010409, inset 0 1px #010409;
+     -webkit-transform: translateY(2px);
+     -moz-transform: translateY(2px);
+     -ms-transform: translateY(2px);
+     -o-transform: translateY(2px);
+     transform: translateY(2px);
+     transition: all 0s;
+ }
+
+ div.loginpanel div.social {
+     display: -webkit-box;
+     display: -moz-box;
+     display: -ms-flexbox;
+     display: -webkit-flex;
+     display: flex;
+     margin-bottom: 10px;
+ }
+
+ div.loginpanel div.social a {
+     display: inline-block;
+     -webkit-flex: 1;
+     -moz-flex: 1;
+     flex: 1;
+     text-align: center;
+     text-decoration: none;
+     outline: none;
+ }
+
+ div.loginpanel div.social a:before {
+     display: inline-block;
+     padding: 0;
+     font-family: 'entypo', sans-serif;
+     font-size: 2em;
+     color: #fff;
+     line-height: 50px;
+     text-align: center;
+     text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+     -webkit-transition: all 0.2s ease-out;
+     -moz-transition: all 0.2s ease-out;
+     -ms-transition: all 0.2s ease-out;
+     -o-transition: all 0.2s ease-out;
+     transition: all 0.2s ease-out;
+     -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+     border-radius: 50%;
+     width: 50px;
+     height: 50px;
+ }
+
+ div.loginpanel div.social a:hover:before,
+ div.loginpanel div.social a:focus:before {
+     color: #FFF;
+     -webkit-transition: all 0.2s ease-out, box-shadow 0.3s ease-out 0.1s;
+     -moz-transition: all 0.2s ease-out, box-shadow 0.3s ease-out 0.1s;
+     -ms-transition: all 0.2s ease-out, box-shadow 0.3s ease-out 0.1s;
+     -o-transition: all 0.2s ease-out, box-shadow 0.3s ease-out 0.1s;
+     transition: all 0.2s ease-out, box-shadow 0.3s ease-out 0.1s;
+ }
+
+ div.loginpanel div.social a:active:before {
+     -webkit-transform: scale(0.9);
+     -moz-transform: scale(0.9);
+     -ms-transform: scale(0.9);
+     -o-transform: scale(0.9);
+     transform: scale(0.9);
+     -webkit-transition: all 0s;
+     -moz-transition: all 0s;
+     -ms-transition: all 0s;
+     -o-transition: all 0s;
+     transition: all 0s;
+ }
+
+ div.loginpanel div.social a.facebook:before {
+     content: "\f30c";
+     text-shadow: 0 1px #1e2e4f;
+     background-color: #3b5998;
+     -webkit-box-shadow: 0 0 0 4px rgba(59, 89, 152, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(59, 89, 152, 0.6);
+     box-shadow: 0 0 0 4px rgba(59, 89, 152, 0.6);
+ }
+
+ div.loginpanel div.social a.facebook:hover:before,
+ div.loginpanel div.social a.facebook:focus:before {
+     text-shadow: 0 1px #3b5998;
+     background-color: #1e2e4f;
+     -webkit-box-shadow: 0 0 0 4px rgba(30, 46, 79, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(30, 46, 79, 0.6);
+     box-shadow: 0 0 0 4px rgba(30, 46, 79, 0.6);
+ }
+
+ div.loginpanel div.social a.facebook:active:before {
+     -webkit-box-shadow: 0 0 0 4px rgba(30, 46, 79, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(30, 46, 79, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+     box-shadow: 0 0 0 4px rgba(30, 46, 79, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+ }
+
+ div.loginpanel div.social a.twitter:before {
+     content: "\f309";
+     text-shadow: 0 1px #1385cc;
+     background-color: #56b4ef;
+     -webkit-box-shadow: 0 0 0 4px rgba(86, 180, 239, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(86, 180, 239, 0.6);
+     box-shadow: 0 0 0 4px rgba(39, 159, 235, 0.6);
+ }
+
+ div.loginpanel div.social a.twitter:hover:before,
+ div.loginpanel div.social a.twitter:focus:before {
+     text-shadow: 0 1px #56b4ef;
+     background-color: #1385cc;
+     -webkit-box-shadow: 0 0 0 4px rgba(19, 133, 204, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(19, 133, 204, 0.6);
+     box-shadow: 0 0 0 4px rgba(19, 133, 204, 0.6);
+ }
+
+ div.loginpanel div.social a.twitter:active:before {
+     -webkit-box-shadow: 0 0 0 4px rgba(86, 180, 239, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(86, 180, 239, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+     box-shadow: 0 0 0 4px rgba(86, 180, 239, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+ }
+
+ div.loginpanel div.social a.googleplus:before {
+     content: "\f30f";
+     text-shadow: 0 1px #96271a;
+     background-color: #dd4b39;
+     -webkit-box-shadow: 0 0 0 4px rgba(221, 75, 57, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(221, 75, 57, 0.6);
+     box-shadow: 0 0 0 4px rgba(221, 75, 57, 0.6);
+ }
+
+ div.loginpanel div.social a.googleplus:hover:before,
+ div.loginpanel div.social a.googleplus:focus:before {
+     text-shadow: 0 1px #dd4b39;
+     background-color: #96271a;
+     -webkit-box-shadow: 0 0 0 4px rgba(150, 29, 36, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(150, 29, 36, 0.6);
+     box-shadow: 0 0 0 4px rgba(150, 29, 36, 0.6);
+ }
+
+ div.loginpanel div.social a.googleplus:active:before {
+     -webkit-box-shadow: 0 0 0 4px rgba(150, 29, 36, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+     -moz-box-shadow: 0 0 0 4px rgba(150, 29, 36, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+     box-shadow: 0 0 0 4px rgba(150, 29, 36, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+ }
+ div.loginpanel div.social a.github:before {
+  content: "\f300";
+  text-shadow: 0 1px #b2b2b2;
+  background-color: #191919;
+  -webkit-box-shadow: 0 0 0 4px rgba(76, 76, 76, 0.6);
+  -moz-box-shadow: 0 0 0 4px rgba(76, 76, 76, 0.6);
+  box-shadow: 0 0 0 4px rgba(76, 76, 76, 0.6);
+ }
+ div.loginpanel div.social a.github:hover:before,
+ div.loginpanel div.social a.github:focus:before {
+  text-shadow: 0 1px #191919;
+  background-color: #2F2F2F;
+  -webkit-box-shadow: 0 0 0 4px rgba(25, 25, 25, 0.6);
+  -moz-box-shadow: 0 0 0 4px rgba(25, 25, 25, 0.6);
+  box-shadow: 0 0 0 4px rgba(25, 25, 25, 0.6);
+ }
+ div.loginpanel div.social a.github:active:before {
+  -webkit-box-shadow: 0 0 0 4px rgba(25, 25, 25, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+  -moz-box-shadow: 0 0 0 4px rgba(25, 25, 25, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 4px rgba(25, 25, 25, 0.6), 0 0 0 4px #333, 0 1px 0 4px rgba(255, 255, 255, 0.6);
+ }
+
+ div.loginpanel div.hr {
+     display: -webkit-box;
+     display: -moz-box;
+     display: -ms-flexbox;
+     display: -webkit-flex;
+     display: flex;
+     width: 100%;
+     margin: 40px 0;
+     color: #FF9999;
+     text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+ }
+
+ div.loginpanel div.hr div {
+     font-family: 'Courgette', cursive;
+     font-size: 1.2em;
+ }
+
+ div.loginpanel div.hr div:first-child,
+ div.loginpanel div.hr div:last-child {
+     -webkit-flex: 1;
+     -moz-flex: 1;
+     flex: 1;
+     position: relative;
+ }
+
+ div.loginpanel div.hr div:first-child:before,
+ div.loginpanel div.hr div:last-child:before {
+     content: ' ';
+     position: absolute;
+     top: 50%;
+     left: 0px;
+     right: 0px;
+     height: 1px;
+     background-color: #5F5F5F;
+     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+ }
+
+ div.loginpanel div.hr div:first-child {
+     margin-right: 20px;
+ }
+
+ div.loginpanel div.hr div:last-child {
+     margin-left: 20px;
+ }
+
+ @media only screen and (max-width: 555px) {
+     div.loginpanel {
+         width: 90%;
+     }
+     div.loginpanel div.buttons {
+         -webkit-flex-direction: column;
+         -moz-flex-direction: column;
+         flex-direction: column;
+     }
+     div.loginpanel div.buttons span {
+         width: 100%;
+     }
+     div.loginpanel div.buttons span a {
+         width: 100%;
+         line-height: 40px;
+     }
+ }
+
+ @media only screen and (max-width: 400px) {
+     div.loginpanel {
+         width: 100%;
+         -webkit-border-radius: 0;
+         -moz-border-radius: 0;
+         border-radius: 0;
+     }
+     .resp-info:before {
+         content: 'max 400';
+     }
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+ display: none !important;
+}

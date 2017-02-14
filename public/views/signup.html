@@ -1,4 +1,4 @@
-<div landing id="main-bod">
+<div landing id="main-bod" ng-controller="IndexController">
   <!-- Fixed Logo & Menu Bar Start -->
   <div class="navigationDiv row ">
     <div class="col-md-3 col-xs-12">
@@ -10,70 +10,58 @@
         <li>
           <a href="./">Home</a>
         </li>
-
-<li><a href="/play"><button class="play_button btn"> Play </button</a></li>
 </ul>
 </div>
 </div>
-</div>
-<!-- Fixed Logo & Menu Bar End -->
 
 <!-- Landing Start -->
-<div class="wpb-teaser parallax-background" id="homer">
-  <div class="background-opacity"></div>
-  <div class="modified-container">
-    <div class="row" id="main-text">
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <h2 id="slogan">Sign Up with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
+  <div class="loginpanel">
+    <form>
+      <div class="sign-error" ng-show="showError()" ng-cloak>
+        <span>{{ error.data.message }}</span>
       </div>
-      <p id="create">Or create a username/password and select an avatar:</p>
-
-      <div class="sign-body">
-        <div class="more-sign">
-<form class=" form-horizontal" action="/users" method="post">
-            <div class="control-group">
-              <label for="name" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="name" type="text" name="name" placeholder="Full name" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="email" type="email" name="email" placeholder="Email" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" placeholder="Password" required novalidate />
-              </div>
-            </div>
-            <div id="contain-avatars">
-              <ul ng-controller="IndexController" class="avatar-list">
-                <li ng-repeat="avatar in avatars" class="avatars ng-scope">
-                  <input name="avatar" type='radio' value="{{$index}}">
-                    <img ng-src="{{avatar}}">
-                  </input>
-                </li>
-              </ul>
-            </div>
-            <div class="form-actions">
-              <button id="sign-up-btn-other" type='submit'>Sign Up</button>
-            </div>
-          </form>
-        </div>
+      <div class="txt">
+        <input id="name" name="name" ng-model="name" type="text" placeholder="Fullname" required novalidate />
+        <label for="user" class="entypo-user"></label>
       </div>
+      <div class="txt">
+        <input id="username" name="username" ng-model="username" type="text" placeholder="Username" required novalidate />
+        <label for="user" class="entypo-user"></label>
+      </div>
+      <div class="txt">
+        <input id="email" name="email" ng-model="email" type="text" placeholder="Email" required novalidate />
+        <label for="user" class="entypo-user"></label>
+      </div>
+      <div class="txt">
+        <input id="pwd" type="password" ng-model="password" placeholder="Password" name="password" required novalidate />
+        <label for="pwd" class="entypo-lock"></label>
+      </div>
+      <div id="contain-avatars">
+        <ul class="avatar-list">
+          <li ng-repeat="avatar in avatars" class="avatars ng-scope">
+            <input name="avatar" type='radio' value="{{$index}}">
+              <img ng-src="{{avatar}}">
+            </input>
+          </li>
+        </ul>
+      </div>
+      <div class="buttons">
+        <input type="submit" id="sign-up-btn-other" ng-click="signup()" value="Sign Up" />
+      </div>
+    </form>
+    <span>
+    Already have an account? click <a href="#!/signin">here</a> to login
+  </span>
+    <div class="hr">
+      <div></div>
+      <div>OR</div>
+      <div></div>
     </div>
+
+    <div class="social">
+      <a href ng-click="facebookLogin()" class="facebook"></a>
+      <a href ng-click="twitterLogin()" class="twitter"></a>
+      <a href ng-click="googleLogin()" class="googleplus"></a>
     </div>
-    </div>
-  </div>
-
-
-
+</div>
+</div>

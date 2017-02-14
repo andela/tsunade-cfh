@@ -1,4 +1,4 @@
-<div landing id="main-bod">
+<div landing id="main-bod" ng-controller="IndexController">
   <!-- Fixed Logo & Menu Bar Start -->
   <div landing id="main-bod">
   <!-- Fixed Logo & Menu Bar Start -->
@@ -12,8 +12,6 @@
         <li>
           <a href="./">Home</a>
         </li>
-
-<li><a href="/play"><button class="play_button btn"> Play </button</a></li>
 </ul>
 </div>
 </div>
@@ -21,48 +19,36 @@
 <!-- Fixed Logo & Menu Bar End -->
 
 <!-- Landing Start -->
-<div class="wpb-teaser parallax-background" id="homer">
-  <div class="background-opacity"></div>
-  <div class="modified-container">
-    <div class="row" id="main-text">
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <h2 id="slogan">Sign in with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
+<div class="loginpanel">
+    <form>
+      <div class="txt">
+        <input id="email" name="email" ng-model="login_email"  type="text" placeholder="Email" required novalidate />
+        <label for="user" class="entypo-user"></label>
       </div>
-      <p id="create">Or log in below:</p>
+      <div class="txt">
+        <input id="pwd" type="password" ng-model="login_password" placeholder="Password" name="password" required novalidate />
+        <label for="pwd" class="entypo-lock"></label>
+      </div>
+      <div class="sign-error" ng-show="showError()">
+        <span>Please check your username/password and try again.</span>
+      </div>
+      <div class="buttons">
+        <input type="submit" id="sign-up-btn-other" ng-click="login()" value="Sign In" />
+      </div>
+    </form>
+    <span>
+    Don't have an account? click <a href="#!/signup">here</a> to sign up
+  </span>
+    <div class="hr">
+      <div></div>
+      <div>OR</div>
+      <div></div>
+    </div>
 
-      <div class="sign-body">
-        <div class="more-sign">
-          <div class="sign-error" ng-show="showError() === 'invalid'">
-            Please check your username/password and try again.
-          </div>
-          <form class="form-horizontal" action="/users/session" method="post">
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="email" type="text" name="email" placeholder="Email" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" placeholder="Password" required novalidate />
-              </div>
-            </div>
-            <div class="form-actions top-margin">
-              <button id="sign-up-btn-other" type='submit'>Sign In</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    </div>
+    <div class="social">
+      <a href ng-click="facebookLogin()" class="facebook"></a>
+      <a href ng-click="twitterLogin()" class="twitter"></a>
+      <a href ng-click="googleLogin()" class="googleplus"></a>
     </div>
   </div>
 </div>
-
