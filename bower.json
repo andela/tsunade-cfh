@@ -6,12 +6,13 @@
     "angular-bootstrap": "~0.4.0",
     "angular-ui-utils": "0.0.4",
     "jquery": "~1.9.1",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "hello": "^1.14.0"
   },
   "exportsOverride": {
     "bootstrap": {
-    "/": "dist"
-  },
+      "/": "dist"
+    },
     "angular-ui-utils": {
       "modules": "modules/route/route.js"
     }
