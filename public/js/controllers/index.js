@@ -41,7 +41,7 @@ angular.module('mean.system')
           data: { message: 'Data incomplete.' }
         };
         $scope.showError();
-        $scope.error = err;
+        $scope.error = error;
       } else {
         const newuser = {
           email: $scope.email,
