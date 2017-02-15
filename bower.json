@@ -7,7 +7,8 @@
     "angular-ui-utils": "0.0.4",
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
-    "hello": "^1.14.0"
+    "hello": "^1.14.0",
+    "tether-shepherd": "1.8.1"
   },
   "exportsOverride": {
     "bootstrap": {
