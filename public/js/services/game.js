@@ -39,7 +39,7 @@ angular.module('mean.system')
         timeout = $timeout(setNotification, 1300);
       }
     };
-    
+
     let addToNotificationQueue = function (msg) {
       notificationQueue.push(msg);
       if (!timeout) { // Start a cycle if there isn't one
@@ -211,22 +211,47 @@ angular.module('mean.system')
       socket.emit('startGame');
     };
 
-    game.leaveGame = () => {
+    game.saveGame = () => {
+      socket.emit('startGame');
+      if (window.user) {
+        $http({
+          method: 'POST',
+          url: `/api/games/${game.gameID}/start`,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: {
+            gameID: game.gameID,
+            players: game.players,
+            completed: false,
+            rounds: 0,
+            winner: ''
+          }
+        })
+          .success((res) => {
+            return res;
+          })
+          .error((err) => {
+            return err;
+          });
+      }
+    };
+
+    game.leaveGame = function() {
       game.players = [];
       game.time = 0;
       socket.emit('leaveGame');
     };
 
-    game.pickCards = (cards) => {
-      socket.emit('pickCards', { cards });
+    game.pickCards = function(cards) {
+      socket.emit('pickCards',{cards: cards});
     };
 
-    game.pickWinning = (card) => {
-      socket.emit('pickWinning', { card: card.id });
+    game.pickWinning = function(card) {
+      socket.emit('pickWinning',{card: card.id});
     };
-    game.drawCard = () => {
-      socket.emit('drawCard');
-    };
+
     decrementTime();
+
     return game;
   }]);
