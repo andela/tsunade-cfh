@@ -166,9 +166,7 @@ angular.module('mean.system')
           // where the link is meant to be shared.
           $location.search({game: game.gameID});
           if(!$scope.modalShown){
-            setTimeout(function(){
-              $('#lobby-how-to-play').hide();
-              $('#oh-el').hide();
+            setTimeout(() => {
               $('#searchContainer').show();
             }, 50);
             $scope.modalShown = true;
@@ -222,5 +220,49 @@ angular.module('mean.system')
   $scope.selectEmail = (selectedEmail) => {
     $scope.inviteeEmail = selectedEmail;
     $scope.searchResults = [];
+  };
+
+  $scope.startTour = () => {
+    const tour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-default',
+        scrollTo: true
+      }
+    });
+    tour.addStep('Step 1', {
+      title: 'Start the game',
+      text: `This button starts the game when there are up
+       to 3 players ready to play`,
+      attachTo: '#start-game-container bottom',
+      classes: 'shepherd-theme-default',
+      showCancelLink: true,
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next
+        }
+      ]
+    });
+    tour.addStep('Step 2', {
+      title: 'Number of players',
+      text: `Here is an indicator of how many players have
+       joined the game out of 12 maximum players allowed.`,
+      attachTo: '#player-count-container bottom',
+      // classes: 'example-step-extra-class',
+      showCancelLink: true,
+      buttons: [
+        {
+          text: 'Back',
+          action: tour.back,
+          // classes:
+        },
+        {
+          text: 'Done',
+          action: tour.complete,
+          // classes:
+        }
+      ]
+    });
+    tour.start();
   };
 }]);

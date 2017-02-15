@@ -6,6 +6,10 @@
      font-family: 'entypo', sans-serif;
  }
 
+ #info-container {
+   overflow: scroll;
+ }
+
  .search-result:hover {
    background-color: lightblue;
  }
@@ -1391,7 +1395,7 @@
  }
 
  a {
-   color: #409FD5 !important;
+   color: #409FD5;
  }
 
  .myfooter a {
