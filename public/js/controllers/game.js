@@ -124,6 +124,12 @@ angular.module('mean.system')
       $location.path('/');
     };
 
+    $scope.viewGameHistory= () => {
+          game.gameHistory();
+          $location.path('/game-history');
+         // console.log('Game History view coming soon');
+      };
+
     // Catches changes to round to update when no players pick card
     // (because game.state remains the same)
     $scope.$watch('game.round', () => {

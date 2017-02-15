@@ -249,6 +249,26 @@ angular.module('mean.system')
       game.pickCards = function (cards) {
         socket.emit('pickCards', { cards: cards });
       };
+    game.gameHistory = () => {
+      socket.emit('viewGameHistory');
+      $http({
+        method: 'POST',
+        url: `/api/games/history`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          username: window.user.name
+        }
+      })
+       .success((res) => {
+         game.gameHistory = res;
+         return res;
+       })
+        .error((err) => {
+          return err;
+        });
+    };
 
       game.pickWinning = function (card) {
         socket.emit('pickWinning', { card: card.id });
