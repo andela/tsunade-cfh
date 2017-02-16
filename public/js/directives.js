@@ -70,9 +70,6 @@ angular.module('mean.directives', [])
       templateUrl: '/views/chat.html',
       link: function (scope, elem, attr) {
         $('#submit-btn').on('click', () => {
-          const notification = new Audio('../../audio/notify.mp3');
-          notification.volume = 0.2;
-          notification.play();
           const gameID = sessionStorage.getItem('gameID');
           const database = firebase.database();
           const chatPlayer = sessionStorage.getItem('chatUsername');
@@ -100,6 +97,12 @@ angular.module('mean.directives', [])
       ${msg.text}</p><div class='clearFix'></div></div>`;
             $('#chat-body').append(messageAdd);
             $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
+
+            if (document.getElementsByClassName('slideDown').length) {
+              const notification = new Audio('../../audio/chimes.mp3');
+              notification.volume = 0.2;
+              notification.play();
+            }
           });
         });
       }
