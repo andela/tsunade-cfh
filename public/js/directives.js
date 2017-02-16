@@ -69,7 +69,7 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       templateUrl: '/views/chat.html',
       link: function (scope, elem, attr) {
-        const notification = new Audio('../../audio/chimes.mp3');
+        const notification = new Audio('../../audio/notify.mp3');
         $('#submit-btn').on('click', () => {
           const gameID = sessionStorage.getItem('gameID');
           const database = firebase.database();
@@ -82,10 +82,6 @@ angular.module('mean.directives', [])
             text: chatMessage.val(),
             timestamp: time,
             avatar: chatAvatar
-          }).then(() => {
-      // Clear message text field and SEND button state.
-            FriendlyChat.resetMaterialTextfield(this.messageInput);
-            this.toggleButton();
           });
           notification.volume = 0.2;
           notification.play();
