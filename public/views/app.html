@@ -1,6 +1,6 @@
 </script>
 <!-- navbar starts here -->
-<div id="main-bod">
+<div id="main-bod" ng-controller="GameController">
   <!-- Fixed Logo & Menu Bar Start -->
   <div class="navigationDiv row ">
     <div class="col-md-3 col-xs-12">
@@ -13,47 +13,46 @@
           <a href="https://twitter.com/share" class="share-button-app" data-url="http://cfh.io"
             data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good"
             data-related="CFH_App"><img src="img/twitter.png" /></a>
-          <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');</script>
-</li>
-<li>
-  <a href="#" class="share-button-app" onclick="
+            <script>
+              !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');
+            </script>
+        </li>
+        <li>
+          <a href="#" class="share-button-app" onclick="
                         window.open(
                           'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
                           'facebook-share-dialog',
                           'width=626,height=436');
                         return false;"> <img src="img/facebook.png" />
-</a>
-</li>
-<li>
-  <div id='abandon-game-button' ng-controller="GameController" class="btn abandon_game_button" ng-click="abandonGame()">
-    Abandon Gaming
-  </div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<!-- navbar ends here -->
-<div id="app-container" ng-controller="GameController">
-  <div id="gameplay-container" class="upper_game_top_margin">
-    <div id="upper-gameplay-container">
-      <div id="menu-timeremaining-container">
-        <div id="menu-container">
-          <span id="menu-button">Menu</span>
-        </div>
-        <div id="timer-container">
-          <timer></timer>
-        </div>
-      </div>
-      <div id="question-container-outer">
-        <question></question>
-      </div>
+            </a>
+        </li>
+        <li>
+          <div id='abandon-game-button' class="btn abandon_game_button" ng-click="abandonGame()">
+            Abandon Gaming
+          </div>
+        </li>
+      </ul>
     </div>
-    <answers></answers>
   </div>
-</div>
-<div id="app-container" ng-controller="GameController">
-  <!-- The Modal -->
+  <div id="app-container">
+    <div id="gameplay-container" class="upper_game_top_margin">
+      <div id="upper-gameplay-container">
+        <div id="menu-timeremaining-container">
+          <div id="menu-container">
+            <span id="menu-button">Menu</span>
+          </div>
+          <div id="timer-container">
+            <timer></timer>
+          </div>
+        </div>
+        <div id="question-container-outer">
+          <question></question>
+        </div>
+      </div>
+      <answers></answers>
+    </div>
+  </div>
+
   <div id="myModal" class="modal-sm">
     <!-- Modal content -->
     <div class="modal-content">
@@ -65,4 +64,6 @@
     </div>
   </div>
 </div>
+<!-- navbar ends here -->
+
 <script type="text/javascript" src="../js/modal.js"></script>

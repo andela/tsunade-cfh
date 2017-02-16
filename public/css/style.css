@@ -2004,3 +2004,10 @@ iframe{
   overflow:hidden;
 }
 
+#menu-timeremaining-container {
+  height: 215px !important;
+}
+
+#question-container-outer {
+  height:215px !important;
+}
