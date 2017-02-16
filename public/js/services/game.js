@@ -201,8 +201,16 @@ angular.module('mean.system')
         mode = mode || 'joinGame';
         room = room || '';
         createPrivate = createPrivate || false;
-        const user = jwtHelper.decodeToken(localStorage.getItem('token'));
-        const userID = user ? user._doc._id : 'unauthenticated';
+        let user, userId;
+        if (localStorage.getItem('token')) {
+          user = jwtHelper.decodeToken(localStorage.getItem('token'));
+          userId = user._doc._id;
+        } else {
+          user = window.user;
+          if (user) userId = user._id;
+        }
+
+        const userID = user ? userId : 'unauthenticated';
         socket.emit(mode, {
           userID,
           room,
