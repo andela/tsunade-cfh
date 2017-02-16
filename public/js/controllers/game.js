@@ -108,9 +108,11 @@ angular.module('mean.system')
 
   $scope.winnerPicked = () => game.winningCard !== -1;
 
-  $scope.startGame = () => {
-    game.startGame();
-  };
+    $scope.startGame = function() {
+      const isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
+      isUptoRequiredNumber ? game.startGame(
+      ) : $('#playerMinimumAlert').modal('show');
+    };
 
   $scope.abandonGame = () => {
     game.leaveGame();
@@ -146,28 +148,107 @@ angular.module('mean.system')
       } else if ($scope.isCustomGame() && !$location.search().game) {
           // Once the game ID is set, update the URL if this is a game with friends,
           // where the link is meant to be shared.
-        $location.search({ game: game.gameID });
-        if (!$scope.modalShown) {
-          setTimeout(() => {
-            const link = document.URL;
-            const txt = 'Give the following link to your friends so they can join your game: ';
-            $('#lobby-how-to-play').text(txt);
-            $('#oh-el').css({ 'text-align': 'center', 'font-size':'22px', background: 'white', color: 'black' }).text(link);
-          }, 200);
-          $scope.modalShown = true;
+          $location.search({game: game.gameID});
+          if(!$scope.modalShown){
+            setTimeout(() => {
+              $('#searchContainer').show();
+            }, 50);
+            $scope.modalShown = true;
+          }
         }
       }
-    }
-  });
+    });
+  $scope.drawCard = () => {
+    game.drawCard();
+  };
 
-  if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
-    console.log('joining custom game');
-    game.joinGame('joinGame',$location.search().game);
-  } else if ($location.search().custom) {
-    game.joinGame('joinGame',null,true);
-  } else {
-    game.joinGame();
-  }
+    if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
+      console.log('joining custom game');
+      game.joinGame('joinGame',$location.search().game);
+    } else if ($location.search().custom) {
+      game.joinGame('joinGame',null,true);
+    } else {
+      game.joinGame();
+    }
+
+  $scope.sendInvite = () => {
+    const maxPlayersExceeded = $scope.invitedPlayers
+      .length === game.playerMaxLimit - 1;
+    if (maxPlayersExceeded) {
+      $('#playerMaximumAlert').modal('show');
+    } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
+      invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
+        if (data === 'Accepted') {
+          $scope.invitedPlayers.push($scope.inviteeEmail);
+        }
+        $scope.searchResults = [];
+        $scope.inviteeEmail = '';
+      });
+    } else {
+      $scope.searchResults = [];
+      $scope.inviteeEmail = '';
+      $('#playerAlreadyInvited').modal('show');
+    }
+  };
+
+  $scope.playerSearch = () => {
+    if ($scope.inviteeEmail !== '') {
+      playerSearch.getPlayers($scope.inviteeEmail).then((data) => {
+        $scope.searchResults = data;
+      });
+    } else {
+      $scope.searchResults = [];
+    }
+  };
+
+  $scope.selectEmail = (selectedEmail) => {
+    $scope.inviteeEmail = selectedEmail;
+    $scope.searchResults = [];
+  };
+
+  $scope.startTour = () => {
+    const tour = new Shepherd.Tour({
+      defaults: {
+        classes: 'shepherd-theme-default',
+        scrollTo: true
+      }
+    });
+    tour.addStep('Step 1', {
+      title: 'Start the game',
+      text: `This button starts the game when there are up
+       to 3 players ready to play`,
+      attachTo: '#start-game-container bottom',
+      classes: 'shepherd-theme-default',
+      showCancelLink: true,
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next
+        }
+      ]
+    });
+    tour.addStep('Step 2', {
+      title: 'Number of players',
+      text: `Here is an indicator of how many players have
+       joined the game out of 12 maximum players allowed.`,
+      attachTo: '#player-count-container bottom',
+      // classes: 'example-step-extra-class',
+      showCancelLink: true,
+      buttons: [
+        {
+          text: 'Back',
+          action: tour.back,
+          // classes:
+        },
+        {
+          text: 'Done',
+          action: tour.complete,
+          // classes:
+        }
+      ]
+    });
+    tour.start();
+  };
 }]);
 
 

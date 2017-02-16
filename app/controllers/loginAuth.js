@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
 const User = mongoose.model('User');
+const jwtSimple = require('jwt-simple');
 
-let auth = {
+
+const auth = {
 
   login: (request, response) => {
     User.findOne({
@@ -30,7 +32,7 @@ let auth = {
           response.status(200).json({
             success: true,
             message: 'Authentication successful',
-            token
+            token: token
           });
         }
       }

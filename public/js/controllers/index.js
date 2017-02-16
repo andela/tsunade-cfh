@@ -22,14 +22,43 @@ angular.module('mean.system')
         $scope.avatars = data;
       });
 
-      $scope.login = () => {
-        const user = {
-          email: $scope.login_email,
-          password: $scope.login_password
+
+    $scope.login = () => {
+      const user = {
+        email: $scope.login_email,
+        password: $scope.login_password
+      };
+
+      $http.post('/api/auth/login', user).then((response) => {
+        localStorage.setItem('token', response.data.token);
+        $location.path('/app');
+      }, (err) => {
+        $scope.showError();
+        $scope.error = err;
+      });
+    };
+
+    $scope.logout = () => {
+      localStorage.removeItem('token');
+      $scope.showOptions = true;
+    };
+
+    $scope.signup = () => {
+      if (!$scope.name || !$scope.username || !$scope.email || !$scope.password) {
+        const error = {
+          data: { message: 'Data incomplete.' }
+        };
+        $scope.showError();
+        $scope.error = error;
+      } else {
+        const newuser = {
+          email: $scope.email,
+          username: $scope.username,
+          password: $scope.password,
+          name: $scope.name
         };
 
-        $http.post('/api/auth/login', user).then((response) => {
-          localStorage.setItem('token', response.data.token);
+        $http.post('/api/auth/signup', newuser).then(() => {
           $location.path('/app');
         }, (err) => {
           $scope.showError();
@@ -130,7 +159,7 @@ angular.module('mean.system')
           $scope.showError();
           $scope.error = err;
         });
-      };
+    };
 
       $scope.start = () => {
         hello.init({
