@@ -8,7 +8,8 @@
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
     "hello": "^1.14.0",
-    "tether-shepherd": "1.8.1"
+    "tether-shepherd": "1.8.1",
+    "angular-jwt": "^0.1.9"
   },
   "exportsOverride": {
     "bootstrap": {
