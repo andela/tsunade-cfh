@@ -136,3 +136,4 @@ angular.module('mean.system')
 
     $scope.start();
   }]);
+

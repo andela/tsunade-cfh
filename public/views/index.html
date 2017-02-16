@@ -1,5 +1,5 @@
 <script></script>
-<div landing id="main-bod">
+<div landing>
   <!-- Fixed Logo & Menu Bar Start -->
   <div class="navigationDiv row ">
     <div class="col-md-3 col-xs-12">
@@ -26,47 +26,18 @@
 </ul>
 </div>
 </div>
+<div class="col-md-12" id="avatars" ng-controller="IndexController"></div>
+
 </div>
-<!-- Fixed Logo & Menu Bar End -->
-
 <!-- How to Play Start -->
-<div class="frame col-md-12" ng-controller="carousel">
-  <div uib-carousel id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
+<div class="frame col-md-12">
+  <iframe src="https://www.youtube.com/embed/GspTc2C2Be4">
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item">
-        <img src="../img/slide1.jpg" alt="" width="" height="345">
-      </div>
+  </iframe>
+</div>
 
-
-      <div class="item active">
-        <img src="../img/slide3.jpg" alt="" height="345">
-      </div>
-
-      <div class="item">
-        <img src="../img/slide5.jpg" alt="" height="345">
-      </div>
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+<div id="howto">
+  <img src="../img/howto.png" />
 </div>
 <!-- How to Play End -->
 
@@ -74,21 +45,15 @@
 <div class="row">
   <div id="sign-up">
     <span ng-hide="showOptions">
-          <a href="/play"><div id="sign-up-btn-landing">Play Game with Strangers</div></a>
-          <a href="/play?custom"><div id="sign-up-btn-landing">Play Game with Friends</div></a>
+          <a href="/play"><div class="sign-up-btn-landing">Play Game with Strangers</div></a>
+          <a href="/play?custom"><div class="sign-up-btn-landing">Play Game with Friends</div></a>
               <span id='twitter-facebook'>
                 <span id="">
                   <a href="https://twitter.com/share" class="share-button" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" data-related="CFH_App"><img src="img/twitter.png"/></a>
                 <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');</script>
 </span>
 <span>
-                    <a href="#" class="share-button"
-                      onclick="
-                        window.open(
-                          'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
-                          'facebook-share-dialog',
-                          'width=626,height=436');
-                        return false;"> <img src="img/facebook.png" />
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=#url" class="share-button"> <img src="img/facebook.png" />
 </a>
 </span>
 </span>
@@ -96,15 +61,11 @@
 </div>
 </div>
 <!-- Donation Info End -->
+<a href="http://www.wish.org" ><img class="wish-logo" src="../img/make-a-wish-logo-white-large.png"/></a>
+  <div class="col-md-12 text-center" id="wish">
 
-<!-- About Us Start -->
+          </div>
 <div class="row" id="charity">
-  <div class="row">
-    <div>
-      <p class="give">
-        "If you don't give back, no one will like you&trade;" - <a href="http://www.crowdrise.com/cfhio/fundraiser/cards4humanity">crowdrise.com</a></p>
-    </div>
-  </div>
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-3">
@@ -129,12 +90,18 @@
         <p>
           All donations go to the Make-a-Wish Foundation and benefit children in need.
         </p>
-        <a href="http://www.wish.org"><img src="img/make-a-wish-logo-white-large.png" id="wish" /></a>
       </div>
     </div>
     <div class="col-md-2"></div>
   </div>
+  <div class="row">
+    <div>
+      <p class="give">
+        "If you don't give back, no one will like you&trade;" - <a href="http://www.crowdrise.com/cfhio/fundraiser/cards4humanity">crowdrise.com</a></p>
+    </div>
+  </div>
 </div>
+
 <!-- About Us End -->
 
 <!-- Footer Start -->
