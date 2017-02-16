@@ -2014,6 +2014,115 @@ iframe{
   overflow:hidden;
 }
 
+ div.loginpanel div.hr div:first-child,
+ div.loginpanel div.hr div:last-child {
+     -webkit-flex: 1;
+     -moz-flex: 1;
+     flex: 1;
+     position: relative;
+ }
+
+ div.loginpanel div.hr div:first-child:before,
+ div.loginpanel div.hr div:last-child:before {
+     content: ' ';
+     position: absolute;
+     top: 50%;
+     left: 0px;
+     right: 0px;
+     height: 1px;
+     background-color: #5F5F5F;
+     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+ }
+
+ div.loginpanel div.hr div:first-child {
+     margin-right: 20px;
+ }
+
+ div.loginpanel div.hr div:last-child {
+     margin-left: 20px;
+ }
+
+ @media only screen and (max-width: 555px) {
+     div.loginpanel {
+         width: 90%;
+     }
+     div.loginpanel div.buttons {
+         -webkit-flex-direction: column;
+         -moz-flex-direction: column;
+         flex-direction: column;
+     }
+     div.loginpanel div.buttons span {
+         width: 100%;
+     }
+     div.loginpanel div.buttons span a {
+         width: 100%;
+         line-height: 40px;
+     }
+ }
+
+ @media only screen and (max-width: 400px) {
+     div.loginpanel {
+         width: 100%;
+         -webkit-border-radius: 0;
+         -moz-border-radius: 0;
+         border-radius: 0;
+     }
+     .resp-info:before {
+         content: 'max 400';
+     }
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+ display: none !important;
+}
+
+/*** Start-Game Css **/
+/*The Modal (background) */
+.modal-sm {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: white;
+  margin: 35% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color: #002266;
+}
+/* The Close Button */
+.close {
+  color: #002266;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover {
+  color: lightblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+.header-text {
+  margin-left: 35%;
+}
+/*** End of  Start-Game Css **/
 iframe{
   width:100%;
   height:500px;
@@ -2033,6 +2142,127 @@ iframe{
    width:79% !important;
    margin-left:45px !important;
 }
+
+#main-container {
+  background: url("../img/wood.png");
+}
+.card {
+  background-color: white;
+  box-shadow: 2px 2px 5px #333;
+}
+
+#question-border {
+  background-color: white;
+}
+
+#finding-players {
+  text-align: center;
+  font-size: 33px;
+  font-family: 'Lobster', cursive !important;
+}
+
+#player-count-container {
+  text-align: center;
+  padding: 10px 0px;
+  font-family: 'Lobster', cursive !important;
+}
+
+#player-count {
+  font-size: 30px;
+  font-family: 'Lobster', cursive !important;
+}
+
+#the-word-players {
+  font-size: 25px;
+  font-family: 'Lobster', cursive !important;
+}
+
+.find-players {
+  height: 70px;
+  justify-content: center;
+}
+
+#start-game-button {
+  font-size: 12px !important;
+  background-color: white !important;
+  color: #072f70 !important;
+  background-size:contain !important;
+  box-shadow:3px 3px 10px #333;
+  border-radius: 50px 0px;
+  font-family: sans-serif !important;
+}
+
+#info-container, #czar-blank-container, #game-end-container {
+  border: 2px solid white;
+  border-radius: 2px !important;
+  background: rgba(255,255,255,0.1) !important;
+}
+
+#lobby-how-to-play {
+  text-align: center;
+  font-size: 30px;
+  font-family: comic sans ms !important;
+}
+
+#oh-el li {
+  list-style-type: disc !important;
+  font-family: comic sans ms !important;
+}
+
+#question-container-inner {
+  position: relative
+}
+
+#notifications {
+  position: absolute;
+  padding: 10px;
+  border: 2px;
+  border-radius: 10px;
+  font-family: 'Lobster', cursive !important;
+}
+
+#inner-timer-container {
+  font-family: 'Lobster', cursive !important;
+  border: 2px solid black !important;
+  border-radius: 5px !important;
+  color: #002266 !important;
+}
+
+#cards-container {
+  background: transparent !important;
+}
+
+.longBlack {
+  background: #072f70 !important;
+  border: 1px solid #FF9999 !important;
+  border-radius: 0 ! important;
+}
+
+ #social-bar-container {
+   top:0 !important;
+   height: 550px !important;
+   overflow-y: scroll !important;
+   color: #002266;
+   }
+
+   #player-container {
+     height: 100px;
+   }
+
+#answers {
+  position: relative;
+  background-position: center;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  z-index: 50;
+  background-image: url('../img/download.jpeg');
+}
+
+#crDonateWidget_cfhio_cards4humanity {
+  box-shadow: unset;
+}
+
+
 
 #chat-container {
   background: white;
@@ -2162,8 +2392,6 @@ margin: 0px !important;
   font-weight: bold;
   font-style: italic;
 }
-
-
 
 @media (max-width: 40em) {
 
