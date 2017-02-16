@@ -1,7 +1,7 @@
 angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'angular-jwt'])
   .config(['$routeProvider',
-      function($routeProvider) {
-          $routeProvider.
+    function ($routeProvider) {
+      $routeProvider.
           when('/', {
             templateUrl: 'views/index.html'
           }).
@@ -26,19 +26,29 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
           otherwise({
             redirectTo: '/'
           });
-      }
-  ]).config(['$locationProvider',
-    function($locationProvider) {
-        $locationProvider.hashPrefix("!");
     }
-  ]).run(['$rootScope', function($rootScope) {
-  $rootScope.safeApply = function(fn) {
-    var phase = this.$root.$$phase;
-    if(phase == '$apply' || phase == '$digest') {
+  ]).config([() => {
+    const fbConfig = {
+      apiKey: 'AIzaSyDKtPdrh-Aa-Ximpkb-E1sIhTFKaDfN90g',
+      authDomain: 'cardsforhumanity-8b53c.firebaseapp.com',
+      databaseURL: 'https://cardsforhumanity-8b53c.firebaseio.com',
+      storageBucket: 'cardsforhumanity-8b53c.appspot.com',
+      messagingSenderId: '729251074640'
+    };
+    firebase.initializeApp(fbConfig);
+  }
+  ]).config(['$locationProvider',
+    function ($locationProvider) {
+      $locationProvider.hashPrefix('!');
+    }
+  ]).run(['$rootScope', function ($rootScope) {
+    $rootScope.safeApply = function (fn) {
+      var phase = this.$root.$$phase;
+      if(phase == '$apply' || phase == '$digest') {
         if(fn && (typeof(fn) === 'function')) {
-            fn();
+          fn();
         }
-    } else {
+      } else {
         this.$apply(fn);
       }
     };
@@ -50,3 +60,4 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
 
 angular.module('mean.system', []);
 angular.module('mean.directives', []);
+

@@ -43,6 +43,7 @@
    position: relative !important;
    float: left !important;
    top: -65px;
+
  }
 
  #tweet-container-index {
@@ -100,7 +101,9 @@
    margin: 0 30px;
    vertical-align: top;
    padding-top: 25px;
+
  }
+
 
  #give {
    color: white;
@@ -113,8 +116,27 @@
  }
 
  #wish {
-   max-width: 25%;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: 0 200px 200px 0;
+border-color: transparent #002266 transparent transparent;
+right:0;
+position: absolute;
+z-index:50;
  }
+
+.wish-logo{
+right:-80px;
+position: absolute;
+z-index:250;
+ -webkit-transform: rotate(45deg) scale(0.4);
+    -moz-transform: rotate(45deg) scale(0.4);
+    -o-transform: rotate(45deg) scale(0.4);
+    -ms-transform: rotate(45deg) scale(0.4);
+    transform: rotate(45deg) scale(0.4);
+
+}
 
  @media(min-width: 400px) and (max-width: 950px) {
    .some-text {
@@ -397,7 +419,7 @@
    margin-bottom: -13px;
  }
 
- #sign-up-btn-landing {
+ .sign-up-btn-landing {
    display: inline-block;
    border-radius: 8px;
    -moz-border-radius: 5px;
@@ -408,14 +430,18 @@
    text-align: center;
    color: white;
    background: #C54141;
-   margin-top: 3px;
+   margin-top: 15px;
    margin-bottom: 3px;
    margin-right: 10px;
    padding: 0.65em 35px;
    cursor: pointer;
  }
 
- /*#sign-up-btn-other {
+ .sign-up-btn-landing:hover {
+  background:#072f70;
+ }
+
+  /*#sign-up-btn-other {
    display: inline-block;
    border-radius: 8px;
    -moz-border-radius: 5px;
@@ -435,7 +461,7 @@
  /**** About Us ****/
 
  #main-bod {
-   max-width: 1400px;
+   width: 100%;
    margin: 0px auto;
  }
 
@@ -626,7 +652,6 @@
  }
  /**** Portfolio ****/
 
- .wpb-portfolio-body {}
 
  .wpb-portfolio-body .wpb-teaser {
    min-height: 350px;
@@ -776,7 +801,6 @@
  }
  /**** Single Portfolio Item ****/
 
- .wpb-single-portfolio {}
 
  .wpb-single-portfolio .wpb-content-inner {
    padding: 0px;
@@ -1237,13 +1261,15 @@
 
  .frame {
    background: white;
-   height: auto;
+   height: 500px;
    overflow-y: hidden;
    background: #072f70;
    position: relative;
    border-top: 10px solid #FF9999;
    border-bottom: 10px solid #FF9999;
-   margin-bottom: 30px;
+   padding:0px !important;
+   width:100%;
+
  }
 
  .czar div {
@@ -1287,6 +1313,7 @@
    right: 0px;
    padding-right: 35px;
    text-align: justify;
+   height:300px;
  }
 
  .motto {
@@ -1345,23 +1372,11 @@
    font-size: 16px;
  }
 
- html {
-   background: #002266;
-   width: 100%;
- }
-
- .circleDiv {
-   width: 100px;
-   height: 100px;
-   border-radius: 100px;
-   background: #002266;
-   margin: 0 auto;
-   margin-bottom: 20px;
-   margin-top: 20px;
- }
 
  #charity {
    background: white;
+   border-top:3px solid #072f70;
+   padding-top:15px !important;
    width: 100%;
    color: #002266 !important;
  }
@@ -1373,10 +1388,6 @@
    color: #002266;
  }
 
- body {
-   background: #002266;
-   height: 100% !important;
- }
 
  .navigationDiv {
    background: white;
@@ -1406,8 +1417,8 @@
    color: #002266;
  }
 
- #sign-up-btn-landing {
-   background: #FF9999;
+ .sign-up-btn-landing {
+   background: #002266;
    font-size: 15px;
    font-weight: bold;
  }
@@ -1429,7 +1440,7 @@
  }
 
  #crDonateWidget_cfhio_cards4humanity {
-   box-shadow: 2px 2px 5px black;
+   box-shadow: 2px 2px 5px #072f70;
  }
 
  .footer_privacy {
@@ -1457,6 +1468,8 @@
    width: 100%;
    margin: 0;
    padding: 0;
+   height: 100%;
+   background: url("../img/wood.png");;
  }
 
  .upper_game_top_margin {
@@ -1976,3 +1989,18 @@ margin:0 auto !important;
   margin-left: 35%;
 }
 /*** End of  Start-Game Css **/
+iframe{
+  width:100%;
+  height:500px;
+}
+
+#howto img{
+  width:100%;
+}
+
+#howto{
+  width:100%;
+  height:auto;
+  overflow:hidden;
+}
+

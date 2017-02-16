@@ -32,6 +32,7 @@
     "console-stamp": "~0.1.1",
     "dotenv": "^4.0.0",
     "express": "~3.4.0",
+    "firebase": "^3.6.9",
     "forever": "latest",
     "grunt": "~0.4.1",
     "grunt-bower-task": "~0.4.0",

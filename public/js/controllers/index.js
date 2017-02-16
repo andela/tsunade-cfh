@@ -141,6 +141,5 @@ angular.module('mean.system')
           redirect_uri: '/'
         });
       };
-
       $scope.start();
     }]);
