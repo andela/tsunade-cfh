@@ -82,7 +82,6 @@ angular.module('mean.system')
 
         let i;
       // Cache the index of the player in the players array
-        console.log(data.players);
         for (i = 0; i < data.players.length; i += 1) {
           if (game.id === data.players[i].socketID) {
             game.playerIndex = i;

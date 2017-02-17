@@ -14,6 +14,9 @@ angular.module('mean.system')
     $scope.invitedPlayers = [];
     $scope.firstPlayer = false;
 
+    $timeout(() => {
+      $window.sessionStorage.setItem('gameID', game.gameID);
+    }, 1000);
     $scope.pickCard = function (card) {
       if (!$scope.hasPickedCards) {
         if ($scope.pickedCards.indexOf(card.id) < 0) {
@@ -34,8 +37,7 @@ angular.module('mean.system')
     };
 
     $scope.pointerCursorStyle = () => {
-      if ($scope.isCzar() && $scope.game
-      .state === 'waiting for czar to decide') {
+      if ($scope.isCzar() && $scope.game.state === 'waiting for czar to decide') {
         return { cursor: 'pointer' };
       }
       return {};
@@ -74,11 +76,9 @@ angular.module('mean.system')
       return false;
     };
 
-    $scope.showFirst = card => game
-    .curQuestion.numAnswers > 1 && $scope.pickedCards[0] === card.id;
+    $scope.showFirst = card => game.curQuestion.numAnswers > 1 && $scope.pickedCards[0] === card.id;
 
-    $scope.showSecond = card => game
-    .curQuestion.numAnswers > 1 && $scope.pickedCards[1] === card.id;
+    $scope.showSecond = card => game.curQuestion.numAnswers > 1 && $scope.pickedCards[1] === card.id;
 
     $scope.isCzar = () => game.czar === game.playerIndex;
 
@@ -90,8 +90,7 @@ angular.module('mean.system')
       return $index === game.playerIndex;
     };
 
-    $scope.isCustomGame = () => !(/^\d+$/).test(game
-    .gameID) && game.state === 'awaiting players';
+    $scope.isCustomGame = () => !(/^\d+$/).test(game.gameID) && game.state === 'awaiting players';
 
     $scope.isPremium = $index => game.players[$index].premium;
 
@@ -113,7 +112,7 @@ angular.module('mean.system')
 
     $scope.winnerPicked = () => game.winningCard !== -1;
 
-    $scope.startGame = function () {
+    $scope.startGame = function() {
       const isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
       isUptoRequiredNumber ? game.startGame(
       ) : $('#playerMinimumAlert').modal('show');
@@ -139,8 +138,7 @@ angular.module('mean.system')
 
     // In case player doesn't pick a card in time, show the table
     $scope.$watch('game.state', () => {
-      if (game.state === 'waiting for czar to decide' && $scope
-      .showTable === false) {
+      if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
         $scope.showTable = true;
       }
     });
@@ -150,19 +148,18 @@ angular.module('mean.system')
         if (!$scope.isCustomGame() && $location.search().game) {
           // If the player didn't successfully enter the request room,
           // reset the URL so they don't think they're in the requested room.
-          $location.search({});
-        } else if ($scope.isCustomGame() && !$location.search().game) {
-          // Once the game ID is set, update
-          // the URL if this is a game with friends,
+        $location.search({});
+      } else if ($scope.isCustomGame() && !$location.search().game) {
+          // Once the game ID is set, update the URL if this is a game with friends,
           // where the link is meant to be shared.
-          $location.search({ game: game.gameID });
-          if (!$scope.modalShown) {
-            setTimeout(() => {
-              $('#searchContainer').show();
-            }, 50);
-            $scope.modalShown = true;
-          }
+        $location.search({game: game.gameID});
+        if(!$scope.modalShown){
+          setTimeout(() => {
+            $('#searchContainer').show();
+          }, 50);
+          $scope.modalShown = true;
         }
+      }
       }
     });
     $scope.drawCard = () => {
@@ -171,9 +168,9 @@ angular.module('mean.system')
 
     if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
       console.log('joining custom game');
-      game.joinGame('joinGame', $location.search().game);
+      game.joinGame('joinGame',$location.search().game);
     } else if ($location.search().custom) {
-      game.joinGame('joinGame', null, true);
+      game.joinGame('joinGame',null,true);
     } else {
       game.joinGame();
     }
@@ -184,26 +181,25 @@ angular.module('mean.system')
       if (maxPlayersExceeded) {
         $('#playerMaximumAlert').modal('show');
       } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
-        invitePlayer
-        .sendMail($scope.inviteeEmail, document.URL).then((data) => {
-          if (data === 'Accepted') {
-            $scope.invitedPlayers.push($scope.inviteeEmail);
-          }
-          $scope.searchResults = [];
-          $scope.inviteeEmail = '';
-        });
-      } else {
+      invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
+        if (data === 'Accepted') {
+          $scope.invitedPlayers.push($scope.inviteeEmail);
+        }
         $scope.searchResults = [];
         $scope.inviteeEmail = '';
-        $('#playerAlreadyInvited').modal('show');
-      }
+      });
+    } else {
+      $scope.searchResults = [];
+      $scope.inviteeEmail = '';
+      $('#playerAlreadyInvited').modal('show');
+    }
     };
 
     $scope.playerSearch = () => {
       if ($scope.inviteeEmail !== '') {
         playerSearch.getPlayers($scope.inviteeEmail).then((data) => {
-          $scope.searchResults = data;
-        });
+        $scope.searchResults = data;
+      });
       } else {
         $scope.searchResults = [];
       }
@@ -217,9 +213,9 @@ angular.module('mean.system')
     $scope.startTour = () => {
       const tour = new Shepherd.Tour({
         defaults: {
-          classes: 'shepherd-theme-default',
-          scrollTo: true
-        }
+        classes: 'shepherd-theme-default',
+        scrollTo: true
+      }
       });
       tour.addStep('Step 1', {
         title: 'Start the game',
@@ -229,11 +225,11 @@ angular.module('mean.system')
         classes: 'shepherd-theme-default',
         showCancelLink: true,
         buttons: [
-          {
-            text: 'Next',
-            action: tour.next
-          }
-        ]
+        {
+          text: 'Next',
+          action: tour.next
+        }
+      ]
       });
       tour.addStep('Step 2', {
         title: 'Number of players',
@@ -243,19 +239,20 @@ angular.module('mean.system')
       // classes: 'example-step-extra-class',
         showCancelLink: true,
         buttons: [
-          {
-            text: 'Back',
-            action: tour.back,
+        {
+          text: 'Back',
+          action: tour.back,
           // classes:
-          },
-          {
-            text: 'Done',
-            action: tour.complete,
+        },
+        {
+          text: 'Done',
+          action: tour.complete,
           // classes:
-          }
-        ]
+        }
+      ]
       });
       tour.start();
     };
   }]);
+
 

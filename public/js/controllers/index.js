@@ -1,7 +1,7 @@
 angular.module('mean.system')
   .controller('IndexController', ['$scope', 'Global',
-    '$location', 'socket', 'game', 'AvatarService', '$http',
-    function ($scope, Global, $location, socket, game, AvatarService, $http) {
+    '$location', 'socket', 'game', 'AvatarService', '$http', '$window',
+    function ($scope, Global, $location, socket, game, AvatarService, $http, $window) {
       $scope.global = Global;
 
       $scope.playAsGuest = () => {
@@ -22,6 +22,7 @@ angular.module('mean.system')
         $scope.avatars = data;
       });
 
+
       $scope.login = () => {
         const user = {
           email: $scope.login_email,
@@ -29,7 +30,7 @@ angular.module('mean.system')
         };
 
         $http.post('/api/auth/login', user).then((response) => {
-          localStorage.setItem('token', response.data.token);
+          $window.localStorage.setItem('token', response.data.token);
           $location.path('/app');
         }, (err) => {
           $scope.showError();
@@ -38,25 +39,24 @@ angular.module('mean.system')
       };
 
       $scope.logout = () => {
-        localStorage.removeItem('token');
+        $window.localStorage.removeItem('token');
         $scope.showOptions = true;
       };
 
       $scope.signup = () => {
-        if (!$scope.name || !$scope.username ||
-         !$scope.email || !$scope.password) {
+        if (!$scope.name || !$scope.username || !$scope.email || !$scope.password) {
           const error = {
-            data: { message: 'Data incomplete.' }
-          };
+          data: { message: 'Data incomplete.' }
+        };
           $scope.showError();
           $scope.error = error;
         } else {
           const newuser = {
-            email: $scope.email,
-            username: $scope.username,
-            password: $scope.password,
-            name: $scope.name
-          };
+          email: $scope.email,
+          username: $scope.username,
+          password: $scope.password,
+          name: $scope.name
+        };
 
           $http.post('/api/auth/signup', newuser).then((response) => {
             localStorage.setItem('token', response.data.token);
@@ -67,6 +67,7 @@ angular.module('mean.system')
           });
         }
       };
+
 
       $scope.facebookLogin = () => {
         const facebook = hello('facebook');

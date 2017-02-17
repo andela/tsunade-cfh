@@ -1,0 +1,29 @@
+<div id="chat-container">
+  <div id="chat-title">
+    <button id="collapse-chat-down">
+          <span class="glyphicon glyphicon-chevron-down turn-up"></span>
+        </button>
+    <strong>ChatLounge</strong>
+  </div>
+  <div id="chat-toggle-show">
+    <div id="chat-body">
+
+    </div>
+    <div id="chat-footer">
+      <form>
+        <input type="text" placeholder="Type Here..." id="new-message" autocomplete="off">
+      <input type="submit" id="submit-btn" class="btn" value="Send">
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+    $('#collapse-chat-down').click(() => {
+      $('#chat-container').toggleClass('slideDown');
+      $('#collapse-chat-down > span').toggleClass('turn-up-active');
+    });
+
+$(document).ready(function(){
+  $('#chat-body').scrollTop($('#chat-body')[0].scrollHeight);
+});
+</script>
