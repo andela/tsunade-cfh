@@ -19,6 +19,15 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $("#new-message").emojioneArea({
+        pickerPosition: "top",
+        standalone: false,
+        autocomplete: false
+      });
+    });
+</script>
 <script>
   $('#collapse-chat-down').click(() => {
     $('#chat-container').toggleClass('slideDown');
