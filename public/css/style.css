@@ -2001,7 +2001,6 @@ iframe{
   overflow:hidden;
 }
 
-
 iframe{
   width:100%;
   height:500px;
@@ -2206,4 +2205,12 @@ margin: 0px !important;
   margin-left: 35%;
 }
 /*** End of  Start-Game Css **/
+
+#menu-timeremaining-container {
+  height: 215px !important;
+}
+
+#question-container-outer {
+  height:215px !important;
+}
 

@@ -58,12 +58,13 @@ angular.module('mean.system')
           name: $scope.name
         };
 
-          $http.post('/api/auth/signup', newuser).then(() => {
-          $location.path('/app');
-        }, (err) => {
-          $scope.showError();
-          $scope.error = err;
-        });
+          $http.post('/api/auth/signup', newuser).then((response) => {
+            localStorage.setItem('token', response.data.token);
+            $location.path('/app');
+          }, (err) => {
+            $scope.showError();
+            $scope.error = err;
+          });
         }
       };
 

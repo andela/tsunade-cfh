@@ -69,6 +69,7 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       templateUrl: '/views/chat.html',
       link: function (scope, elem, attr) {
+        const notification = new Audio('../../audio/notify.mp3');
         $('#submit-btn').on('click', () => {
           const gameID = sessionStorage.getItem('gameID');
           const database = firebase.database();
@@ -82,6 +83,8 @@ angular.module('mean.directives', [])
             timestamp: time,
             avatar: chatAvatar
           });
+          notification.volume = 0.2;
+          notification.play();
           chatMessage.val('');
         });
 
@@ -97,12 +100,6 @@ angular.module('mean.directives', [])
       ${msg.text}</p><div class='clearFix'></div></div>`;
             $('#chat-body').append(messageAdd);
             $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
-
-            if (document.getElementsByClassName('slideDown').length) {
-              const notification = new Audio('../../audio/chimes.mp3');
-              notification.volume = 0.2;
-              notification.play();
-            }
           });
         });
       }

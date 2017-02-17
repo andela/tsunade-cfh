@@ -32,8 +32,10 @@ exports.signup = (req, res) => {
         }
       } else {
         const token = jwt.sign({
-          id: user.id,
-          exp: moment().add(7, 'd').valueOf()
+          _doc:{
+            _id: user.id
+          },
+          exp: moment().add(7, 'd').valueOf(),
         }, 'secret');
         res.status(201).json({
           msg: 'You have successfully signed up!',
