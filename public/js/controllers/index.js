@@ -79,7 +79,8 @@ angular.module('mean.system')
               email: user.email,
               provider: 'facebook'
             };
-            $http.post('/api/auth/social', userDetails).then(() => {
+            $http.post('/api/auth/social', userDetails).then((response) => {
+            $window.localStorage.setItem('token', response.data.token);
               $location.path('/app');
             });
           });
@@ -101,7 +102,8 @@ angular.module('mean.system')
               email: user.id,
               provider: 'twitter'
             };
-            $http.post('/api/auth/social', userDetails).then(() => {
+            $http.post('/api/auth/social', userDetails).then((response) => {
+          $window.localStorage.setItem('token', response.data.token);
               $location.path('/app');
             });
           });
@@ -124,7 +126,8 @@ angular.module('mean.system')
               email: user.email,
               provider: 'google'
             };
-            $http.post('/api/auth/social', userDetails).then(() => {
+            $http.post('/api/auth/social', userDetails).then((response) => {
+          $window.localStorage.setItem('token', response.data.token);
               $location.path('/app');
             });
           });
