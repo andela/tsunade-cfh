@@ -1,6 +1,5 @@
 node_modules
-public/lib/*
-!public/lib/emoji
+public/lib
 .sass-cache/
 .DS_store
 c4h_keys.txt
