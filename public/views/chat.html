@@ -1,21 +1,13 @@
-<<<<<<< HEAD
+
 <div id="chat-container">
   <div id="chat-title">
     <button id="collapse-chat-down">
           <span class="glyphicon glyphicon-chevron-down turn-up"></span>
         </button>
-=======
-<div id="chat-container" class="slideDown">
-  <div id="chat-title">
-    <button id="collapse-chat-down">
-         <span class="glyphicon glyphicon-chevron-up turn-up"></span>
-       </button>
->>>>>>> feature(redesign): add chat file
     <strong>ChatLounge</strong>
   </div>
   <div id="chat-toggle-show">
     <div id="chat-body">
-<<<<<<< HEAD
 
     </div>
     <div id="chat-footer">
@@ -23,34 +15,15 @@
         <input type="text" placeholder="Type Here..." id="new-message" autocomplete="off">
       <input type="submit" id="submit-btn" class="btn" value="Send">
       </form>
-=======
-    </div>
-    <div id="chat-footer">
-      <input type="text" placeholder="Type Here..." id="new-message" autocomplete="off">
-      <input type="submit" id="submit-btn" class="btn" value="Send">
->>>>>>> feature(redesign): add chat file
     </div>
   </div>
 </div>
 <script>
-<<<<<<< HEAD
     $('#collapse-chat-down').click(() => {
       $('#chat-container').toggleClass('slideDown');
       $('#collapse-chat-down > span').toggleClass('turn-up-active');
     });
-
 $(document).ready(function(){
   $('#chat-body').scrollTop($('#chat-body')[0].scrollHeight);
 });
-=======
-  $('#collapse-chat-down').click(() => {
-    $('#chat-container').toggleClass('slideDown');
-    $('#collapse-chat-down > span').toggleClass('turn-up-active');
-  });
-
-  $('#chat-body').animate({
-    scrollTop: $('#chat-body')
-      .prop('scrollHeight') - $('#chat-body').height()
-  }, 500);
->>>>>>> feature(redesign): add chat file
 </script>
