@@ -70,9 +70,10 @@ angular.module('mean.directives', [])
       templateUrl: '/views/chat.html',
       link: function (scope, elem, attr) {
         const notification = new Audio('../../audio/notify.mp3');
+        const gameID = sessionStorage.getItem('gameID');
+        console.log(gameID);
+        const database = firebase.database();
         $('#submit-btn').on('click', () => {
-          const gameID = sessionStorage.getItem('gameID');
-          const database = firebase.database();
           const chatPlayer = sessionStorage.getItem('chatUsername');
           const chatAvatar = sessionStorage.getItem('avatar');
           const time = new Date().toLocaleTimeString();
@@ -89,15 +90,11 @@ angular.module('mean.directives', [])
         });
 
         $(document).ready(() => {
-          const gameID = sessionStorage.getItem('gameID');
-          const database = firebase.database();
-
           database.ref(`chats/${gameID}`).on('child_added', (snapshot) => {
             const msg = snapshot.val();
             let messageAdd = `
       ${`<div class='chat-message'><img src='${msg.avatar}'/><div class='chat-message-info'><div class='chat-user'>`}${msg.username}</div><div class='chat-time'>${msg.timestamp}</div></div>`;
-            messageAdd += `<p class='message-text'>
-      ${msg.text}</p><div class='clearFix'></div></div>`;
+            messageAdd += `<pre><p class='message-text'>${msg.text}</p></pre><div class='clearFix'></div></div>`;
             $('#chat-body').append(messageAdd);
             $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
           });
