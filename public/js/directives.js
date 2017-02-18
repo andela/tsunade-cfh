@@ -69,12 +69,18 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       templateUrl: '/views/chat.html',
       link: function (scope, elem, attr) {
-        let gameID;
+        scope.gameID = null;
         scope.$watch('game.gameID', function (newVal, oldVal) {
           if (newVal !== oldVal && newVal !== null) {
             window.sessionStorage.setItem('gameID', newVal);
-            gameID = newVal;
+            scope.gameID = newVal;
           }
+
+          setTimeout(() => {
+            scope.$apply(() => {
+              scope.gameID = sessionStorage.getItem('gameID');
+            });
+          }, 1000);
         });
         const notification = new Audio('../../audio/notify.mp3');
         const database = firebase.database();
@@ -83,7 +89,7 @@ angular.module('mean.directives', [])
           const chatAvatar = sessionStorage.getItem('avatar');
           const time = new Date().toLocaleTimeString();
           const chatMessage = $('#new-message');
-          database.ref(`chats/${gameID}`).push({
+          database.ref(`chats/${scope.gameID}`).push({
             username: chatPlayer,
             text: chatMessage.val(),
             timestamp: time,
@@ -95,14 +101,16 @@ angular.module('mean.directives', [])
         });
 
         $(document).ready(() => {
-          database.ref(`chats/${gameID}`).on('child_added', (snapshot) => {
-            const msg = snapshot.val();
-            let messageAdd = `
-      ${`<div class='chat-message'><img src='${msg.avatar}'/><div class='chat-message-info'><div class='chat-user'>`}${msg.username}</div><div class='chat-time'>${msg.timestamp}</div></div>`;
-            messageAdd += `<pre><p class='message-text'>${msg.text}</p></pre><div class='clearFix'></div></div>`;
-            $('#chat-body').append(messageAdd);
-            $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
-          });
+          setTimeout(() => {
+              database.ref(`chats/${scope.gameID}`).on('child_added', (snapshot) => {
+                const msg = snapshot.val();
+                let messageAdd = `
+          ${`<div class='chat-message'><img src='${msg.avatar}'/><div class='chat-message-info'><div class='chat-user'>`}${msg.username}</div><div class='chat-time'>${msg.timestamp}</div></div>`;
+                messageAdd += `<pre><p class='message-text'>${msg.text}</p></pre><div class='clearFix'></div></div>`;
+                $('#chat-body').append(messageAdd);
+                $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
+              });
+          }, 1500);
         });
       }
     };
