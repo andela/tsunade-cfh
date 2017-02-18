@@ -15,7 +15,8 @@ angular.module('mean.system')
     $scope.firstPlayer = false;
 
     $timeout(() => {
-      window.sessionStorage.setItem('gameID', game.gameID);
+      console.log(game);
+      $window.sessionStorage.setItem('gameID', game.gameID);
     }, 1000);
 
     $scope.pickCard = function (card) {
