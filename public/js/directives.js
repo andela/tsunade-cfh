@@ -74,11 +74,9 @@ angular.module('mean.directives', [])
           if (newVal !== oldVal && newVal !== null) {
             window.sessionStorage.setItem('gameID', newVal);
             gameID = newVal;
-            console.log(gameID);
           }
         });
         const notification = new Audio('../../audio/notify.mp3');
-        console.log(gameID);
         const database = firebase.database();
         $('#submit-btn').on('click', () => {
           const chatPlayer = sessionStorage.getItem('chatUsername');
