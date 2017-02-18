@@ -69,8 +69,15 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       templateUrl: '/views/chat.html',
       link: function (scope, elem, attr) {
+        let gameID;
+        scope.$watch('game.gameID', function (newVal, oldVal) {
+          if (newVal !== oldVal && newVal !== null) {
+            window.sessionStorage.setItem('gameID', newVal);
+            gameID = newVal;
+            console.log(gameID);
+          }
+        });
         const notification = new Audio('../../audio/notify.mp3');
-        const gameID = sessionStorage.getItem('gameID');
         console.log(gameID);
         const database = firebase.database();
         $('#submit-btn').on('click', () => {

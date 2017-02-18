@@ -13,10 +13,9 @@ angular.module('mean.system')
     $scope.inviteeEmail = '';
     $scope.invitedPlayers = [];
     $scope.firstPlayer = false;
-    console.log(game);
+
     $timeout(() => {
-      console.log(game);
-      $window.sessionStorage.setItem('gameID', game.gameID);
+      window.sessionStorage.setItem('gameID', $scope.gameID);
     }, 1000);
 
     $scope.pickCard = function (card) {
