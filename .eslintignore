@@ -1,3 +1,4 @@
 node_modules/*
 karma.conf.js
-public/lib/emoji
+public/css/emojionearea.min.css
+public/js/emojionearea.min.js
