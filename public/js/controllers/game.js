@@ -1,6 +1,8 @@
-angular.module('mean.system')
-.controller('GameController', ['$scope', 'game',
-  '$timeout', '$location', 'MakeAWishFactsService', '$dialog', 'playerSearch', 'invitePlayer', '$window', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, playerSearch, invitePlayer, $window) {
+angular.module('mean.system').controller('GameController', ['$scope',
+  'game', '$timeout', '$location', 'MakeAWishFactsService',
+  '$dialog', 'playerSearch', 'invitePlayer', '$window', '$http',
+  ($scope, game, $timeout, $location, MakeAWishFactsService,
+$dialog, playerSearch, invitePlayer, $window, $http) => {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -17,6 +19,14 @@ angular.module('mean.system')
     $timeout(() => {
       window.sessionStorage.setItem('gameID', $scope.gameID);
     }, 1000);
+
+
+    $scope.allGameRecords = () => {
+      $http.post('/api/games/history').then((games) => {
+       $scope.allGameData = games.data;
+      }, (err) => {
+        console.log(err.data); });
+    };
 
     $scope.pickCard = function (card) {
       if (!$scope.hasPickedCards) {
@@ -39,7 +49,9 @@ angular.module('mean.system')
 
     $scope.pointerCursorStyle = () => {
       if ($scope.isCzar() && $scope.game.state === 'waiting for czar to decide') {
-        return { cursor: 'pointer' };
+        return {
+          cursor: 'pointer'
+        };
       }
       return {};
     };
@@ -85,9 +97,9 @@ angular.module('mean.system')
 
     $scope.isPlayer = ($index) => {
       $window.sessionStorage
-    .setItem('chatUsername', game.players[game.playerIndex].username);
+        .setItem('chatUsername', game.players[game.playerIndex].username);
       $window.sessionStorage
-    .setItem('avatar', game.players[game.playerIndex].avatar);
+        .setItem('avatar', game.players[game.playerIndex].avatar);
       return $index === game.playerIndex;
     };
 
@@ -113,10 +125,11 @@ angular.module('mean.system')
 
     $scope.winnerPicked = () => game.winningCard !== -1;
 
-    $scope.startGame = function() {
+    $scope.startGame = function () {
       const isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
-      isUptoRequiredNumber ? game.startGame(
-      ) : $('#playerMinimumAlert').modal('show');
+      if (isUptoRequiredNumber) {
+        game.startGame();
+      } else { $('#playerMinimumAlert').modal('show'); }
     };
 
     $scope.abandonGame = () => {
@@ -124,11 +137,9 @@ angular.module('mean.system')
       $location.path('/');
     };
 
-    $scope.viewGameHistory= () => {
-          game.gameHistory();
-          $location.path('/game-history');
-         // console.log('Game History view coming soon');
-      };
+    $scope.viewGameHistory = () => {
+      game.gameHistory();
+    };
 
     // Catches changes to round to update when no players pick card
     // (because game.state remains the same)
@@ -185,7 +196,7 @@ angular.module('mean.system')
 
     $scope.sendInvite = () => {
       const maxPlayersExceeded = $scope.invitedPlayers
-      .length === game.playerMaxLimit - 1;
+        .length === game.playerMaxLimit - 1;
       if (maxPlayersExceeded) {
         $('#playerMaximumAlert').modal('show');
       } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
@@ -244,7 +255,7 @@ angular.module('mean.system')
         text: `Here is an indicator of how many players have
        joined the game out of 12 maximum players allowed.`,
         attachTo: '#player-count-container bottom',
-      // classes: 'example-step-extra-class',
+        // classes: 'example-step-extra-class',
         showCancelLink: true,
         buttons: [
           {
@@ -262,5 +273,4 @@ angular.module('mean.system')
       tour.start();
     };
   }]);
-
 

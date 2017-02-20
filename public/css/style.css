@@ -2433,7 +2433,7 @@ margin: 0px !important;
 .modal-sm {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
@@ -2445,8 +2445,7 @@ margin: 0px !important;
 /* Modal Content/Box */
 .modal-content {
   background-color: white;
-  margin: 35% auto;
-  /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -2489,3 +2488,17 @@ margin: 0px !important;
   background: transparent;
   font-family: sans-serif;
 }
+
+/** start of game-log  css **/
+#gameLogButton {
+  color: white;
+  font-weight: bold;
+  background-color: #3F51B5;
+  ;
+}
+.removeModalScroll {
+  margin: -15% auto;
+  /*overflow: hidden;*/
+}
+/** end of game-log  css **/
+
