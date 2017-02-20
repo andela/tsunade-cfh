@@ -15,8 +15,9 @@ angular.module('mean.system')
     $scope.firstPlayer = false;
 
     $timeout(() => {
-      $window.sessionStorage.setItem('gameID', game.gameID);
+      window.sessionStorage.setItem('gameID', $scope.gameID);
     }, 1000);
+
     $scope.pickCard = function (card) {
       if (!$scope.hasPickedCards) {
         if ($scope.pickedCards.indexOf(card.id) < 0) {
@@ -148,29 +149,30 @@ angular.module('mean.system')
         if (!$scope.isCustomGame() && $location.search().game) {
           // If the player didn't successfully enter the request room,
           // reset the URL so they don't think they're in the requested room.
-        $location.search({});
-      } else if ($scope.isCustomGame() && !$location.search().game) {
+          $location.search({});
+        } else if ($scope.isCustomGame() && !$location.search().game) {
           // Once the game ID is set, update the URL if this is a game with friends,
           // where the link is meant to be shared.
-        $location.search({game: game.gameID});
-        if(!$scope.modalShown){
-          setTimeout(() => {
-            $('#searchContainer').show();
-          }, 50);
-          $scope.modalShown = true;
+          $location.search({ game: game.gameID });
+          if (!$scope.modalShown) {
+            setTimeout(() => {
+              $('#searchContainer').show();
+            }, 50);
+            $scope.modalShown = true;
+          }
         }
       }
-      }
     });
+
     $scope.drawCard = () => {
       game.drawCard();
     };
 
     if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
       console.log('joining custom game');
-      game.joinGame('joinGame',$location.search().game);
+      game.joinGame('joinGame', $location.search().game);
     } else if ($location.search().custom) {
-      game.joinGame('joinGame',null,true);
+      game.joinGame('joinGame', null, true);
     } else {
       game.joinGame();
     }
@@ -181,25 +183,25 @@ angular.module('mean.system')
       if (maxPlayersExceeded) {
         $('#playerMaximumAlert').modal('show');
       } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
-      invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
-        if (data === 'Accepted') {
-          $scope.invitedPlayers.push($scope.inviteeEmail);
-        }
+        invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
+          if (data === 'Accepted') {
+            $scope.invitedPlayers.push($scope.inviteeEmail);
+          }
+          $scope.searchResults = [];
+          $scope.inviteeEmail = '';
+        });
+      } else {
         $scope.searchResults = [];
         $scope.inviteeEmail = '';
-      });
-    } else {
-      $scope.searchResults = [];
-      $scope.inviteeEmail = '';
-      $('#playerAlreadyInvited').modal('show');
-    }
+        $('#playerAlreadyInvited').modal('show');
+      }
     };
 
     $scope.playerSearch = () => {
       if ($scope.inviteeEmail !== '') {
         playerSearch.getPlayers($scope.inviteeEmail).then((data) => {
-        $scope.searchResults = data;
-      });
+          $scope.searchResults = data;
+        });
       } else {
         $scope.searchResults = [];
       }
@@ -213,9 +215,9 @@ angular.module('mean.system')
     $scope.startTour = () => {
       const tour = new Shepherd.Tour({
         defaults: {
-        classes: 'shepherd-theme-default',
-        scrollTo: true
-      }
+          classes: 'shepherd-theme-default',
+          scrollTo: true
+        }
       });
       tour.addStep('Step 1', {
         title: 'Start the game',
@@ -225,11 +227,11 @@ angular.module('mean.system')
         classes: 'shepherd-theme-default',
         showCancelLink: true,
         buttons: [
-        {
-          text: 'Next',
-          action: tour.next
-        }
-      ]
+          {
+            text: 'Next',
+            action: tour.next
+          }
+        ]
       });
       tour.addStep('Step 2', {
         title: 'Number of players',
@@ -239,17 +241,17 @@ angular.module('mean.system')
       // classes: 'example-step-extra-class',
         showCancelLink: true,
         buttons: [
-        {
-          text: 'Back',
-          action: tour.back,
+          {
+            text: 'Back',
+            action: tour.back,
           // classes:
-        },
-        {
-          text: 'Done',
-          action: tour.complete,
+          },
+          {
+            text: 'Done',
+            action: tour.complete,
           // classes:
-        }
-      ]
+          }
+        ]
       });
       tour.start();
     };

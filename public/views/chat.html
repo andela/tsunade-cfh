@@ -2,7 +2,7 @@
 <div id="chat-container">
   <div id="chat-title">
     <button id="collapse-chat-down">
-          <span class="glyphicon glyphicon-chevron-down turn-up"></span>
+          <span class="fa-down-open turn-up"></span>
         </button>
     <strong>ChatLounge</strong>
   </div>
@@ -12,18 +12,33 @@
     </div>
     <div id="chat-footer">
       <form>
-        <input type="text" placeholder="Type Here..." id="new-message" autocomplete="off">
-      <input type="submit" id="submit-btn" class="btn" value="Send">
+        <textarea placeholder="Type Here..." id="new-message"></textarea>
+        <!-- <input type="text" placeholder="Type Here..." id="new-message" autocomplete="off"> -->
+        <input type="submit" id="submit-btn" class="btn" value="Send">
       </form>
     </div>
   </div>
 </div>
 <script>
-    $('#collapse-chat-down').click(() => {
-      $('#chat-container').toggleClass('slideDown');
-      $('#collapse-chat-down > span').toggleClass('turn-up-active');
-    });
-$(document).ready(function(){
-  $('#chat-body').scrollTop($('#chat-body')[0].scrollHeight);
-});
+  $('#collapse-chat-down').click(() => {
+    $('#chat-container').toggleClass('slideDown');
+    $('#collapse-chat-down > span').toggleClass('turn-up-active');
+  });
+
+  $(document).ready(function () {
+
+    $('textarea').on('keyup', function (event) {
+
+      if (event.keyCode === 13 && event.shiftKey)
+        {
+          event.preventDefault();
+        }
+        else if(event.keyCode === 13){
+          $('#submit-btn').click();
+        }
+      });
+
+    $('#chat-body').scrollTop($('#chat-body')[0].scrollHeight);
+  });
+
 </script>
