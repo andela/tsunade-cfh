@@ -42,7 +42,7 @@
                       <thead ng-repeat="j in i.players">
                       <td>Players: {{j.username}}</td>
                       <td>Rounds: {{i.rounds}}</td>
-                      <td>Game Winner: {{i.winner}}</td>
+                      <td>Game Winner: {{i.players[i.winner].username}}</td>
                       </thead>
                     </tr>
                   </tbody>

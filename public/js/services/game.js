@@ -190,6 +190,24 @@ angular.module('mean.system')
         data.state === 'game ended') {
           game.players[game.playerIndex].hand = [];
           game.time = 0;
+          $http({
+            method: 'POST',
+            url: `/api/games/${game.gameID}/end`,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {
+              gameID: game.gameID,
+              players: game.players,
+              completed: true,
+              rounds: game.round,
+              winner: game.gameWinner
+            }
+          })
+          .success((res) => {
+            return res;
+          })
+          .error((err) => err);
         }
       });
 
@@ -245,9 +263,9 @@ angular.module('mean.system')
             data: {
               gameID: game.gameID,
               players: game.players,
-              completed: false,
-              rounds: 0,
-              winner: ''
+              completed: true,
+              rounds: game.round,
+              winner: game.gameWinner
             }
           })
           .success((res) => {
