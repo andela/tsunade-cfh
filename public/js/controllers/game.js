@@ -234,8 +234,7 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     $scope.startTour = () => {
       const tour = new Shepherd.Tour({
         defaults: {
-          classes: 'shepherd-theme-default',
-          scrollTo: true
+          classes: 'shepherd-theme-default'
         }
       });
       tour.addStep('Step 1', {
@@ -243,7 +242,6 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         text: `This button starts the game when there are up
        to 3 players ready to play`,
         attachTo: '#start-game-container bottom',
-        classes: 'shepherd-theme-default',
         showCancelLink: true,
         buttons: [
           {
@@ -257,18 +255,100 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         text: `Here is an indicator of how many players have
        joined the game out of 12 maximum players allowed.`,
         attachTo: '#player-count-container bottom',
-        // classes: 'example-step-extra-class',
         showCancelLink: true,
         buttons: [
           {
             text: 'Back',
             action: tour.back,
-          // classes:
+          },
+          {
+            text: 'Next',
+            action: tour.next,
+          }
+        ]
+      });
+      tour.addStep('Step 3', {
+        title: 'Game Timer',
+        text: `This is a countdown timer that shows how much
+         time is remaining for you to choose a card.`,
+        attachTo: '#timer-container left',
+        showCancelLink: true,
+        buttons: [
+          {
+            text: 'Back',
+            action: tour.back,
+          },
+          {
+            text: 'Next',
+            action: tour.next,
+          }
+        ]
+      });
+      tour.addStep('Step 4', {
+        title: 'Chat window',
+        text: `Here is a chat window where you can view
+         conversations between players in the game, including you.`,
+        attachTo: '#chat-body right',
+        showCancelLink: true,
+        buttons: [
+          {
+            text: 'Back',
+            action: tour.back,
+          },
+          {
+            text: 'Next',
+            action: tour.next,
+          }
+        ]
+      });
+      tour.addStep('Step 5', {
+        title: 'Chat message',
+        text: `This is a chat input box where you can type in messages
+         you want to send to the chat widow for all players to see.`,
+        attachTo: '#chat-footer right',
+        showCancelLink: true,
+        buttons: [
+          {
+            text: 'Back',
+            action: tour.back,
+          },
+          {
+            text: 'Next',
+            action: tour.next,
+          }
+        ]
+      });
+      tour.addStep('Step 6', {
+        title: 'Game History',
+        text: 'The game log shows you your game history.',
+        attachTo: '#gameLogButton bottom',
+        showCancelLink: true,
+        buttons: [
+          {
+            text: 'Back',
+            action: tour.back,
+          },
+          {
+            text: 'Next',
+            action: tour.next,
+          }
+        ]
+      });
+      tour.addStep('Step 7', {
+        title: 'Abandon Game',
+        text: `Click this button to Leave the game. 
+          You will not be able to get back into this 
+          game if it has already started`,
+        attachTo: '#abandon-game-button right',
+        showCancelLink: true,
+        buttons: [
+          {
+            text: 'Back',
+            action: tour.back,
           },
           {
             text: 'Done',
             action: tour.complete,
-          // classes:
           }
         ]
       });
