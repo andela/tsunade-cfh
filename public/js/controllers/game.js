@@ -29,6 +29,8 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     };
 
     $scope.pickCard = function (card) {
+      const notification = new Audio('../../audio/click.mp3');
+      notification.play();
       if (!$scope.hasPickedCards) {
         if ($scope.pickedCards.indexOf(card.id) < 0) {
           $scope.pickedCards.push(card.id);
