@@ -204,10 +204,10 @@ angular.module('mean.system')
               winner: game.gameWinner
             }
           })
-          .success((res) => {
-            return res;
-          })
-          .error((err) => err);
+            .success((res) => {
+              return res;
+            })
+            .error(err => err);
         }
       });
 
@@ -231,50 +231,48 @@ angular.module('mean.system')
       game.startGame = () => {
         socket.emit('startGame');
         $http({
-            method: 'POST',
-            url: `/api/games/${game.gameID}/start`,
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            data: {
-              gameID: game.gameID,
-              players: game.players,
-              completed: false,
-              rounds: 0,
-              winner: ''
-            }
+          method: 'POST',
+          url: `/api/games/${game.gameID}/start`,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: {
+            gameID: game.gameID,
+            players: game.players,
+            completed: false,
+            rounds: 0,
+            winner: ''
+          }
+        })
+          .success((res) => {
+            return res;
           })
-            .success((res) => {
-              return res;
-            })
-            .error((err) => {
-              return err;
-            });
-        }
-
-
+          .error((err) => {
+            return err;
+          });
+      };
       game.leaveGame = () => {
         game.players = [];
         game.time = 0;
         socket.emit('leaveGame');
         $http({
-            method: 'POST',
-            url: `/api/games/${game.gameID}/end`,
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            data: {
-              gameID: game.gameID,
-              players: game.players,
-              completed: true,
-              rounds: game.round,
-              winner: game.gameWinner
-            }
-          })
+          method: 'POST',
+          url: `/api/games/${game.gameID}/end`,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: {
+            gameID: game.gameID,
+            players: game.players,
+            completed: true,
+            rounds: game.round,
+            winner: game.gameWinner
+          }
+        })
           .success((res) => {
             return res;
           })
-          .error((err) => err);
+          .error(err => err);
       };
 
       game.drawCard = () => {
@@ -293,11 +291,11 @@ angular.module('mean.system')
             username: window.user.name
           }
         })
-       .success((res) => {
-         game.gameHistory = res;
-         return res;
-       })
-        .error(function (err) {
+          .success((res) => {
+            game.gameHistory = res;
+            return res;
+          })
+          .error((err) => {
             return err;
           });
       };
