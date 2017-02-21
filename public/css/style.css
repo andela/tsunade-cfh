@@ -2417,11 +2417,6 @@ margin: 0px !important;
 
 @media (max-width: 40em) {
 
-#app-container {
-   width:100% !important;
-   margin-left:0px !important;
-}
-
 #chat-container {
     display: none;
   }
