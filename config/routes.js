@@ -107,8 +107,13 @@ module.exports = function(app, passport, auth) {
     app.post('/api/auth/login', auth.login);
     app.post('/api/auth/social', auth.social);
 
+  // Start-game Routes
   const startGame = require('../app/controllers/start-game');
   app.get('/api/games/:id', startGame.getGameRecords);
   app.post('/api/games/:id/start', startGame.saveRecords);
   app.post('/api/games/:id/end', startGame.updateRecords);
+
+  // Game logs Routes
+  const gameLog = require('../app/controllers/game-log');
+  app.post('/api/games/history', gameLog.getUserHistory);
 };

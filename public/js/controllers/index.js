@@ -46,17 +46,17 @@ angular.module('mean.system')
       $scope.signup = () => {
         if (!$scope.name || !$scope.username || !$scope.email || !$scope.password) {
           const error = {
-          data: { message: 'Data incomplete.' }
-        };
+            data: { message: 'Data incomplete.' }
+          };
           $scope.showError();
           $scope.error = error;
         } else {
           const newuser = {
-          email: $scope.email,
-          username: $scope.username,
-          password: $scope.password,
-          name: $scope.name
-        };
+            email: $scope.email,
+            username: $scope.username,
+            password: $scope.password,
+            name: $scope.name
+          };
 
           $http.post('/api/auth/signup', newuser).then((response) => {
             localStorage.setItem('token', response.data.token);
@@ -80,7 +80,7 @@ angular.module('mean.system')
               provider: 'facebook'
             };
             $http.post('/api/auth/social', userDetails).then((response) => {
-            $window.localStorage.setItem('token', response.data.token);
+              $window.localStorage.setItem('token', response.data.token);
               $location.path('/app');
             });
           });
@@ -103,7 +103,7 @@ angular.module('mean.system')
               provider: 'twitter'
             };
             $http.post('/api/auth/social', userDetails).then((response) => {
-          $window.localStorage.setItem('token', response.data.token);
+              $window.localStorage.setItem('token', response.data.token);
               $location.path('/app');
             });
           });
@@ -127,7 +127,7 @@ angular.module('mean.system')
               provider: 'google'
             };
             $http.post('/api/auth/social', userDetails).then((response) => {
-          $window.localStorage.setItem('token', response.data.token);
+              $window.localStorage.setItem('token', response.data.token);
               $location.path('/app');
             });
           });

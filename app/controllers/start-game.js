@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const GameRecords = mongoose.model('Records');
 
+
 /*
 * Find Game Records by Gameid
 */
@@ -21,9 +22,8 @@ exports.getGameRecords = (req, res) => {
         success: false,
         message: 'Game Record Not Found!!'
       });
-    } else {
-      return res.status(200).json(savedGame);
     }
+    return res.status(200).json(savedGame);
   });
 };
 /*
@@ -70,8 +70,8 @@ exports.updateRecords = (req, res) => {
   }, {
     $set: {
       completed,
-      rounds,
-      winner
+      winner,
+      rounds
     }
   }, (err, data) => {
     if (err) {
