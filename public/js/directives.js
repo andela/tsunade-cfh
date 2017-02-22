@@ -24,7 +24,7 @@ angular.module('mean.directives', [])
               if (cardText.indexOf('.', cardText.length - 2) === cardText.length - 1) {
                 cardText = cardText.slice(0, cardText.length - 1);
               } else if ((cardText.indexOf('!', cardText.length - 2) === cardText.length - 1 ||
-                cardText.indexOf('?', cardText.length - 2) === cardText.length - 1) &&
+                  cardText.indexOf('?', cardText.length - 2) === cardText.length - 1) &&
                 cardIndex === curQ.numAnswers - 1) {
                 shouldRemoveQuestionPunctuation = true;
               }
@@ -55,14 +55,14 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function (scope, elem, attr) { }
+      link: function (scope, elem, attr) {}
     };
   })
   .directive('timer', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/timer.html',
-      link: function (scope, elem, attr) { }
+      link: function (scope, elem, attr) {}
     };
   }).directive('chat', function () {
     return {
@@ -98,18 +98,19 @@ angular.module('mean.directives', [])
           notification.volume = 0.2;
           notification.play();
           chatMessage.val('');
+          $('.emojionearea-editor').empty();
         });
 
         $(document).ready(() => {
           setTimeout(() => {
-              database.ref(`chats/${scope.gameID}`).on('child_added', (snapshot) => {
-                const msg = snapshot.val();
-                let messageAdd = `
+            database.ref(`chats/${scope.gameID}`).on('child_added', (snapshot) => {
+              const msg = snapshot.val();
+              let messageAdd = `
           ${`<div class='chat-message'><img src='${msg.avatar}'/><div class='chat-message-info'><div class='chat-user'>`}${msg.username}</div><div class='chat-time'>${msg.timestamp}</div></div>`;
-                messageAdd += `<pre><p class='message-text'>${msg.text}</p></pre><div class='clearFix'></div></div>`;
-                $('#chat-body').append(messageAdd);
-                $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
-              });
+              messageAdd += `<pre><p class='message-text'>${msg.text}</p></pre><div class='clearFix'></div></div>`;
+              $('#chat-body').append(messageAdd);
+              $('#chat-body').scrollTop($('#chat-body').prop('scrollHeight'));
+            });
           }, 1500);
         });
       }
@@ -127,4 +128,3 @@ angular.module('mean.directives', [])
       }
     };
   });
-
