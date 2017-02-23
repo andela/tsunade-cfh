@@ -32,6 +32,17 @@
      font-family: 'fa', sans-serif;
  }
 
+  .screen-tour-button {
+    font-family: 'Lobster', cursive;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: #002266;
+    background-color: #FF9999;
+    height: 40px;
+    width: 120px;
+    font-size: 1.5em;
+  }
+
  .fa-down-open:before { content: '\e800'; } /* '' */
 
  #info-container {

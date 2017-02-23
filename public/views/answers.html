@@ -40,7 +40,7 @@
             <span id='selection-number' ng-show="secondAnswer($index)"> 2 </span>
         </div>
     </span>
-
+</div>
 <div ng-show="game.state === 'waiting for czar to draw cards'">
   <div ng-show="!isCzar()">
     <h4 class='text-center'>Wait for czar to draw next set of cards</h4>
@@ -49,7 +49,6 @@
     <h4 class='text-center'> Click to draw next set of cards </h4>
     <div class="draw-card-icon" ng-click="drawCard()"></div>
   </div>
-</div>
 </div>
 <div id="info-container" ng-show="game.state === 'awaiting players'">
   <div id="inner-info">
@@ -79,7 +78,7 @@
         game!
       </li>
     </ol>
-    <button ng-click="startTour()">Screen Tour</button>
+    <button ng-click="startTour()" class="screen-tour-button">Screen Tour</button>
   </div>
 </div>
 <div id="game-end-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">
