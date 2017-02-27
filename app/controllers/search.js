@@ -6,8 +6,8 @@ const User = mongoose.model('User');
  * Gets all users from the database
  */
 exports.users = (req, res) => {
-  const query = req.params.inviteeEmail || '';
-  User.find({ email: { $regex: query } }).limit(10)
+  const query = req.params.inviteeUsername || '';
+  User.find({ username: { $regex: query } }).limit(10)
     .exec((err, result) => {
       if (err) {
         return res.json(err);

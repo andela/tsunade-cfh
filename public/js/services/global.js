@@ -76,9 +76,9 @@ angular.module('mean.system')
   }])
   .factory('playerSearch', ['$http', '$q', ($http, $q) => {
     return {
-      getPlayers: (inviteeEmail) => {
+      getPlayers: (inviteeUsername) => {
         const deferred = $q.defer();
-        $http.get(`/api/search/users/${inviteeEmail}`)
+        $http.get(`/api/search/users/${inviteeUsername}`)
           .success((data, status, headers, config) => {
             deferred.resolve(data, status, headers, config);
           }).error((err) => {

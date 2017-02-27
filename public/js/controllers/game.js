@@ -12,9 +12,13 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
     $scope.searchResults = [];
+
     $scope.inviteeEmail = '';
+
+    $scope.inviteeUsername = '';
     $scope.invitedPlayers = [];
     $scope.firstPlayer = false;
+    $scope.selectedUsers = [];
 
     $timeout(() => {
       window.sessionStorage.setItem('gameID', $scope.gameID);
@@ -201,24 +205,23 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         .length === game.playerMaxLimit - 1;
       if (maxPlayersExceeded) {
         $('#playerMaximumAlert').modal('show');
-      } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
-        invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
-          if (data === 'Accepted') {
-            $scope.invitedPlayers.push($scope.inviteeEmail);
-          }
-          $scope.searchResults = [];
-          $scope.inviteeEmail = '';
-        });
-      } else {
         $scope.searchResults = [];
-        $scope.inviteeEmail = '';
-        $('#playerAlreadyInvited').modal('show');
+      } else {
+        $scope.selectedUsers.forEach((selectedUser) => {
+          invitePlayer.sendMail(selectedUser.email, document.URL).then((data) => {
+            if (data === 'Accepted') {
+              $scope.invitedPlayers.push(selectedUser.username);
+            }
+            $scope.searchResults = [];
+            selectedUser.email = '';
+          });
+        });
       }
     };
 
     $scope.playerSearch = () => {
-      if ($scope.inviteeEmail !== '') {
-        playerSearch.getPlayers($scope.inviteeEmail).then((data) => {
+      if ($scope.inviteeUsername !== '') {
+        playerSearch.getPlayers($scope.inviteeUsername).then((data) => {
           $scope.searchResults = data;
         });
       } else {
@@ -226,9 +229,14 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
       }
     };
 
-    $scope.selectEmail = (selectedEmail) => {
-      $scope.inviteeEmail = selectedEmail;
-      $scope.searchResults = [];
+    $scope.selectUser = (selectedUser) => {
+      if ($scope.selectedUsers.includes(selectedUser)) {
+        $scope.selectedUsers.splice($scope.selectedUsers.indexOf(selectedUser), 1);
+      } else if ($scope.invitedPlayers.includes(selectedUser.email)) {
+        $('#playerAlreadyInvited').modal('show');
+      } else {
+        $scope.selectedUsers.push(selectedUser);
+      }
     };
 
     $scope.startTour = () => {
