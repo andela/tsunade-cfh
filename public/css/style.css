@@ -57,13 +57,23 @@
    cursor: pointer
  }
  
+ .friends-button {
+   float: left; color: #333333;
+   background-color: #ffffff;
+   border-color: #cccccc;
+ }
+ 
+ .friends-selected {
+   background-color: palegoldenrod;
+ }
+
  .search-result:hover {
    background-color: lightblue;
  }
 
  .search-result {
    color: black;
-   padding: 2px 10px;
+   padding: 2px 0;
    cursor: pointer;
    border-top:  1px solid #eeeeee;
  }

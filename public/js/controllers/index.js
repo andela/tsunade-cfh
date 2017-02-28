@@ -36,6 +36,7 @@ angular.module('mean.system')
           $scope.showError();
           $scope.error = err;
         });
+        $window.localStorage.setItem('Email', $scope.login_email);
       };
 
       $scope.logout = () => {

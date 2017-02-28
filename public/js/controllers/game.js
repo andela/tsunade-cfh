@@ -16,6 +16,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     $scope.invitedPlayers = [];
     $scope.firstPlayer = false;
     $scope.selectedUsers = [];
+    $scope.selectedUsersNames = [];
+    $scope.friendsSelected = false;
+    $scope.friends = {};
+    $scope.showFriends = false;
 
     $timeout(() => {
       window.sessionStorage.setItem('gameID', $scope.gameID);
@@ -200,9 +204,13 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     $scope.sendInvite = () => {
       const maxPlayersExceeded = $scope.invitedPlayers
         .length === game.playerMaxLimit - 1;
+      const maxSelectionExceeded = $scope.invitedPlayers
+        .length + $scope.selectedUsers.length > game.playerMaxLimit - 1;
       if (maxPlayersExceeded) {
         $('#playerMaximumAlert').modal('show');
         $scope.searchResults = [];
+      } else if (maxSelectionExceeded) {
+        $('#playerMaximumAlert').modal('show');
       } else if ($scope.selectedUsers.length === 0) {
         $('#playerNotSelected').modal('show');
       } else {
@@ -216,6 +224,7 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
             selectedUser.email = '';
             $scope.inviteeUsername = '';
             $scope.selectedUsers = [];
+            $scope.selectedUsersNames = [];
           });
         });
       }
@@ -233,25 +242,60 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
       }
     };
 
-    $scope.showAllPlayers = () => {
-      playerSearch.getPlayers('*').then((data) => {
-        $scope.searchResults = data;
+    $scope.filterFriendsIndicator = () => {
+      return { 'friends-selected': $scope.friendsSelected };
+    };
+
+    $scope.filterFriends = () => {
+      let found = false;
+      Object.keys($scope.friends).forEach((key) => {
+        if ($scope.friends[key] === true) {
+          found = true;
+        }
       });
+      if (!found) {
+        $('#noFriendsInList').modal('show');
+        $scope.showFriends = false;
+      } else {
+        $scope.showAllPlayers();
+        $scope.friendsSelected = !$scope.friendsSelected;
+        $scope.showFriends = !$scope.showFriends;
+      }
+    };
+
+    $scope.isFriend = (user) => {
+      if ($scope.friends[user.email] && $scope.showFriends) {
+        return true;
+      } else if (!$scope.showFriends) {
+        return true;
+      }
+    };
+
+    $scope.showAllPlayers = () => {
+      if ($scope.searchResults.length === 0) {
+        playerSearch.getPlayers('*').then((data) => {
+          $scope.searchResults = data;
+        });
+      }
     };
 
     $scope.selectUser = (selectedUser) => {
-      if ($scope.selectedUsers.includes(selectedUser)) {
+      if ($scope.selectedUsersNames.includes(selectedUser.username)) {
         $scope.selectedUsers
         .splice($scope.selectedUsers.indexOf(selectedUser), 1);
+        $scope.selectedUsersNames
+        .splice($scope.selectedUsersNames.indexOf(selectedUser.username), 1);
       } else if ($scope.invitedPlayers.includes(selectedUser.username)) {
+        $scope.areadyInvitedPlayer = selectedUser.username;
         $('#playerAlreadyInvited').modal('show');
       } else {
         $scope.selectedUsers.push(selectedUser);
+        $scope.selectedUsersNames.push(selectedUser.username);
       }
     };
 
     $scope.clickInvitee = (selectedUser) => {
-      if ($scope.selectedUsers.includes(selectedUser)) {
+      if ($scope.selectedUsersNames.includes(selectedUser.username)) {
         return {
           'search-result': true,
           'invitee-picked': true,
@@ -279,7 +323,7 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     };
 
     $scope.isSelected = (selectedUser) => {
-      if ($scope.selectedUsers.includes(selectedUser)) {
+      if ($scope.selectedUsersNames.includes(selectedUser.username)) {
         return true;
       }
       return false;

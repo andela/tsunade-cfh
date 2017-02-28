@@ -11,7 +11,7 @@ const User = mongoose.model('User');
 exports.users = (req, res) => {
   const query = req.params.inviteeUsername || '';
   if (query === '*') {
-    User.find({ username: { $regex: /\w/ } }).limit(10)
+    User.find({ username: { $regex: /\w/ } })
       .exec((err, result) => {
         if (err) {
           return res.json(err);
