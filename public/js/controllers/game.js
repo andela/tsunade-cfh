@@ -12,9 +12,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
     $scope.searchResults = [];
-    $scope.inviteeEmail = '';
+    $scope.inviteeUsername = '';
     $scope.invitedPlayers = [];
     $scope.firstPlayer = false;
+    $scope.selectedUsers = [];
 
     $timeout(() => {
       window.sessionStorage.setItem('gameID', $scope.gameID);
@@ -201,34 +202,87 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         .length === game.playerMaxLimit - 1;
       if (maxPlayersExceeded) {
         $('#playerMaximumAlert').modal('show');
-      } else if (!$scope.invitedPlayers.includes($scope.inviteeEmail)) {
-        invitePlayer.sendMail($scope.inviteeEmail, document.URL).then((data) => {
-          if (data === 'Accepted') {
-            $scope.invitedPlayers.push($scope.inviteeEmail);
-          }
-          $scope.searchResults = [];
-          $scope.inviteeEmail = '';
-        });
-      } else {
         $scope.searchResults = [];
-        $scope.inviteeEmail = '';
-        $('#playerAlreadyInvited').modal('show');
+      } else if ($scope.selectedUsers.length === 0) {
+        $('#playerNotSelected').modal('show');
+      } else {
+        $scope.selectedUsers.forEach((selectedUser) => {
+          invitePlayer.sendMail(selectedUser.email, document.URL)
+          .then((data) => {
+            if (data === 'Accepted') {
+              $scope.invitedPlayers.push(selectedUser.username);
+            }
+            $scope.searchResults = [];
+            selectedUser.email = '';
+            $scope.inviteeUsername = '';
+            $scope.selectedUsers = [];
+          });
+        });
       }
     };
 
     $scope.playerSearch = () => {
-      if ($scope.inviteeEmail !== '') {
-        playerSearch.getPlayers($scope.inviteeEmail).then((data) => {
+      if ($scope.inviteeUsername !== '') {
+        playerSearch.getPlayers($scope.inviteeUsername).then((data) => {
           $scope.searchResults = data;
         });
       } else {
-        $scope.searchResults = [];
+        playerSearch.getPlayers('*').then((data) => {
+          $scope.searchResults = data;
+        });
       }
     };
 
-    $scope.selectEmail = (selectedEmail) => {
-      $scope.inviteeEmail = selectedEmail;
-      $scope.searchResults = [];
+    $scope.showAllPlayers = () => {
+      playerSearch.getPlayers('*').then((data) => {
+        $scope.searchResults = data;
+      });
+    };
+
+    $scope.selectUser = (selectedUser) => {
+      if ($scope.selectedUsers.includes(selectedUser)) {
+        $scope.selectedUsers
+        .splice($scope.selectedUsers.indexOf(selectedUser), 1);
+      } else if ($scope.invitedPlayers.includes(selectedUser.username)) {
+        $('#playerAlreadyInvited').modal('show');
+      } else {
+        $scope.selectedUsers.push(selectedUser);
+      }
+    };
+
+    $scope.clickInvitee = (selectedUser) => {
+      if ($scope.selectedUsers.includes(selectedUser)) {
+        return {
+          'search-result': true,
+          'invitee-picked': true,
+          'invitee-invited': false
+        };
+      } else if ($scope.invitedPlayers.includes(selectedUser.username)) {
+        return {
+          'search-result': true,
+          'invitee-picked': false,
+          'invitee-invited': true
+        };
+      }
+      return {
+        'search-result': true,
+        'invitee-picked': false,
+        'invitee-invited': false
+      };
+    };
+
+    $scope.isInvited = (selectedUser) => {
+      if ($scope.invitedPlayers.includes(selectedUser.username)) {
+        return true;
+      }
+      return false;
+    };
+
+    $scope.isSelected = (selectedUser) => {
+      if ($scope.selectedUsers.includes(selectedUser)) {
+        return true;
+      }
+      return false;
     };
 
     $scope.startTour = () => {
@@ -245,6 +299,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         showCancelLink: true,
         buttons: [
           {
+            text: 'Skip',
+            action: tour.cancel,
+          },
+          {
             text: 'Next',
             action: tour.next
           }
@@ -257,6 +315,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#player-count-container bottom',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,
@@ -275,6 +337,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         showCancelLink: true,
         buttons: [
           {
+            text: 'Skip',
+            action: tour.cancel,
+          },
+          {
             text: 'Back',
             action: tour.back,
           },
@@ -291,6 +357,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#chat-body right',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,
@@ -309,6 +379,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         showCancelLink: true,
         buttons: [
           {
+            text: 'Skip',
+            action: tour.cancel,
+          },
+          {
             text: 'Back',
             action: tour.back,
           },
@@ -324,6 +398,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#gameLogButton bottom',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,
@@ -342,6 +420,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#abandon-game-button right',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,

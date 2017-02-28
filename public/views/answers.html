@@ -18,6 +18,16 @@
     </div>
   </div>
 </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="playerNotSelected">
+  <div class="modal-dialog playerLimitAlert" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel2" style="color:black">Please search for and select players to invite</h4>
+      </div>
+    </div>
+  </div>
+</div>
 <div ng-cloak id="cards-container" ng-hide="game.state === 'game ended' || game.state ==='game dissolved'">
   <div id="social-bar-container" class="player_top_margin">
     <player></player>
@@ -53,17 +63,24 @@
 <div id="info-container" ng-show="game.state === 'awaiting players'">
   <div id="inner-info">
     <div id="searchContainer" style="display: none">
-      <div class="col-lg-6" style="margin: 0 25%">
+      <div class="col-lg-6" style="margin: 0 15%; width: 70%;">
         <div ng-repeat="players in invitedPlayers" style="margin-top: 2px;">{{players}} has been sent an invite.</div>
-        <div class="input-group">
-          <input type="text" class="form-control" ng-keyup="playerSearch()" ng-model="inviteeEmail" placeholder="Search for friends to invite">
-          <span class="input-group-btn">
-            <button class="btn btn-default"  type="button" ng-click="sendInvite()">Invite</button>
-          </span>
+        <div>
+          <div class="input-group">
+            <input type="text" class="form-control" ng-click="showAllPlayers()" ng-keyup="playerSearch()" ng-model="inviteeUsername" placeholder="Search for friends to invite">
+            <span class="input-group-btn">
+              <button class="btn btn-default"  type="button" ng-click="sendInvite()">Invite</button>
+            </span>
+          </div>
         </div>
-        <div ng-if="searchResults.length !== 0" style="height: 135px; background-color: lightgray; text-align: left; overflow: scroll; border-radius: 2px 2px 4px 4px">
-          <div class="search-result" ng-repeat="result in searchResults" ng-click="selectEmail(result.email)">{{result.email}}</div>
+        <div ng-show="searchResults.length !== 0" style="height: 135px; background-color: lightgray; text-align: left; overflow: scroll; border-radius: 2px 2px 4px 4px">
+          <div ng-class="clickInvitee(result)" ng-repeat="result in searchResults" ng-click="selectUser(result)">
+            {{result.username}}
+            <span ng-if="isInvited(result)">&nbsp&nbsp-&nbsp&nbsp Invited</span>
+            <span ng-if="isSelected(result)" style="color: lightslategrey">&nbsp&nbsp-&nbsp&nbsp Selected</span>
+          </div>
         </div>
+        <div ng-show="searchResults.length !== 0" class="close-player-list" ng-click="searchResults = []">Close</div>
       </div>
     </div>
     <div id="lobby-how-to-play">How To Play</div>

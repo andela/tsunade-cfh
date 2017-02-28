@@ -49,6 +49,14 @@
    overflow: scroll;
  }
 
+ .close-player-list {
+   border-radius: 2px;
+   text-align: center;
+   background-color: white;
+   color: royalblue;
+   cursor: pointer
+ }
+ 
  .search-result:hover {
    background-color: lightblue;
  }
@@ -57,6 +65,19 @@
    color: black;
    padding: 2px 10px;
    cursor: pointer;
+   border-top:  1px solid #eeeeee;
+ }
+
+ .invitee-picked:hover {
+   background-color: palegoldenrod;
+ }
+
+ .invitee-picked {
+   background-color:palegoldenrod;
+ }
+
+ .invitee-invited {
+   color: grey;
  }
 
  .modal-header {
