@@ -12,9 +12,6 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
     let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
     $scope.searchResults = [];
-
-    $scope.inviteeEmail = '';
-
     $scope.inviteeUsername = '';
     $scope.invitedPlayers = [];
     $scope.firstPlayer = false;
@@ -206,14 +203,19 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
       if (maxPlayersExceeded) {
         $('#playerMaximumAlert').modal('show');
         $scope.searchResults = [];
+      } else if ($scope.selectedUsers.length === 0) {
+        $('#playerNotSelected').modal('show');
       } else {
         $scope.selectedUsers.forEach((selectedUser) => {
-          invitePlayer.sendMail(selectedUser.email, document.URL).then((data) => {
+          invitePlayer.sendMail(selectedUser.email, document.URL)
+          .then((data) => {
             if (data === 'Accepted') {
               $scope.invitedPlayers.push(selectedUser.username);
             }
             $scope.searchResults = [];
             selectedUser.email = '';
+            $scope.inviteeUsername = '';
+            $scope.selectedUsers = [];
           });
         });
       }
@@ -225,18 +227,62 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
           $scope.searchResults = data;
         });
       } else {
-        $scope.searchResults = [];
+        playerSearch.getPlayers('*').then((data) => {
+          $scope.searchResults = data;
+        });
       }
+    };
+
+    $scope.showAllPlayers = () => {
+      playerSearch.getPlayers('*').then((data) => {
+        $scope.searchResults = data;
+      });
     };
 
     $scope.selectUser = (selectedUser) => {
       if ($scope.selectedUsers.includes(selectedUser)) {
-        $scope.selectedUsers.splice($scope.selectedUsers.indexOf(selectedUser), 1);
-      } else if ($scope.invitedPlayers.includes(selectedUser.email)) {
+        $scope.selectedUsers
+        .splice($scope.selectedUsers.indexOf(selectedUser), 1);
+      } else if ($scope.invitedPlayers.includes(selectedUser.username)) {
         $('#playerAlreadyInvited').modal('show');
       } else {
         $scope.selectedUsers.push(selectedUser);
       }
+    };
+
+    $scope.clickInvitee = (selectedUser) => {
+      if ($scope.selectedUsers.includes(selectedUser)) {
+        return {
+          'search-result': true,
+          'invitee-picked': true,
+          'invitee-invited': false
+        };
+      } else if ($scope.invitedPlayers.includes(selectedUser.username)) {
+        return {
+          'search-result': true,
+          'invitee-picked': false,
+          'invitee-invited': true
+        };
+      }
+      return {
+        'search-result': true,
+        'invitee-picked': false,
+        'invitee-invited': false
+      };
+    };
+
+    $scope.isInvited = (selectedUser) => {
+      if ($scope.invitedPlayers.includes(selectedUser.username)) {
+        return true;
+      }
+      return false;
+    };
+
+    $scope.isSelected = (selectedUser) => {
+      if ($scope.selectedUsers.includes(selectedUser)) {
+        return true;
+      }
+      return false;
     };
 
     $scope.startTour = () => {
