@@ -299,6 +299,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         showCancelLink: true,
         buttons: [
           {
+            text: 'Skip',
+            action: tour.cancel,
+          },
+          {
             text: 'Next',
             action: tour.next
           }
@@ -311,6 +315,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#player-count-container bottom',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,
@@ -329,6 +337,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         showCancelLink: true,
         buttons: [
           {
+            text: 'Skip',
+            action: tour.cancel,
+          },
+          {
             text: 'Back',
             action: tour.back,
           },
@@ -345,6 +357,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#chat-body right',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,
@@ -363,6 +379,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         showCancelLink: true,
         buttons: [
           {
+            text: 'Skip',
+            action: tour.cancel,
+          },
+          {
             text: 'Back',
             action: tour.back,
           },
@@ -378,6 +398,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#gameLogButton bottom',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,
@@ -396,6 +420,10 @@ $dialog, playerSearch, invitePlayer, $window, $http) => {
         attachTo: '#abandon-game-button right',
         showCancelLink: true,
         buttons: [
+          {
+            text: 'Skip',
+            action: tour.cancel,
+          },
           {
             text: 'Back',
             action: tour.back,
